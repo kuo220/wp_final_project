@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  },
+  "name": "WP_final_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^5.0.4"
+  }
+}
