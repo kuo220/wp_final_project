@@ -1,0 +1,54 @@
+type Query {
+  LogInQuery(account: String!, password: String!): User!
+  SearchRestaurantByName(name: String!): [Restaurant]!
+  GetRestaurantById(id: ID!): Restaurant!
+}
+
+type Mutation {
+  createUser(account: String!, password: String!): User!
+  createComment(name: String!, id: ID!, body: String!, star: Int!, time: String!): Comment!
+  createRate(name: String!, id: ID!, ratewhat: String!, star: Int!): Float!
+  createTFRate(name: String!, id: ID!, ratewhat: String!,TF: Boolean!): [Int!]!
+  createGraph(graph: [[Int!]]): [[Int!]]
+}
+
+type User{
+  id: ID!
+  name: String!
+  account: String!
+  password: String!
+}
+
+type Restaurant{
+  id: ID!
+  name: String!
+  comments: [Comment]!
+  information: [Information]!
+  sprate: [Sprate]!
+  spTFrate: [SpTFrate]!
+}
+
+type Comment{
+  name: String!
+  person_id: ID!
+  body: String!
+  star: Int!
+  time: String!
+}
+
+type Information{
+  name: String!
+  body: String!
+}
+
+type Sprate{
+  name: String!
+  score: Float!
+  people: Int!
+}
+
+type SpTFrate{
+  name: String!
+  Tnum: Int!
+  Fnum: Int!
+}
