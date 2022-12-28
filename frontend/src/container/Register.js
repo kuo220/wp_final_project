@@ -5,7 +5,7 @@ import {useHooks} from './hooks/Hooks'
 
 function Register() {
   //const [current, setCurrent] = useState('Login');
-  const {login,setLogin,currentpage, setCurrentpage} = useHooks();
+  const {login, setLogin, currentpage, setCurrentpage} = useHooks();
 
   return(
     <>

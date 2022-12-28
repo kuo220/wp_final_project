@@ -5,27 +5,27 @@ import {useHooks} from './hooks/Hooks'
 
 function Titlebar() {
   //const [current, setCurrent] = useState('Login');
-  const {login,setLogin,currentpage, setCurrentpage} = useHooks();
+  const {login, setLogin, currentpage, setCurrentpage} = useHooks();
 
   const items = [
-    {
-      label:'What are you thinking?',
-      key:'What are you thinking?',
-      icon: <EditOutlined />,
-      disabled: !login,
-    },
-    {
-      label:'Posts',
-      key:'Posts',
-      icon:<BlockOutlined />,
-      disabled: !login,
-    },
-    {
-      label:'SearchFriend',
-      key:'SearchFriend',
-      icon:<SearchOutlined />,
-      disabled: !login,
-    },
+    // {
+    //   label:'What are you thinking?',
+    //   key:'What are you thinking?',
+    //   icon: <EditOutlined />,
+    //   disabled: !login,
+    // },
+    // {
+    //   label:'Posts',
+    //   key:'Posts',
+    //   icon:<BlockOutlined />,
+    //   disabled: !login,
+    // },
+    // {
+    //   label:'SearchFriend',
+    //   key:'SearchFriend',
+    //   icon:<SearchOutlined />,
+    //   disabled: !login,
+    // },
     {
       label:'Home',
       key:'Home',
