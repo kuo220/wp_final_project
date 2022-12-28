@@ -7,7 +7,7 @@ function Login() {
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
   const bodyRef = useRef(null);
-  const {setCurrentpage, login,setLogin} = useHooks();
+  const {setCurrentpage, login ,setLogin} = useHooks();
 
   const appear_password = (password) => {
     let a = '';
@@ -28,7 +28,7 @@ function Login() {
           if (e.key === 'Enter') {
           bodyRef.current.focus()
         }}}
-      />
+      />{/*  */}
       <div/>
       <Input.Search
         ref={bodyRef}
