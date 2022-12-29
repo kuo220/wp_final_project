@@ -23,7 +23,6 @@ function Login() {
 
 	return (
 		<>
-<<<<<<< HEAD
 		<Input
 			size="large"
 			style={{ width: 300, margin: 10 }}
@@ -52,7 +51,6 @@ function Login() {
 		<div/>
 		<Button onClick={()=>{setCurrentpage('register')}}>Click here to register</Button>
 		
-=======
 			<Titlebar/>
 			<Input
 				size="large"
@@ -81,7 +79,6 @@ function Login() {
 			/>
 			<div/>
 			<Button onClick={()=>{navigate('/register')}}>Click here to register</Button>
->>>>>>> refs/remotes/origin/main
 		</>
 	);
 }

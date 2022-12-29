@@ -20,7 +20,6 @@ function App() {
 
 	return (
 		<>
-<<<<<<< HEAD
 			
 			{	// Title bar
 				currentpage === 'Home' ? <Titlebar/>
@@ -40,7 +39,6 @@ function App() {
 				:
 				<Register/>
 			}
-=======
 			<Router>
 				<Routes>
 					<Route path="/" element={<Home/>} />
@@ -50,7 +48,6 @@ function App() {
 					<Route path="/restaurant/:id" element={<Cafe/>} />
 				</Routes>
         	</Router>
->>>>>>> refs/remotes/origin/main
 		</>
 	);
 }
