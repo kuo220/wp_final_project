@@ -10,7 +10,7 @@ import coffee from '../picture/coffee.jpg';
 const StyledBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
-	background-color : #F5DEB3;
+	// background-color : #F5DEB3;
 `
 const StyledLogin = {
 	position : 'absolute',
@@ -44,11 +44,11 @@ function Login() {
 	return (
 		<StyledBackground>
 			<Titlebar/>
-			<img src={coffee} width='100%' height='100%'/>
+			<img src={coffee} width='100%' height='100%' style={{opacity:'0.'}}/>
 			<div style={StyledLogin}>
 				<Input
 					size='large'
-					style={{ height: 50, width: 300, margin: 10 }}
+					style={{ height: 50, width: '35rem', margin: 10 }}
 					placeholder="Enter your name"
 					prefix={<UserOutlined />}
 					value={name}
@@ -74,7 +74,7 @@ function Login() {
 				<Input.Password
 					size='large'
 					placeholder="input password"
-					style={{ height : 50, width: 300, margin: 10 }}
+					style={{ height : 50, width: '35rem', margin: 10 }}
 					onChange={(e) => setPassword(e.target.value)}
 					iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 				/>
