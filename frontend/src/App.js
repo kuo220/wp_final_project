@@ -1,11 +1,11 @@
 import Login from './container/Login'
 import Home from './container/Home'
-import Titlebar from './container/Titlebar'
 import Register from './container/Register'
 import Search from './container/Search'
-import TitlebarSearch from './container/TitlebarSearch'
+import Cafe from './container/Cafe'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
@@ -20,24 +20,15 @@ function App() {
 
 	return (
 		<>
-			{	
-				currentpage === 'Home' ? <Titlebar/> 
-				: 
-				currentpage === 'Login' ? <Titlebar/> 
-				: 
-				currentpage === 'Search' ? <TitlebarSearch/>
-				:
-				<Titlebar/>
-			}
-			{	
-				currentpage === 'Home' ? <Home/> 
-				: 
-				currentpage === 'Login' ? <Login/> 
-				: 
-				currentpage === 'Search' ? <Search/>
-				:
-				<Register/>
-			}
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home/>} />
+					<Route path="/login" element={<Login/>} />
+					<Route path="/search" element={<Search/>} />
+					<Route path="/register" element={<Register/>} />
+					<Route path="/restaurant/:id" element={<Cafe/>} />
+				</Routes>
+        	</Router>
 		</>
 	);
 }

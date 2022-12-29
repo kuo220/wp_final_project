@@ -1,12 +1,16 @@
 import { Typography } from 'antd';
+import Titlebar from './Titlebar'
 
 function Home() {
 	return(
-        <Typography.Title
-            italic
-        >
-            Café Finder
-        </Typography.Title>
+        <>
+            <Titlebar/>
+            <Typography.Title
+                italic
+            >
+                Café Finder
+            </Typography.Title>
+        </>
     )
 }
 
