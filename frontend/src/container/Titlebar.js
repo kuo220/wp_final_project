@@ -1,11 +1,15 @@
 import { Menu } from 'antd';
 import { EditOutlined, HomeOutlined, SearchOutlined, LoginOutlined, LogoutOutlined, BlockOutlined } from '@ant-design/icons';
 import { useState , useRef, useEffect } from "react";
-import {useHooks} from './hooks/Hooks'
+import {useHooks} from './hooks/Hooks';
+import { useNavigate } from 'react-router-dom';
+
 
 function Titlebar() {
   //const [current, setCurrent] = useState('Login');
   const {login, setLogin, currentpage, setCurrentpage} = useHooks();
+
+  const navigate = useNavigate();
 
   const items = [
     // {
@@ -28,25 +32,28 @@ function Titlebar() {
     // },
     {
       label:'Home',
-      key:'Home',
+      key:'home',
       icon:<HomeOutlined />,
-      disabled: !login,
+      //disabled: !login,
     },
     {
       label:'Login',
-      key:'Login',
+      key:'login',
       icon:<LoginOutlined />,
-      disabled: login,
+      //disabled: login,
     },
   ]
 
   const handleClick = (e) => {
-    setCurrentpage(e.key);
+    let path;
+    if(e.key === 'home') path = '/';
+    else path = `/${e.key}`;
+    navigate(path);
   }
 
   return(
     <>
-      <Menu onClick={handleClick} selectedKeys={[currentpage]} mode="horizontal" items={items} />
+      <Menu onClick={ handleClick } mode="horizontal" items={items} />
     </>
   )
 }

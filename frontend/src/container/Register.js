@@ -2,6 +2,7 @@ import { Menu } from 'antd';
 import { EditOutlined, HomeOutlined, SearchOutlined, LoginOutlined, LogoutOutlined, BlockOutlined } from '@ant-design/icons';
 import { useState , useRef, useEffect } from "react";
 import {useHooks} from './hooks/Hooks'
+import Titlebar from './Titlebar';
 
 function Register() {
   //const [current, setCurrent] = useState('Login');
@@ -9,6 +10,7 @@ function Register() {
 
   return(
     <>
+      <Titlebar/>
       register
     </>
   )
