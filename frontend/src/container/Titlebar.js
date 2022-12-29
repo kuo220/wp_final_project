@@ -12,34 +12,35 @@ function Titlebar() {
     const navigate = useNavigate();
 
     const items = [
-      {
-        label:'Home',
-        key:'home',
-        icon:<HomeOutlined />,
-      },
-      {
-        label:'Login',
-        key:'login',
-        icon:<LoginOutlined />,
-      },
+		{
+			label:'Home',
+			key:'home',
+			icon:<HomeOutlined />,
+		},
+		{
+			label:'Login',
+			key:'login',
+			icon:<LoginOutlined />,
+		},
     ]
 
     const handleClick = (e) => {
-      let path;
-      if(e.key === 'home') path = '/';
-      else path = `/${e.key}`;
-      navigate(path);
+		let path;
+		if(e.key === 'home') path = '/';
+		else path = `/${e.key}`;
+		navigate(path);
     }
 
     return(
-      <>
-        <Menu 
-          onClick={ handleClick } 
-          mode="horizontal" 
-          items={items} 
-          style={{backgroundColor : '#FEF9E7'}} 
-        />
-      </>
+		<>
+			<Menu 
+				onClick={ handleClick } 
+				mode='horizontal' 
+
+				items={items} 
+				style={{backgroundColor : '#805300'}} 
+			/>
+		</>
     )
 }
 

@@ -1,10 +1,11 @@
-import {Input, Button} from 'antd';
+import {Input, Button, Space} from 'antd';
 import styled from 'styled-components'
-import { UserOutlined } from "@ant-design/icons";
+import {UserOutlined, EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import { useState , useRef } from "react";
 import {useHooks} from './hooks/Hooks'
 import Titlebar from './Titlebar'
 import { useNavigate } from 'react-router-dom';
+import coffee from '../picture/coffee.jpg';
 
 const StyledBackground = styled.div`
 	width : 100vw;
@@ -21,7 +22,7 @@ const StyledLogin = {
 	height : '30%',
 	top : '20%',
 	left : '35%',
-	// backgroundColor : 'lightgreen',
+	// backgroundColor : 'brown',
 }
 
 function Login() {
@@ -29,22 +30,25 @@ function Login() {
 	const [password, setPassword] = useState('');
 	const bodyRef = useRef(null);
 	const {setCurrentpage, login, setLogin} = useHooks();
+	const [passwordVisible, setPasswordVisible] = useState(false);
+	
 
-	const appear_password = (password) => {
-		let a = '';
-		for(let i = 0; i < password.length; i++) a += '*';
-		return a;
-	}
+	// const appear_password = (password) => {
+	// 	let a = '';
+	// 	for(let i = 0; i < password.length; i++) a += '*';
+	// 	return a;
+	// }
 
 	const navigate = useNavigate();
 
 	return (
 		<StyledBackground>
 			<Titlebar/>
+			<img src={coffee} width='100%' height='100%'/>
 			<div style={StyledLogin}>
 				<Input
-					size="large"
-					style={{ width: 300, margin: 10 }}
+					size='large'
+					style={{ height: 50, width: 300, margin: 10 }}
 					placeholder="Enter your name"
 					prefix={<UserOutlined />}
 					value={name}
@@ -56,22 +60,33 @@ function Login() {
 					}}
 				/>
 				<div/>
-				<Input.Search
+				{/* <Input.Search
 					ref={bodyRef}
 					size="large"
-					style={{ width: 300, margin: 10 }}
+					style={{ width: 300, margin: 10}}
 					prefix={<UserOutlined />}
 					placeholder="Enter your password"
 					value={appear_password(password)}
 					onChange={(e) => setPassword(e.target.value)}
 					enterButton="Sign In"
 					onSearch={()=>{setLogin(true); navigate('/search')}}
+				/> */}
+				<Input.Password
+					size='large'
+					placeholder="input password"
+					style={{ height : 50, width: 300, margin: 10 }}
+					onChange={(e) => setPassword(e.target.value)}
+					iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 				/>
-				{/* <div/> */}
-				<Button style={{width: 150, margin: 10}} onClick={()=>{navigate('/register')}}> Register </Button>
+				<div/>
+				<Button
+					size = 'large'
+					style={{width: 150, margin: 10, backgroundColor: '#DB8F00', color : 'white'}} 
+					onClick={()=>{setLogin(true); navigate('/search')}}> Log In </Button>
 			</div>
 			
 		</StyledBackground>
+
 	);
 }
 
