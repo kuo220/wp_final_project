@@ -20,18 +20,19 @@ function App() {
 
 	return (
 		<>
-			{	
-				currentpage === 'Home' ? <Titlebar/> 
-				: 
+			
+			{	// Title bar
+				currentpage === 'Home' ? <Titlebar/>
+				:
 				currentpage === 'Login' ? <Titlebar/> 
 				: 
 				currentpage === 'Search' ? <TitlebarSearch/>
 				:
 				<Titlebar/>
 			}
-			{	
+			{	// Page
 				currentpage === 'Home' ? <Home/> 
-				: 
+				:
 				currentpage === 'Login' ? <Login/> 
 				: 
 				currentpage === 'Search' ? <Search/>
