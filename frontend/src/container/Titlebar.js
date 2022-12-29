@@ -16,13 +16,11 @@ function Titlebar() {
         label:'Home',
         key:'home',
         icon:<HomeOutlined />,
-        //disabled: !login,
       },
       {
         label:'Login',
         key:'login',
         icon:<LoginOutlined />,
-        //disabled: login,
       },
     ]
 
@@ -35,7 +33,12 @@ function Titlebar() {
 
     return(
       <>
-        <Menu onClick={ handleClick } mode="horizontal" items={items} style={{backgroundColor : '#9C9C9C'}} />
+        <Menu 
+          onClick={ handleClick } 
+          mode="horizontal" 
+          items={items} 
+          style={{backgroundColor : '#FEF9E7'}} 
+        />
       </>
     )
 }

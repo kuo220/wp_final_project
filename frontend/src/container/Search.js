@@ -8,7 +8,7 @@ import TitlebarSearch from './TitlebarSearch'
 const SearchBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
-	background-color : #6E6E6E;
+	background-color : #F8C471;
 `
 
 const StyledSearch = styled(Input.Search)`

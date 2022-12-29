@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const StyledBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
-	background-color : #6E6E6E;
+	background-color : #F5DEB3;
 `
 const StyledLogin = {
 	position : 'absolute',
