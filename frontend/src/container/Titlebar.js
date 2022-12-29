@@ -38,12 +38,6 @@ function Titlebar() {
       icon:<LoginOutlined />,
       disabled: login,
     },
-    {
-      label:'Logout',
-      key:'Logout',
-      icon:<LogoutOutlined />,
-      disabled: !login,
-    },
   ]
 
   const handleClick = (e) => {

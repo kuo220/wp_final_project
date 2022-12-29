@@ -1,18 +1,13 @@
-import { Input, Menu } from 'antd';
-import { ShopOutlined } from "@ant-design/icons";
-import { useState , useRef, useEffect } from "react";
-import {useHooks} from './hooks/Hooks'
+import { Typography } from 'antd';
 
 function Home() {
 	return(
-    <>
-	<Input.Search
-		size="large"
-		placeholder="Search for Restaurant"
-		prefix={<ShopOutlined />}
-	/>
-    </>
-  )
+        <Typography.Title
+            italic
+        >
+            Café Finder
+        </Typography.Title>
+    )
 }
 
 export default Home;

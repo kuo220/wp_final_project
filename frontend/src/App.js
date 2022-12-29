@@ -2,6 +2,8 @@ import Login from './container/Login'
 import Home from './container/Home'
 import Titlebar from './container/Titlebar'
 import Register from './container/Register'
+import Search from './container/Search'
+import TitlebarSearch from './container/TitlebarSearch'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
 
@@ -10,7 +12,7 @@ function App() {
     const {login, setLogin, currentpage, setCurrentpage} = useHooks();
   	useEffect(()=>{	
 		if(currentpage === 'Logout'){
-			setCurrentpage('Login')
+			setCurrentpage('Home')
 			setLogin(false)
 		}
 
@@ -18,9 +20,23 @@ function App() {
 
 	return (
 		<>
-			<Titlebar/>
 			{	
-				currentpage === 'Home' ? <Home/> : 'Login' ? <Login/> : <Register/>
+				currentpage === 'Home' ? <Titlebar/> 
+				: 
+				currentpage === 'Login' ? <Titlebar/> 
+				: 
+				currentpage === 'Search' ? <TitlebarSearch/>
+				:
+				<Titlebar/>
+			}
+			{	
+				currentpage === 'Home' ? <Home/> 
+				: 
+				currentpage === 'Login' ? <Login/> 
+				: 
+				currentpage === 'Search' ? <Search/>
+				:
+				<Register/>
 			}
 		</>
 	);

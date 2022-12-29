@@ -40,7 +40,7 @@ function Login() {
 			value={appear_password(password)}
 			onChange={(e) => setPassword(e.target.value)}
 			enterButton="Sign In"
-			onSearch={()=>{setLogin(true); setCurrentpage('Home');}}
+			onSearch={()=>{setLogin(true); setCurrentpage('Search');}}
 		/>
 		<div/>
 		<Button onClick={()=>{setCurrentpage('register')}}>Click here to register</Button>

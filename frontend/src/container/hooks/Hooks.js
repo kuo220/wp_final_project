@@ -10,7 +10,7 @@ const HookContext = createContext({
 
 const HookProvider = (props) => {
     const [login, setLogin] = useState(false);
-  	const [currentpage, setCurrentpage] = useState('Login');
+  	const [currentpage, setCurrentpage] = useState('Home');
 
   	return (
     	<HookContext.Provider
