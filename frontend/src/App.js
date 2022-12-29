@@ -3,6 +3,7 @@ import Home from './container/Home'
 import Register from './container/Register'
 import Search from './container/Search'
 import Cafe from './container/Cafe'
+import SignInSide from './container/SingInSide'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -23,7 +24,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path="/" element={<Home/>}/>
-					<Route path="/login" element={<Login/>} />
+					<Route path="/login" element={<SignInSide/>} />
 					<Route path="/search" element={<Search/>} />
 					<Route path="/register" element={<Register/>} />
 					<Route path="/cafe/:id" element={<Cafe/>} />

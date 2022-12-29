@@ -38,7 +38,7 @@ function Titlebar() {
 				mode='horizontal' 
 
 				items={items} 
-				style={{backgroundColor : '#805300'}} 
+				style={{backgroundColor : '#FFCC6E'}} 
 			/>
 		</>
     )

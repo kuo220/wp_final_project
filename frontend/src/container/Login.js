@@ -1,6 +1,6 @@
-import {Input, Button, Space} from 'antd';
+import {Input, Button} from 'antd';
 import styled from 'styled-components'
-import {UserOutlined, EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import {UserOutlined, EyeInvisibleOutlined, EyeTwoTone, LockOutlined} from "@ant-design/icons";
 import { useState , useRef } from "react";
 import {useHooks} from './hooks/Hooks'
 import Titlebar from './Titlebar'
@@ -10,7 +10,7 @@ import coffee from '../picture/coffee.jpg';
 const StyledBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
-	// background-color : #F5DEB3;
+	background-color : #F5DEB3;
 `
 const StyledLogin = {
 	position : 'absolute',
@@ -43,13 +43,13 @@ function Login() {
 
 	return (
 		<StyledBackground>
-			<Titlebar/>
-			<img src={coffee} width='100%' height='100%' style={{opacity:'0.'}}/>
+			{/* <Titlebar/> */}
+			<img src={coffee} width='100%' height='100%' style={{opacity:'0.85'}}/>
 			<div style={StyledLogin}>
 				<Input
 					size='large'
-					style={{ height: 50, width: '35rem', margin: 10 }}
-					placeholder="Enter your name"
+					style={{ height: '3.3rem', width: '35rem', margin: 10 }}
+					placeholder="Enter account"
 					prefix={<UserOutlined />}
 					value={name}
 					onChange={(e) => setName(e.target.value)}
@@ -73,15 +73,16 @@ function Login() {
 				/> */}
 				<Input.Password
 					size='large'
-					placeholder="input password"
-					style={{ height : 50, width: '35rem', margin: 10 }}
+					placeholder='Enter password'
+					prefix={<LockOutlined />}
+					style={{ height : '3.3rem', width: '35rem', margin: 10 }}
 					onChange={(e) => setPassword(e.target.value)}
 					iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 				/>
 				<div/>
 				<Button
 					size = 'large'
-					style={{width: 150, margin: 10, backgroundColor: '#DB8F00', color : 'white'}} 
+					style={{display:'flex', justifyContent:'center', alignItems:'center', width: 150, margin: 10, backgroundColor: '#DB8F00', fontSize : '1.5rem', color : 'white'}} 
 					onClick={()=>{setLogin(true); navigate('/search')}}> Log In </Button>
 			</div>
 			
