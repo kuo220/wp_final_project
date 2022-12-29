@@ -10,13 +10,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
     const {login, setLogin, currentpage, setCurrentpage} = useHooks();
-  	useEffect(()=>{	
-		if(currentpage === 'Logout'){
-			setCurrentpage('Home')
-			setLogin(false)
-		}
+  	// useEffect(()=>{	
+	// 	if(currentpage === 'Logout'){
+	// 		setCurrentpage('Home')
+	// 		setLogin(false)
+	// 	}
 
-  	},[currentpage])
+  	// },[currentpage])
 
 	return (
 		<>
