@@ -35,7 +35,7 @@ function Titlebar() {
 
     return(
       <>
-        <Menu onClick={ handleClick } mode="horizontal" items={items} />
+        <Menu onClick={ handleClick } mode="horizontal" items={items} style={{backgroundColor : '#9C9C9C'}} />
       </>
     )
 }

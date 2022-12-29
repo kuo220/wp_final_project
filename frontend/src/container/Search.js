@@ -25,7 +25,7 @@ const Background = {
 
 function Search() {
 	return(
-    <div style={{Background}}>
+    <div>
 		<TitlebarSearch/>
 		<SearchBackground>
 			<StyledSearch
