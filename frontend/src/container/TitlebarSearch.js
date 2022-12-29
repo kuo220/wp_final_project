@@ -33,7 +33,7 @@ function TitlebarSearch() {
 
   return(
     <>
-      <Menu onClick={ handleClick } selectedKeys={[currentpage]} mode="horizontal" items={items} />
+      <Menu onClick={ handleClick } selectedKeys={[currentpage]} mode="horizontal" items={items} style={{backgroundColor : '#9C9C9C'}}/>
     </>
   )
 }

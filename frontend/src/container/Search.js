@@ -6,35 +6,32 @@ import {useHooks} from './hooks/Hooks'
 import TitlebarSearch from './TitlebarSearch'
 
 const SearchBackground = styled.div`
-	display : flex;
-	justify-content : center;
+	width : 100vw;
+	height : 100vh;
+	background-color : #6E6E6E;
 `
 
 const StyledSearch = styled(Input.Search)`
 	position : absolute;
 	display : flex;
 	width : 50%;
-	top : 20%;
-	justify-content : center;
+	top : 25%;
+	left : 25%;
+	right : 25%;
 `
 
-const Background = {
-	background : 'gray',
-
-}
 
 function Search() {
 	return(
-    <div>
+	<SearchBackground>
 		<TitlebarSearch/>
-		<SearchBackground>
-			<StyledSearch
-				size="large"
-				placeholder="Search for café"
-				prefix={<ShopOutlined />}
-			/>
-		</SearchBackground>
-	</div>
+		<StyledSearch
+			size="large"
+			placeholder="Search for café"
+			prefix={<ShopOutlined />}
+		/>
+		
+	</SearchBackground>
 		
   )
 }
