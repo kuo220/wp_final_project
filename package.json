@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "cd frontend && yarn start",
-    "server": "cd backend && yarn server"
+    "server": "cd backend && yarn start"
   },
   "name": "WP_final_project",
   "version": "1.0.0",
