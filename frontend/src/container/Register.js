@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Coffee from '../picture/coffee.jpg'
+import Coffee2 from '../picture/coffee2.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from "react";
 import { message } from "antd";
@@ -66,7 +66,7 @@ export default function SignIn() {
                 sm = {4}
                 md = {7}
                 sx = {{
-                        backgroundImage: `url(${Coffee})`,
+                        backgroundImage: `url(${Coffee2})`,
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
