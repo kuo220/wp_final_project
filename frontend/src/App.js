@@ -1,34 +1,37 @@
 import Login from './container/Login'
-import Thinking from './container/Thinking'
 import Home from './container/Home'
-import Posts from './container/Posts'
-import SearchFriend from './container/SearchFriend'
-import Titlebar from './container/Titlebar'
 import Register from './container/Register'
+import Search from './container/Search'
+import Cafe from './container/Cafe'
+import SignIn from './container/SignIn'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
-function App() {
-  const {setLogin,currentpage, setCurrentpage} = useHooks();
-  useEffect(()=>{
-    if(currentpage === 'Logout'){
-      setCurrentpage('Login')
-      setLogin(false)
-    }
-  },[currentpage])
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-  return (
-    <>
-      <Titlebar/>
-      {
-        currentpage === 'What are you thinking?' ? <Thinking/>:
-        currentpage === 'Home' ? <Home/>:
-        currentpage === 'Posts' ? <Posts/>:
-        currentpage === 'SearchFriend' ? <SearchFriend/>:
-        currentpage === 'Login' ? <Login/>:<Register/>
-      }
-      
-    </>
-  );
+
+function App() {
+    const {login, setLogin, currentpage, setCurrentpage} = useHooks();
+  	// useEffect(()=>{	
+	// 	if(currentpage === 'Logout'){
+	// 		setCurrentpage('Home')
+	// 		setLogin(false)
+	// 	}
+
+  	// },[currentpage])
+
+	return (
+		<>
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home/>}/>
+					<Route path="/login" element={<SignIn/>} />
+					<Route path="/search" element={<Search/>} />
+					<Route path="/register" element={<Register/>} />
+					<Route path="/cafe/:id" element={<Cafe/>} />
+				</Routes>
+        	</Router>
+		</>
+	);
 }
 
 export default App;
