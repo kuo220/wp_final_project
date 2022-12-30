@@ -23,32 +23,25 @@ export default function SignIn() {
 
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordConfirm, setPasswordConfirm] = useState('');
     const bodyRef = useRef(null);
-
-    const displayError = (msg) => {
-      const content = {
-          content: msg,
-          duration: 1.5,
-      };
-      message.error(content);
-  }
 
     const navigate = useNavigate();
 
-    const navigateToLogin = () => {
-        if(account !== '' && password !== '' && password === passwordConfirm) navigate('/login');
+    const displayError = (msg) => {
+        const content = {
+            content: msg,
+            duration: 1.5,
+        };
+        message.error(content);
+    }
+
+    const navigateToSearch = () => {
+        if(account !== '' && password !== '') navigate('/search');
         if(account === ''){
-          displayError('Please enter account');
+            displayError('Please enter account');
         }
         else if(password === ''){
             displayError('Please enter password');
-        }
-        else if(passwordConfirm === ''){
-          displayError('Please confirm password');
-        }
-        else if(password !== passwordConfirm){
-          displayError('confirm failed')
         }
     }
 
@@ -83,7 +76,7 @@ export default function SignIn() {
                 <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Register
+                    Sign in
                 </Typography>
                 <Box component="form" noValidate sx={{ mt: 1 }}>
                 <TextField
@@ -112,26 +105,19 @@ export default function SignIn() {
                     onChange = {(e) => setPassword(e.target.value)}
                     ref = {bodyRef}
                     type="password"
+                    onSubmit = {navigateToSearch}
                 />
-                <TextField
-                    margin = "normal"
-                    required
-                    fullWidth
-                    name = "password confirm"
-                    label = "Password confirm"
-                    value = {passwordConfirm}
-                    onChange = {(e) => setPasswordConfirm(e.target.value)}
-                    ref = {bodyRef}
-                    type="password"
-                    onSubmit = {navigateToLogin}
+                <FormControlLabel
+                    control = {<Checkbox value="remember" color="primary" />}
+                    label = "Remember me"
                 />
                 <Button
                     fullWidth
                     variant = "contained"
                     sx = {{ mt: 3, mb: 2, backgroundColor: '#68532F'}}
-                    onClick = {navigateToLogin}
+                    onClick = {navigateToSearch}
                 >
-                    Sign Up
+                    Sign In
                 </Button>
                 <Grid container>
                     <Grid item xs>
@@ -140,6 +126,9 @@ export default function SignIn() {
                     </Link>
                     </Grid>
                     <Grid item>
+                    <Link href="/register" variant="body3">
+                        {"Don't have an account? Sign Up"}
+                    </Link>
                     </Grid>
                 </Grid>
                 </Box>

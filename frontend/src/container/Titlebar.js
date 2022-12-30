@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Titlebar() {
     //const [current, setCurrent] = useState('Login');
-    const {login, setLogin, currentpage, setCurrentpage} = useHooks();
+    //const {login, setLogin, currentpage, setCurrentpage} = useHooks();
 
     const navigate = useNavigate();
 
