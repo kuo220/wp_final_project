@@ -27,21 +27,25 @@ export default function SignIn() {
 
     const navigate = useNavigate();
 
-    const displayError = (msg) => {
+    const displayMessage = (status, msg) => {
         const content = {
             content: msg,
             duration: 1.5,
         };
-        message.error(content);
+        if(status === 'error') message.error(content);
+        else message.success(content)
     }
 
     const navigateToSearch = () => {
-        if(account !== '' && password !== '') navigate('/search');
+        if(account !== '' && password !== ''){
+            displayMessage('success', 'Signed in successfully')
+            navigate('/search');
+        }
         if(account === ''){
-            displayError('Please enter account');
+            displayMessage('error', 'Please enter account');
         }
         else if(password === ''){
-            displayError('Please enter password');
+            displayMessage('error', 'Please enter password');
         }
     }
 

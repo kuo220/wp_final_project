@@ -26,29 +26,33 @@ export default function SignIn() {
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const bodyRef = useRef(null);
 
-    const displayError = (msg) => {
-      const content = {
-          content: msg,
-          duration: 1.5,
-      };
-      message.error(content);
-  }
+    const displayMessage = (status, msg) => {
+		const content = {
+			content: msg,
+			duration: 1.5,
+		};
+		if(status === 'error') message.error(content);
+		else message.success(content)
+    }
 
     const navigate = useNavigate();
 
     const navigateToLogin = () => {
-        if(account !== '' && password !== '' && password === passwordConfirm) navigate('/login');
+        if(account !== '' && password !== '' && password === passwordConfirm){
+			displayMessage('success', 'Signed up successfully')
+			navigate('/login');
+		}
         if(account === ''){
-          displayError('Please enter account');
+            displayMessage('error', 'Please enter account');
         }
         else if(password === ''){
-            displayError('Please enter password');
+            displayMessage('error', 'Please enter password');
         }
         else if(passwordConfirm === ''){
-          displayError('Please confirm password');
+          displayMessage('error', 'Please confirm password');
         }
         else if(password !== passwordConfirm){
-          displayError('confirm failed')
+          displayMessage('error', 'confirm failed')
         }
     }
 
