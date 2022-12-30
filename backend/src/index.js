@@ -3,13 +3,17 @@ import { createServer } from 'node:http'
 import { useServer } from 'graphql-ws/lib/use/ws'
 import { WebSocketServer } from 'ws'
 import * as fs from 'fs'
-import db from './db';
+
+import mongo from './mongo';
+import {UserModel, RestaurantModel} from './models/models';
+
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 import Subscription from './resolvers/Subscription';
 import User from './resolvers/User';
-import Post from './resolvers/Post';
-import Comment from './resolvers/Comment';
+import Restaurant from './resolvers/Restaurant';
+
+mongo.connect();
 
 const pubsub = createPubSub();
 
@@ -22,14 +26,13 @@ const yoga = createYoga({
     resolvers: {
       Query,
       Mutation,
-      Subscription,
       User,
-      Post,
-      Comment,
+      Restaurant,
     },
   }),
   context: {
-    db,
+    UserModel, 
+    RestaurantModel,
     pubsub,
   },
   //  graphqlEndpoint: '/',   // uncomment this to send the app to: 4000/

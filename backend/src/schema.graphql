@@ -1,15 +1,16 @@
 type Query {
-  LogInQuery(account: String!, password: String!): User!
+  LogInQuery(account: String!, password: String!): User
   SearchRestaurantByName(name: String!): [Restaurant]!
   GetRestaurantById(id: ID!): Restaurant!
 }
 
 type Mutation {
-  createUser(account: String!, password: String!): User!
-  createComment(name: String!, id: ID!, body: String!, star: Int!, time: String!): Comment!
-  createRate(name: String!, id: ID!, ratewhat: String!, star: Int!): Float!
-  createTFRate(name: String!, id: ID!, ratewhat: String!,TF: Boolean!): [Int!]!
-  createGraph(graph: [[Int!]]): [[Int!]]
+  createUser(name:String! ,account: String!, password: String!): User!
+  createRestaurant(name:String!): Restaurant!
+  createComment(name: String, userid: ID, restaurantid:ID!, body: String, star: Int, time: String): Comment!
+  createRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!, star: Int!): Float!
+  createTFRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!,TF: Boolean!): [Int!]!
+  createGraph(name: String!, userid: ID!, restaurantid:ID!, graph: [[Int!]]): [[Int!]]
 }
 
 type User{

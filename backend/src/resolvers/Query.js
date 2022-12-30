@@ -1,46 +1,25 @@
+import mongoose from 'mongoose';
+
 const Query = {
-  users(parent, args, { db }, info) {
-    if (!args.query) {
-      return db.users;
+  async LogInQuery(parent, args, { UserModel }, info){
+    let user = await UserModel.findOne({ account:args.account });
+    if(user)return user;
+    else{
+      user = { name:"not found", account: "not found", password: "not found" };
+      return user;
     }
-
-    return db.users.filter((user) => {
-      return user.name.toLowerCase().includes(args.query.toLowerCase());
-    });
   },
-  posts(parent, args, { db }, info) {
-    if (!args.query) {
-      return db.posts;
-    }
-
-    return db.posts.filter((post) => {
-      const isTitleMatch = post.title
-        .toLowerCase()
-        .includes(args.query.toLowerCase());
-      const isBodyMatch = post.body
-        .toLowerCase()
-        .includes(args.query.toLowerCase());
-      return isTitleMatch || isBodyMatch;
-    });
+  async SearchRestaurantByName(parent, args, { RestaurantModel }, info){
+    //console.log(RestaurantModel.find({name:args.name}))
+    //console.log(RestaurantModel.find({ name: { "$regex": args.name, "$options": "i" } }))//.name.toLowerCase()
+    return RestaurantModel.find({ name: { "$regex": args.name, "$options": "i" } })
+    //return RestaurantModel.find({name:args.name});
+    //return RestaurantModel.find().name.toLowerCase();
   },
-  comments(parent, args, { db }, info) {
-    return db.comments;
-  },
-  me() {
-    return {
-      id: '123098',
-      name: 'Mike',
-      email: 'mike@example.com',
-    };
-  },
-  post() {
-    return {
-      id: '092',
-      title: 'GraphQL 101',
-      body: '',
-      published: false,
-    };
-  },
+  async GetRestaurantById(parent, args, { RestaurantModel }, info){
+    //need to input valid id, or an error will appear.
+    return RestaurantModel.findOne({_id:args.id})
+  }
 };
 
 export { Query as default };

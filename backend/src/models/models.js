@@ -62,7 +62,7 @@ const RestaurantSchema = new Schema({
     name: { type: String ,required:[true, 'Name field is required.']},
     person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
     body: { type: String ,required:[true, 'body field is required.']},
-    star: { type: Int ,required:[true, 'star field is required.']},
+    star: { type: Number ,required:[true, 'star field is required.']},
     time: { type: String ,required:[true, 'time field is required.']},
   }],
   information: [{
@@ -71,13 +71,13 @@ const RestaurantSchema = new Schema({
   }],
   sprate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
-    score: { type: Float ,required:[true, 'score field is required.']},
-    people: {type: Int ,required:[true, 'people field is required.']},
+    score: { type: Number ,required:[true, 'score field is required.']},
+    people: {type: Number ,required:[true, 'people field is required.']},
   }],
   spTFrate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
-    Tnum: { type: Int ,required:[true, 'Tnum field is required.']},
-    Fnum: { type: Int ,required:[true, 'Fnum field is required.']},
+    Tnum: { type: Number ,required:[true, 'Tnum field is required.']},
+    Fnum: { type: Number ,required:[true, 'Fnum field is required.']},
   }]
 })
 const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);
