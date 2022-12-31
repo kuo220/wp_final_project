@@ -3,6 +3,7 @@ import { createServer } from 'node:http'
 import { useServer } from 'graphql-ws/lib/use/ws'
 import { WebSocketServer } from 'ws'
 import * as fs from 'fs'
+import * as CryptoJS from 'crypto-js';
 
 import mongo from './mongo';
 import {UserModel, RestaurantModel} from './models/models';
@@ -12,6 +13,13 @@ import Mutation from './resolvers/Mutation';
 import Subscription from './resolvers/Subscription';
 import User from './resolvers/User';
 import Restaurant from './resolvers/Restaurant';
+
+/*const password = 123456;
+const secretKey = "mySecretKey";
+const encrypt = CryptoJS.AES.encrypt(password.toString(),secretKey);
+console.log(encrypt.toString());
+const decrypt = CryptoJS.AES.decrypt(encrypt,secretKey);
+console.log(decrypt.toString(CryptoJS.enc.Utf8));*/
 
 mongo.connect();
 

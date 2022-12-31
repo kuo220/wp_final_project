@@ -7,10 +7,10 @@ type Query {
 type Mutation {
   createUser(name:String! ,account: String!, password: String!): User!
   createRestaurant(name:String!): Restaurant!
-  createComment(name: String, userid: ID, restaurantid:ID!, body: String, star: Int, time: String): Comment!
-  createRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!, star: Int!): Float!
-  createTFRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!,TF: Boolean!): [Int!]!
-  createGraph(name: String!, userid: ID!, restaurantid:ID!, graph: [[Int!]]): [[Int!]]
+  createComment(name: String!, userid: ID!, restaurantid:ID!, body: String!, star: Int!, time: String!): Comment!
+  createRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!, star: Int!): Sprate!
+  createTFRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!,TF: Boolean!): SpTFrate!
+  createGraph(name: String!, userid: ID!, restaurantid:ID!, graph: [[Int!]]): [[Int]]
 }
 
 type User{
@@ -27,6 +27,7 @@ type Restaurant{
   information: [Information]!
   sprate: [Sprate]!
   spTFrate: [SpTFrate]!
+  graph: [[[Int]]]
 }
 
 type Comment{
@@ -44,7 +45,7 @@ type Information{
 
 type Sprate{
   name: String!
-  score: Float!
+  star: Float!
   people: Int!
 }
 
@@ -52,4 +53,8 @@ type SpTFrate{
   name: String!
   Tnum: Int!
   Fnum: Int!
+}
+
+type Graph{
+  graph: [[Int]]
 }

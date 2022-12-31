@@ -71,14 +71,15 @@ const RestaurantSchema = new Schema({
   }],
   sprate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
-    score: { type: Number ,required:[true, 'score field is required.']},
+    star: { type: Number ,required:[true, 'score field is required.']},
     people: {type: Number ,required:[true, 'people field is required.']},
   }],
   spTFrate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
     Tnum: { type: Number ,required:[true, 'Tnum field is required.']},
     Fnum: { type: Number ,required:[true, 'Fnum field is required.']},
-  }]
+  }],
+  graph: { type: [[[Number]]]}
 })
 const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);
 
