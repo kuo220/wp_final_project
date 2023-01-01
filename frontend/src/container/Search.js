@@ -24,8 +24,7 @@ const SearchBox = styled(Input.Search)`
 `
 
 const AddButton = styled(Button)`
-	position : absolute;
-	
+	position : absolute;	
 `
 
 
