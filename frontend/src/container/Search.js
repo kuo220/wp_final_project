@@ -1,9 +1,12 @@
-import { Input, Menu } from 'antd';
+import { Input, Button } from 'antd';
 import styled from 'styled-components'
-import { ShopOutlined } from "@ant-design/icons";
+import { ShopOutlined, PlusOutlined } from "@ant-design/icons";
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
 import { useState , useRef, useEffect } from "react";
 import {useHooks} from './hooks/Hooks'
 import TitlebarSearch from './TitlebarSearch'
+
 
 const SearchBackground = styled.div`
 	width : 100vw;
@@ -11,7 +14,7 @@ const SearchBackground = styled.div`
 	background-color : #F8C471;
 `
 
-const StyledSearch = styled(Input.Search)`
+const SearchBox = styled(Input.Search)`
 	position : absolute;
 	display : flex;
 	width : 50%;
@@ -20,12 +23,21 @@ const StyledSearch = styled(Input.Search)`
 	right : 25%;
 `
 
+const AddButton = styled(Button)`
+	position : absolute;
+	
+`
+
 
 function Search() {
 	return(
 	<SearchBackground>
-		<TitlebarSearch/>
-		<StyledSearch
+		{/* <TitlebarSearch/> */}
+		<CssBaseline />
+		<AddButton type='primary'>
+			<PlusOutlined/>
+		</AddButton>
+		<SearchBox
 			size="large"
 			placeholder="Search for café"
 			prefix={<ShopOutlined />}
