@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-function Cafe() {
+function CafeInfo() {
     const { id } = useParams()
 	return(
         <h1>
@@ -9,4 +9,4 @@ function Cafe() {
     )
 }
 
-export default Cafe;
+export default CafeInfo;
