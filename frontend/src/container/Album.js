@@ -28,7 +28,12 @@ const SearchBox = styled(Input.Search)`
 	left : 25%;
 	right : 25%;
 `
-
+const AddButton = styled(Button)`
+	position : absolute;
+    background : #8A5A00;
+    top : 2.5%;
+    right : 5%
+`
 
 function Copyright() {
   return (
@@ -55,7 +60,7 @@ export default function Album() {
         <Toolbar style={{backgroundColor:"#F8C471"}}>
             <LocalCafeIcon sx={{ mr: 2 }} />
             <Typography variant="h6" color="inherit" noWrap>
-                Café Searcher
+                Café Finder
             </Typography>
             </Toolbar>
         </AppBar>
@@ -83,6 +88,9 @@ export default function Album() {
                 placeholder="Search for café"
                 prefix={<ShopOutlined />}
             />
+            <AddButton type='primary'>
+                <PlusOutlined/>
+            </AddButton>
             
             {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Something short and leading about the collection below—its contents,
