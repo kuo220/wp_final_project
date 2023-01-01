@@ -2,7 +2,7 @@ import Login from './container/Login'
 import Home from './container/Home'
 import Register from './container/Register'
 import Search from './container/Search'
-import Cafe from './container/CafeInfo'
+import CafeInfo from './container/CafeInfo'
 import SignIn from './container/SignIn'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
@@ -27,7 +27,7 @@ function App() {
 					<Route path="/login" element={<SignIn/>} />
 					<Route path="/search" element={<Search/>} />
 					<Route path="/register" element={<Register/>} />
-					<Route path="/cafe/:id" element={<Cafe/>} />
+					<Route path="/cafe/:id" element={<CafeInfo/>} />
 				</Routes>
         	</Router>
 		</>
