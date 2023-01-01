@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import {HookProvider} from './container/hooks/Hooks'
+import {HookProvider} from './container/hooks/Hooks';
+import {ApolloClient, InMemoryCache, ApolloProvider, split, HttpLink} from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HookProvider>
-      <App />
-    </HookProvider>
+    <ApolloProvider client={client}>
+      <HookProvider>
+        <App />
+      </HookProvider>
+    </ApolloProvider>
   </React.StrictMode>
 );
 

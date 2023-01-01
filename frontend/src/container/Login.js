@@ -7,6 +7,7 @@ import Titlebar from './Titlebar'
 import { useNavigate } from 'react-router-dom';
 import coffee from '../picture/coffee.jpg';
 
+
 const StyledBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
@@ -83,7 +84,10 @@ function Login() {
 				<Button
 					size = 'large'
 					style={{display:'flex', justifyContent:'center', alignItems:'center', width: 150, margin: 10, backgroundColor: '#DB8F00', fontSize : '1.5rem', color : 'white'}} 
-					onClick={()=>{setLogin(true); navigate('/search')}}> Log In </Button>
+					onClick={()=>{
+						setLogin(true);
+						navigate('/search');
+						}}> Log In </Button>
 			</div>
 			
 		</StyledBackground>

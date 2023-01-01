@@ -14,8 +14,11 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Coffee from '../picture/coffee.jpg'
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { message } from "antd";
+import {LOG_IN_QUERY} from '../graphql/index';
+import * as CryptoJS from 'crypto-js';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
 
@@ -27,6 +30,10 @@ export default function SignIn() {
 
     const navigate = useNavigate();
 
+    const [
+		CheckLogin,
+		{ data: CheckLoginData, error: CheckLoginError, loading: CheckLoginLoading},
+	] = useLazyQuery(LOG_IN_QUERY);
     const displayMessage = (status, msg) => {
         const content = {
             content: msg,
@@ -36,10 +43,23 @@ export default function SignIn() {
         else message.success(content)
     }
 
-    const navigateToSearch = () => {
-        if(account !== '' && password !== ''){
+    useEffect((CheckLoginLoading)=>{console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
+        if(CheckLoginData !== undefined && CheckLoginData.LogInQuery.id!=="not found"){
             displayMessage('success', 'Signed in successfully')
             navigate('/search');
+        }
+        if(CheckLoginData?.LogInQuery.id==="not found")displayMessage('error', 'incorrect account or password');
+    },[CheckLoginLoading])
+    useEffect((CheckLoginData)=>{console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
+    
+    },[CheckLoginData])
+
+
+    const navigateToSearch = () => {
+        console.log("//")
+        if(account !== '' && password !== ''){
+            //displayMessage('success', 'Signed in successfully')
+            //navigate('/search');
         }
         if(account === ''){
             displayMessage('error', 'Please enter account');
@@ -47,6 +67,13 @@ export default function SignIn() {
         else if(password === ''){
             displayMessage('error', 'Please enter password');
         }
+        CheckLogin({
+            variables: {
+                account: account,
+                password: password,
+            },
+        });
+        console.log(CheckLoginData)
     }
 
     return (

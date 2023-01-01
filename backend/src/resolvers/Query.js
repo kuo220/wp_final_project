@@ -2,10 +2,12 @@ import mongoose from 'mongoose';
 
 const Query = {
   async LogInQuery(parent, args, { UserModel }, info){
+    console.log("LogInQuery",args)
     let user = await UserModel.findOne({ account:args.account });
+    console.log("finish findone")
     if(user)return user;
     else{
-      user = { name:"not found", account: "not found", password: "not found" };
+      user = { name:"not found", account: "not found", password: "not found",id:"not found" };
       return user;
     }
   },
