@@ -7,12 +7,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainFeaturedPost from '../component/MainFeaturedPost';
 import NavBar from '../component/NavBar';
 import InfoCard from '../component/InfoCard'
+import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 
 const mainFeaturedPost = {
     title: 'Basic Information',
     description:
         "View the information of this cafe, or add anything you want!",
-    image: 'https://source.unsplash.com/random',
+    image: Coffee_cup_bean,
     imageText: 'main image description',
 };
 
@@ -27,6 +28,12 @@ const featuredPosts = [
         information:
         'Information2',
     },
+    {
+        Name: 'name',
+        information:
+        'Information3',
+    },
+    
 ];
 
 const theme = createTheme();

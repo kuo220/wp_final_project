@@ -1,5 +1,5 @@
 import FeaturedPost from '../component/FeaturedPost';
-
+import Coffee_pour from '../picture/coffee_pour.jpg'
 
 function InfoCard({ name, information }){
 
@@ -7,7 +7,7 @@ function InfoCard({ name, information }){
         <FeaturedPost 
             title = { name } 
             description = { information }
-            image = 'https://source.unsplash.com/random'
+            image = {Coffee_pour}
             imageLabel = 'Image Text'
         />
     )
