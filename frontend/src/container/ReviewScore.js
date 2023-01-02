@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom'
 import ScoreIndicator from '../component/ScoreIndicator'
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 import MainFeaturedPost from '../component/MainFeaturedPost';
 import NavBar from '../component/NavBar';
-import InfoCard from '../component/InfoCard'
 import Coffee_cup from '../picture/coffee_cup.jpg'
+import RateCard from '../component/RateCard'
 
 const ScoreStyles = {
     display: 'flex',
@@ -26,6 +26,26 @@ const mainFeaturedPost = {
     imageText: 'main image description',
 };
 
+const scores = [
+    {
+        title: 'name',
+        score: 4.3
+    },
+    {
+      title: 'name',
+      score: 5
+    },
+    {
+      title: 'name',
+      score: 1.5
+    },
+    {
+      title: 'name',
+      score: 3.5
+    },
+    
+];
+
 function ReviewScore(){
     const { id } = useParams()
     const name = 'cafe name'
@@ -39,7 +59,14 @@ function ReviewScore(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    <div style = {ScoreStyles}><ScoreIndicator value={0} maxValue = {10}></ScoreIndicator></div>
+                    <div style = {ScoreStyles}><ScoreIndicator value={0} maxValue = {5}></ScoreIndicator></div>
+                    {scores.map((card) => (
+                        <>
+                            <RateCard title={card.title} score = {card.score}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    ))}
+                    <div style={{height: '10vh'}}/>
                 </Container>
             </ThemeProvider>
             

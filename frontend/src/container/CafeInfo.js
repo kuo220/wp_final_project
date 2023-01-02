@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainFeaturedPost from '../component/MainFeaturedPost';
 import NavBar from '../component/NavBar';
 import InfoCard from '../component/InfoCard'
+import AddCard from '../component/AddingCard';
 import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 
 const mainFeaturedPost = {
@@ -53,8 +54,10 @@ function CafeInfo() {
                         {featuredPosts.map((post) => (
                             <InfoCard name = {post.Name} information = {post.information} />
                         ))}
+                        <AddCard/>
                     </Grid>
                 </main>
+                <div style={{height: '10vh'}}/>
             </Container>
         </ThemeProvider>
     );
