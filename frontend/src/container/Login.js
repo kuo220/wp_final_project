@@ -1,9 +1,8 @@
 import {Input, Button} from 'antd';
 import styled from 'styled-components'
 import {UserOutlined, EyeInvisibleOutlined, EyeTwoTone, LockOutlined} from "@ant-design/icons";
-import { useState , useRef, useEffect } from "react";
+import { useState , useRef} from "react";
 import {useHooks} from './hooks/Hooks'
-import Titlebar from './Titlebar'
 import { useNavigate } from 'react-router-dom';
 import coffee from '../picture/coffee.jpg';
 

@@ -7,8 +7,7 @@ import SignIn from './container/SignIn'
 import ReviewScore from './container/ReviewScore'
 import Comments from './container/Comment'
 import Plane from './container/2DGraph'
-import {useHooks} from './container/hooks/Hooks'
-import { useEffect } from 'react'
+import AddCafe from './container/AddCafe'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -21,6 +20,7 @@ function App() {
 					<Route path="/" element={<Home/>}/>
 					<Route path="/login" element={<SignIn/>} />
 					<Route path="/search" element={<Search/>} />
+					<Route path="/addcafe" element={<AddCafe/>}/>
 					<Route path="/register" element={<Register/>} />
 					<Route path="/search/cafe/:id" element={<CafeInfo/>} />
 					<Route path="/search/cafe/:id/review" element={<ReviewScore/>} />
