@@ -8,6 +8,8 @@ import MainFeaturedPost from '../component/MainFeaturedPost';
 import NavBar from '../component/NavBar';
 import Coffee_cup from '../picture/coffee_cup.jpg'
 import RateCard from '../component/RateCard'
+import RateTFCard from '../component/RateTFCard';
+import AddRateCard from '../component/AddRateCard'
 
 const ScoreStyles = {
     display: 'flex',
@@ -46,9 +48,30 @@ const scores = [
     
 ];
 
+const TFscores = [
+    {
+        title: 'name',
+        score: 'T'
+    },
+    {
+      title: 'name',
+      score: "F"
+    },
+    {
+      title: 'name',
+      score: "F"
+    },
+    {
+      title: 'name',
+      score: "T"
+    },
+    
+];
+
 function ReviewScore(){
     const { id } = useParams()
     const name = 'cafe name'
+    const averageScore = 0
 
     return(
         <>
@@ -59,13 +82,22 @@ function ReviewScore(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    <div style = {ScoreStyles}><ScoreIndicator value={0} maxValue = {5}></ScoreIndicator></div>
+                    <div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>
                     {scores.map((card) => (
                         <>
                             <RateCard title={card.title} score = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
+                    <div style={{height: '15vh'}}/>
+                    {TFscores.map((card) => (
+                        <>
+                            <RateTFCard title = {card.title} TF = {card.score}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    ))}
+                    <div style={{height: '10vh'}}/>
+                    <AddRateCard/>
                     <div style={{height: '10vh'}}/>
                 </Container>
             </ThemeProvider>
