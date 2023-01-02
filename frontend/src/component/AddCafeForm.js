@@ -37,17 +37,8 @@ export default function AddCafeForm() {
 						variant="standard"
 					/>
 				</Grid>
-				<Grid item xs={12}>
-					<TextField
-						required
-						// id="address1"
-						// name="address1"
-						label="Address"
-						fullWidth
-						variant="standard"
-					/>
-				</Grid>
-				<Grid item xs={12}>
+				
+				{/* <Grid item xs={12}>
 					<TextField
 						id="address2"
 						name="address2"
@@ -56,7 +47,7 @@ export default function AddCafeForm() {
 						autoComplete="shipping address-line2"
 						variant="standard"
 					/>
-				</Grid>
+				</Grid> */}
 				<Grid item xs={12} sm={6}>
 					<TextField
 						required
@@ -77,7 +68,17 @@ export default function AddCafeForm() {
 					variant="standard"
 					/>
 				</Grid>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12}>
+					<TextField
+						required
+						// id="address1"
+						// name="address1"
+						label="Address"
+						fullWidth
+						variant="standard"
+					/>
+				</Grid>
+				{/* <Grid item xs={12} sm={6}>
 					<TextField
 						required
 						id="zip"
@@ -98,13 +99,13 @@ export default function AddCafeForm() {
 						autoComplete="shipping country"
 						variant="standard"
 					/>
-				</Grid>
-				<Grid item xs={12}>
+				</Grid> */}
+				{/* <Grid item xs={12}>
 					<FormControlLabel
 						control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
 						label="Use this address for payment details"
 					/>
-				</Grid>
+				</Grid> */}
 			</Grid>
 		</React.Fragment>
 	);

@@ -33,7 +33,7 @@ const AddButton = styled(Button)`
 	position : absolute;
     // background : #8A5A00;
     top : 2.5%;
-    right : 10%
+    right : 12%
 `
 const LogoutButton = styled(Button)`
 	position : absolute;
@@ -88,7 +88,8 @@ function Search() {
 				<LogoutButton type='default'
 					onClick={() => { navigate('/') }}
 				>
-					<LogoutOutlined />
+					{/* <LogoutOutlined /> */}
+					Log Out
 				</LogoutButton>
 				
 				<Stack
