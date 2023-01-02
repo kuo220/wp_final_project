@@ -63,7 +63,7 @@ export default function AddCafeForm() {
 					<TextField
 					id="state"
 					name="state"
-					label="State/Province/Region"
+					label="District"
 					fullWidth
 					variant="standard"
 					/>
