@@ -11,8 +11,8 @@ mutation CreateUser($name: String!, $account: String!, $password: String!) {
 }
 `;
 export const CREATE_RESTAURANT_MUTATION = gql`
-mutation CreateRestaurant($name: String!){
-    createRestaurant(name: $name){
+mutation CreateRestaurant($name: String!, $information: [InputInformation]!){
+    createRestaurant(name: $name, information: $information){
         id
         name
         comments{
@@ -28,13 +28,23 @@ mutation CreateRestaurant($name: String!){
         }
         sprate{
             name
-            star
-            people
+            average_star
+            people{
+              person_name
+              person_id
+              star
+            }
         }
         spTFrate{
             name
-            Tnum
-            Fnum
+            Tnum{
+              person_name
+              person_id
+            }
+            Fnum{
+              person_name
+              person_id
+            }
         }
         graph
     }
@@ -81,8 +91,12 @@ mutation CreateRate(
         star: $star
     ){
         name
-        star
-        people
+        average_star
+        people{
+          person_name
+          person_id
+          star
+        }
     }
 }
 `;
@@ -102,8 +116,14 @@ mutation CreateTFRate(
         TF: $TF
     ){
         name
-        Tnum
-        Fnum
+        Tnum{
+            person_name
+            person_id
+        }
+        Fnum{
+            person_name
+            person_id
+        }
     }
 }
 `;

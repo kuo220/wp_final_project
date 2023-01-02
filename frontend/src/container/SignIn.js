@@ -21,6 +21,7 @@ import * as CryptoJS from 'crypto-js';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
+const secretKey = "IHVYRTyknIBUYTNTCYVUBJnnJhgfjnBHRYTusc";
 
 export default function SignIn() {
 
@@ -44,23 +45,17 @@ export default function SignIn() {
     }
 
     useEffect((CheckLoginLoading)=>{console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
-        if(CheckLoginData !== undefined && CheckLoginData.LogInQuery.id!=="not found"){
+        if(CheckLoginData?.LogInQuery.id==="not found")displayMessage('error', 'account not found');
+        if(CheckLoginData?.LogInQuery.id==="wrong password")displayMessage('error', 'wrong password');
+        else if(CheckLoginData !== undefined && CheckLoginData?.LogInQuery.id!=="not found"){
             displayMessage('success', 'Signed in successfully')
             navigate('/search');
         }
-        if(CheckLoginData?.LogInQuery.id==="not found")displayMessage('error', 'incorrect account or password');
+        
     },[CheckLoginLoading])
-    useEffect((CheckLoginData)=>{console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
-    
-    },[CheckLoginData])
 
 
     const navigateToSearch = () => {
-        console.log("//")
-        if(account !== '' && password !== ''){
-            //displayMessage('success', 'Signed in successfully')
-            //navigate('/search');
-        }
         if(account === ''){
             displayMessage('error', 'Please enter account');
         }
@@ -69,8 +64,8 @@ export default function SignIn() {
         }
         CheckLogin({
             variables: {
-                account: account,
-                password: password,
+                account: CryptoJS.AES.encrypt(account,secretKey).toString(),//account
+                password: CryptoJS.AES.encrypt(password,secretKey).toString(),//password
             },
         });
         console.log(CheckLoginData)

@@ -71,13 +71,23 @@ const RestaurantSchema = new Schema({
   }],
   sprate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
-    star: { type: Number ,required:[true, 'score field is required.']},
-    people: {type: Number ,required:[true, 'people field is required.']},
+    average_star: { type: Number ,required:[true, 'score field is required.']},
+    people: [{
+      person_name: { type: String ,required:[true, 'person_name field is required.']},
+      person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
+      star: { type: Number ,required:[true, 'star field is required.']},
+    }],
   }],
   spTFrate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
-    Tnum: { type: Number ,required:[true, 'Tnum field is required.']},
-    Fnum: { type: Number ,required:[true, 'Fnum field is required.']},
+    Tnum: [{
+      person_name: { type: Number ,required:[true, 'person_name field is required.']},
+      person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
+    }],
+    Fnum: [{
+      person_name: { type: Number ,required:[true, 'person_name field is required.']},
+      person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
+    }]
   }],
   graph: { type: [[[Number]]]}
 })
