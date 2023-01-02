@@ -5,6 +5,7 @@ import Search from './container/Search'
 import CafeInfo from './container/CafeInfo'
 import SignIn from './container/SignIn'
 import Album from './container/Album'
+import ReviewScore from './container/ReviewScore'
 import {useHooks} from './container/hooks/Hooks'
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
 					<Route path="/search" element={<Album/>} />
 					<Route path="/register" element={<Register/>} />
 					<Route path="/search/cafe/:id" element={<CafeInfo/>} />
+					<Route path="/search/cafe/:id/review" element={<ReviewScore/>} />
 				</Routes>
         	</Router>
 		</>
