@@ -81,11 +81,11 @@ const RestaurantSchema = new Schema({
   spTFrate: [{
     name: { type: String ,required:[true, 'Name field is required.']},
     Tnum: [{
-      person_name: { type: Number ,required:[true, 'person_name field is required.']},
+      person_name: { type: String ,required:[true, 'person_name field is required.']},
       person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
     }],
     Fnum: [{
-      person_name: { type: Number ,required:[true, 'person_name field is required.']},
+      person_name: { type: String ,required:[true, 'person_name field is required.']},
       person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
     }]
   }],
