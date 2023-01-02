@@ -31,7 +31,7 @@ const Menu = styled.div`
     }
 `;
 
-export default function NavBar(id){
+export default function NavBar({id}){
     return(
         <ResponsiveMenu
             changeMenuOn="500px"

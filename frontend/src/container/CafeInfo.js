@@ -20,7 +20,7 @@ function CafeInfo() {
     const { id } = useParams()
 	return(
         <div>
-            <Navbar id = {id}/>
+            <Navbar id = { id }/>
             <ContentBox float="left">
                 name: cafe {`${id}`}
             </ContentBox>
