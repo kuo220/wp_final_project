@@ -16,6 +16,9 @@ import Coffee2 from '../picture/coffee2.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from "react";
 import { message } from "antd";
+import {CREATE_USER_MUTATION} from '../graphql/index';
+import * as CryptoJS from 'crypto-js';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
 
@@ -25,6 +28,8 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const bodyRef = useRef(null);
+
+    const [createuser] = useMutation(CREATE_USER_MUTATION);
 
     const displayMessage = (status, msg) => {
 		const content = {
@@ -38,10 +43,10 @@ export default function SignIn() {
     const navigate = useNavigate();
 
     const navigateToLogin = () => {
-        if(account !== '' && password !== '' && password === passwordConfirm){
+        /*if(account !== '' && password !== '' && password === passwordConfirm){
 			displayMessage('success', 'Signed up successfully')
 			navigate('/login');
-		}
+		}*/
         if(account === ''){
             displayMessage('error', 'Please enter account');
         }
@@ -53,6 +58,17 @@ export default function SignIn() {
         }
         else if(password !== passwordConfirm){
           displayMessage('error', 'confirm failed')
+        }
+        else {
+            createuser({
+                variables: {
+                    name: account,
+                    account: account,
+                    password: password,
+                },
+            });
+            displayMessage('success', 'Signed up successfully')
+			navigate('/login');
         }
     }
 

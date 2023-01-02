@@ -14,8 +14,8 @@ query LogInQuery($account: String!, $password: String!){
 export const SEARCH_RESTAURANT_BY_NAME_QUERY = gql`
 query SearchRestaurantByName($name: String!){
     SearchRestaurantByName(name: $name){
-            id
-            name
+        id
+        name
         comments{
             name
             person_id
@@ -29,13 +29,23 @@ query SearchRestaurantByName($name: String!){
         }
         sprate{
             name
-            star
-            people
+            average_star
+            people{
+              person_name
+              person_id
+              star
+            }
         }
         spTFrate{
             name
-            Tnum
-            Fnum
+            Tnum{
+              person_name
+              person_id
+            }
+            Fnum{
+              person_name
+              person_id
+            }
         }
         graph
     }
@@ -59,13 +69,23 @@ query GetRestaurantById($id: ID!){
         }
         sprate{
             name
-            star
-            people
+            average_star
+            people{
+              person_name
+              person_id
+              star
+            }
         }
         spTFrate{
             name
-            Tnum
-            Fnum
+            Tnum{
+              person_name
+              person_id
+            }
+            Fnum{
+              person_name
+              person_id
+            }
         }
         graph
     }
