@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import ScoreIndicator from '../component/ScoreIndicator'
-import Navbar from '../component/NavBar';
+import NavBar from '../component/NavBar';
+
 
 const ScoreStyles = {
     display: 'flex',
@@ -9,12 +10,15 @@ const ScoreStyles = {
     height: '40vh',
 };
 
+
 function ReviewScore(){
     const { id } = useParams()
+    const name = 'cafe name'
+
     return(
         <>
-            <Navbar id = { id }/>
-            <div style = {ScoreStyles}><ScoreIndicator value={5.2} maxValue = {10}></ScoreIndicator></div>
+            <NavBar id = {id} name = {name}></NavBar>
+            <div style = {ScoreStyles}><ScoreIndicator value={0} maxValue = {10}></ScoreIndicator></div>
         </>
     )
 }
