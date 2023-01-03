@@ -22,11 +22,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -38,11 +38,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -54,11 +54,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -70,11 +70,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -86,11 +86,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -102,11 +102,11 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
 
@@ -118,14 +118,14 @@ function BusinessHourForm() {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>
+							<InputNumber size="medium" min={1} max={24} defaultValue={1}/>
 							<div>
 								to
 							</div>
-							<InputNumber size="medium" min={1} max={24} defaultValue={3}/>	
+							<InputNumber size="medium" min={1} max={24} defaultValue={24}/>	
 					</Space>
 				</Grid>
-				
+
 			</Grid>
 		</React.Fragment>
 	);
