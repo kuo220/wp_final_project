@@ -45,7 +45,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -71,7 +71,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -96,7 +96,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -122,7 +122,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -148,7 +148,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -174,7 +174,7 @@ function BusinessHourForm() {
 					</Space>
 				</Grid>
 
-				<div style={{height:'2vh'}}></div>
+				<div style={{height:'3vh'}}></div>
 
 				<Grid item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
@@ -199,7 +199,7 @@ function BusinessHourForm() {
 						/>
 					</Space>
 				</Grid>
-				
+
 			</LocalizationProvider>
 			
 		</React.Fragment>
