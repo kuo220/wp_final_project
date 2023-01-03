@@ -9,10 +9,9 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from '../component/AddressForm';
+import AddCafeForm from '../component/AddCafeForm';
 import BusinessHourForm from '../component/BusinessHourForm';
 
 
@@ -21,7 +20,7 @@ const steps = ['Basic Info', 'Business hours'];
 function getStepContent(step) {
 	switch (step) {
 		case 0:
-			return <AddressForm />;
+			return <AddCafeForm />;
 		case 1:
 			return <BusinessHourForm />;
 		default:
