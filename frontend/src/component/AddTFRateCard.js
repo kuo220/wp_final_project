@@ -12,13 +12,13 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const TFStyles = {
     position: 'relative',
-    left: '0.3vw',
+    left: '1%',
 };
 
 const EditStyles = {
     position: 'relative',
-    left: '40vw',
-    top: '-6vh'
+    left: '80%',
+    top: '-50%'
 };
 
 function AddTFRateCard({ title, TF }) {
@@ -50,7 +50,7 @@ function AddTFRateCard({ title, TF }) {
                     }
                 </div>
                 <div style = {EditStyles}>
-                    <Button size='large'>Edit</Button>
+                    <Button size='large'>Change answer</Button>
                 </div>
             </CardContent>
             <CardMedia

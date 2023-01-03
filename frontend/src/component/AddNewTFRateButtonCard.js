@@ -8,6 +8,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Rate from '../picture/rate.png'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { message } from "antd";
 
 const Styles = {
     display: 'flex',
@@ -16,9 +26,57 @@ const Styles = {
     height: '8vh',
 };
 
+
+const TFStyles = {
+    display: 'flex',
+    position: 'relative',
+    top: '50%'
+};
+
 function TFRateButtonCard() {
     const navigate = useNavigate();
     const { id } = useParams()
+    const [open, setOpen] = useState(false);
+    const [ans, setRate] = useState(null);
+    const [title, setTitle] = useState('');
+    const [Truechecked, setTrueChecked] = useState(false);
+    const [Falsechecked, setFalseChecked] = useState(false);
+    const [alertOpen, setAlertOpen] = useState(false);
+
+    const displayMessage = (status, msg) => {
+        const content = {
+            content: msg,
+            duration: 1.5,
+        };
+        if(status === 'error') message.error(content);
+        else message.success(content)
+    }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+    
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleAlertClose = () => {
+        setAlertOpen(false)
+    }
+
+    const handleAdd = () => {
+        if(Truechecked === true && Falsechecked === true){
+            setAlertOpen(true);
+        }
+        else if(Truechecked === false && Falsechecked === false){
+            setAlertOpen(true);
+        }
+        else if(title === '') setAlertOpen(true);
+        else{
+            setOpen(false);
+            displayMessage('success', 'added successfully')  
+        }   
+    }
 
     return (
         <Grid item xs={12} md={6}>
@@ -27,9 +85,71 @@ function TFRateButtonCard() {
                 <CardContent sx={{ flex: 1 }}>
                 <div style = { {height: '2vh'} }/>
                 <div style = {Styles}>
-                    <Button variant="contained" size='large' >
+                    <Button variant="contained" size='large' onClick={handleClickOpen}>
                         What else do you want to add?
                     </Button>
+                    <Dialog open={open} onClose={handleClose}>
+                        <DialogTitle>Add new rating</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Fill out the item you want to add and add true or false to the answer.
+                            </DialogContentText>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Title"
+                                type="email"
+                                fullWidth
+                                variant="standard"
+                                value = {title}
+                                onChange = {(e) => setTitle(e.target.value)}
+                            />
+                            <div style={{height: '2vh'}}/>                       
+                            <div style = {TFStyles}>
+                                <FormControlLabel
+                                    label = 'True'
+                                    control={
+                                        <Checkbox
+                                            checked={Truechecked}
+                                            onChange={ () => {setTrueChecked(!Truechecked)}}
+                                            inputProps={{ 'aria-label': 'controlled' }}
+                                        />
+                                    } 
+                                />
+                                <div style = {{width: '3vw'}}/>
+                                <FormControlLabel
+                                    label = 'False'
+                                    control={
+                                        <Checkbox
+                                            checked={Falsechecked}
+                                            onChange={ () => {setFalseChecked(!Falsechecked)}}
+                                            inputProps={{ 'aria-label': 'controlled' }}
+                                        />
+                                    } 
+                                />
+                            </div>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={handleAdd}>Add</Button>
+                            <Dialog
+                                open={alertOpen}
+                                onClose={handleAlertClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">
+                                    Invalid submit
+                                </DialogTitle>
+                                <DialogActions>
+                                <Button onClick={handleAlertClose} autoFocus>
+                                    Close
+                                </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </DialogActions>
+                    </Dialog>
                 </div>
                 </CardContent>
                 <CardMedia

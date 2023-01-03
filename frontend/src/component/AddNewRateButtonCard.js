@@ -8,6 +8,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Rate from '../picture/rate.png'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Rating from '@mui/material/Rating';
+import { message } from "antd";
 
 const Styles = {
     display: 'flex',
@@ -19,6 +28,40 @@ const Styles = {
 function RateButtonCard() {
     const navigate = useNavigate();
     const { id } = useParams()
+    const [open, setOpen] = useState(false);
+    const [title, setTitle] = useState('');
+    const [rate, setRate] = useState(null);
+    const [alertOpen, setAlertOpen] = useState(false);
+
+    const displayMessage = (status, msg) => {
+        const content = {
+            content: msg,
+            duration: 1.5,
+        };
+        if(status === 'error') message.error(content);
+        else message.success(content)
+    }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+    
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleAlertClose = () => {
+        setAlertOpen(false)
+    }
+
+    const handleAdd = () => {
+        if(rate === null) setAlertOpen(true);
+        else if(title === '') setAlertOpen(true);
+        else{
+            setOpen(false);
+            displayMessage('success', 'added successfully')  
+        }   
+    }
 
     return (
         <Grid item xs={12} md={6}>
@@ -27,9 +70,53 @@ function RateButtonCard() {
                 <CardContent sx={{ flex: 1 }}>
                 <div style = { {height: '2vh'} }/>
                 <div style = {Styles}>
-                    <Button variant="contained" size='large' >
+                    <Button variant="contained" size='large' onClick={handleClickOpen} >
                         What else do you want to rate ?
                     </Button>
+                    <Dialog open={open} onClose={handleClose}>
+                        <DialogTitle>Add new rating</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Fill out the item you want to rate and the score of the item.
+                            </DialogContentText>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Title"
+                                type="email"
+                                fullWidth
+                                variant="standard"
+                                value = {title}
+                                onChange = {(e) => setTitle(e.target.value)}
+                            />
+                            <div style={{height: '2vh'}}/>
+                            <Rating
+                                name = "simple-controlled"
+                                value = {rate}
+                                onChange = {(e) => { setRate(e.target.value) }}
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={handleAdd}>Add</Button>
+                            <Dialog
+                                open={alertOpen}
+                                onClose={handleAlertClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">
+                                    Invalid submit
+                                </DialogTitle>
+                                <DialogActions>
+                                <Button onClick={handleAlertClose} autoFocus>
+                                    Close
+                                </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </DialogActions>
+                    </Dialog>
                 </div>
                 </CardContent>
                 <CardMedia

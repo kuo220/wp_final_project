@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainFeaturedPost from '../component/MainFeaturedPost';
 import NavBar from '../component/NavBar';
 import InfoCard from '../component/InfoCard'
-import AddCard from '../component/AddingCard';
+import AddCard from '../component/AddInfoCard';
 import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 
 const mainFeaturedPost = {

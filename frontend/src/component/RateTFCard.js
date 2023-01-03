@@ -12,7 +12,7 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const TFStyles = {
     position: 'relative',
-    left: '0.3vw',
+    left: '1%',
 };
 
 function RateTFCard({ title, TF }) {

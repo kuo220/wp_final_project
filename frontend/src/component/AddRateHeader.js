@@ -22,7 +22,7 @@ function AddRateHeader() {
           noWrap
           sx={{ flex: 1 }}
         >
-          Rating Page
+          RATE IT !
         </Typography>
         <Button variant="outlined" size="small" onClick={ () => navigate('/') }>
           Log Out

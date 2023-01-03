@@ -11,6 +11,7 @@ import AddTFRateCard from '../component/AddTFRateCard';
 import AddRateHeader from '../component/AddRateHeader';
 import AddNewRateButtonCard from '../component/AddNewRateButtonCard'
 import AddNewTFRateButtonCard from '../component/AddNewTFRateButtonCard'
+import { useEffect } from 'react';
 
 const ScoreStyles = {
     display: 'flex',
@@ -72,6 +73,10 @@ const TFscores = [
 function AddRate(){
     const { id } = useParams()
     const name = 'cafe name'
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return(
         <>
