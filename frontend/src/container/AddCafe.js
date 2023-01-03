@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddCafeForm from '../component/AddCafeForm';
 import BusinessHourForm from '../component/BusinessHourForm';
 import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
 
 
 const steps = ['Basic Info', 'Business hours'];
@@ -34,6 +35,15 @@ const theme = createTheme();
 function AddCafe() {
 	const navigate = useNavigate();
 	const [activeStep, setActiveStep] = React.useState(0);
+
+	// Information of new Café
+	const [cafeName, setCafeName] = useState('');
+	const [phoneNum, setPhoneNum] = useState('')
+	const [city, setCity] = useState('');
+	const [district, setDistrict] = useState('');
+	const [address, setAddress] = useState('');
+	const [businessHour, setBusinessHour] = useState([[]]);
+
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
