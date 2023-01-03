@@ -9,7 +9,7 @@ import NavBar from '../component/NavBar';
 import Coffee_cup from '../picture/coffee_cup.jpg'
 import RateCard from '../component/RateCard'
 import RateTFCard from '../component/RateTFCard';
-import AddRateCard from '../component/AddRateCard'
+import RateButtonCard from '../component/RateButtonCard'
 
 const ScoreStyles = {
     display: 'flex',
@@ -23,7 +23,7 @@ const theme = createTheme();
 const mainFeaturedPost = {
     title: 'Review',
     description:
-        "View the review score of this cafe, or rate it yourself!",
+        "View the review score of this cafe, or rate it yourself !",
     image: Coffee_cup,
     imageText: 'main image description',
 };
@@ -31,7 +31,7 @@ const mainFeaturedPost = {
 const scores = [
     {
         title: 'name',
-        score: 4.3
+        score: 4.7
     },
     {
       title: 'name',
@@ -97,7 +97,7 @@ function ReviewScore(){
                         </>
                     ))}
                     <div style={{height: '10vh'}}/>
-                    <AddRateCard/>
+                    <RateButtonCard/>
                     <div style={{height: '10vh'}}/>
                 </Container>
             </ThemeProvider>

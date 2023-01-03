@@ -5,34 +5,37 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Rating from '@mui/material/Rating';
-import Star from '../picture/star2.jpg'
-import { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import Rate from '../picture/rate.png'
+import { useNavigate, useParams } from 'react-router-dom';
 
+const Styles = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '8vh',
+};
 
-function RateCard({ title }) {
-
-    const [rate, setRate] = useState(null);
+function RateButtonCard() {
+    const navigate = useNavigate();
+    const { id } = useParams()
 
     return (
         <Grid item xs={12} md={6}>
             <CardActionArea component="a">
-            <Card sx={{ display: 'flex', height: '15vh', backgroundColor: '#F3F2F1'}}>
+            <Card sx={{ display: 'flex', height: '15vh', backgroundColor: '#F4F3F1'}}>
                 <CardContent sx={{ flex: 1 }}>
-                <Typography component="h2" variant="h5">
-                    {title}
-                </Typography>
                 <div style = { {height: '2vh'} }/>
-                <Rating
-                    name = "simple-controlled"
-                    value = {rate}
-                    onChange = {(e) => { setRate(e.target.value) }}
-                />
+                <div style = {Styles}>
+                    <Button variant="contained" size='large' onClick = {() => navigate(`/search/cafe/${id}/review/addrate`) }>
+                        Rate it too !
+                    </Button>
+                </div>
                 </CardContent>
                 <CardMedia
                     component="img"
                     sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                    image={Star}
+                    image={Rate}
                     alt = 'Image Text'
                 />
             </Card>
@@ -42,4 +45,4 @@ function RateCard({ title }) {
 }
 
 
-export default RateCard;
+export default RateButtonCard;

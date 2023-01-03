@@ -5,11 +5,12 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import MainFeaturedPost from '../component/MainFeaturedPost';
-import NavBar from '../component/NavBar';
 import Coffee_cup from '../picture/coffee_cup.jpg'
-import RateCard from '../component/RateCard'
-import RateTFCard from '../component/RateTFCard';
 import AddRateCard from '../component/AddRateCard'
+import AddTFRateCard from '../component/AddTFRateCard';
+import AddRateHeader from '../component/AddRateHeader';
+import AddNewRateButtonCard from '../component/AddNewRateButtonCard'
+import AddNewTFRateButtonCard from '../component/AddNewTFRateButtonCard'
 
 const ScoreStyles = {
     display: 'flex',
@@ -31,19 +32,19 @@ const mainFeaturedPost = {
 const scores = [
     {
         title: 'name',
-        score: 4.3
+        
     },
     {
       title: 'name',
-      score: 5
+      
     },
     {
       title: 'name',
-      score: 1.5
+      
     },
     {
       title: 'name',
-      score: 3.5
+      
     },
     
 ];
@@ -71,32 +72,32 @@ const TFscores = [
 function AddRate(){
     const { id } = useParams()
     const name = 'cafe name'
-    const averageScore = 1.2
 
     return(
         <>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Container maxWidth="lg">
-                    <NavBar id = {id} name = {name}></NavBar>
-                    <main>
+                <Container maxWidth="lg" style = {{backgroundColor: '#FCF3E3'}}>
+                    <AddRateHeader/>
+                    {/* <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
-                    </main>
+                    </main> */}
+                    <div style={{height: '10vh'}}/>
                     {scores.map((card) => (
                         <>
-                            <RateCard title={card.title} score = {card.score}/>
+                            <AddRateCard title={card.title}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
+                    <AddNewRateButtonCard/>
                     <div style={{height: '15vh'}}/>
                     {TFscores.map((card) => (
                         <>
-                            <RateTFCard title = {card.title} TF = {card.score}/>
+                            <AddTFRateCard title = {card.title} TF = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
-                    <div style={{height: '10vh'}}/>
-                    <AddRateCard/>
+                    <AddNewTFRateButtonCard/>
                     <div style={{height: '10vh'}}/>
                 </Container>
             </ThemeProvider>
