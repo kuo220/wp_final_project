@@ -21,174 +21,185 @@ function BusinessHourForm() {
 					Business Hours
 				</Typography>
 
-				<Grid container spacing={2}>
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Sunday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Monday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Tuesday
-						</Typography>
-					</Grid>
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Wednesday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Thursday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Friday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Typography variant="h5" gutterBottom>
-							Saturday
-						</Typography>
-					</Grid>
-
-					<Grid item xs={12} md={6}>
-						<Space size="middle">
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-									to
-							<TimePicker
-								label="Time"
-								value={value}
-								onChange={handleChange}
-								renderInput={(params) => <TextField {...params} />}
-							/>
-						</Space>
-					</Grid>
+				<Grid  item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Sunday
+					</Typography>
 				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Monday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Tuesday
+					</Typography>
+				</Grid>
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Wednesday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Thursday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Friday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'2vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Saturday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+				
 			</LocalizationProvider>
 			
 		</React.Fragment>
