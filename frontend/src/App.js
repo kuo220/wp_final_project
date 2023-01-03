@@ -8,6 +8,7 @@ import ReviewScore from './container/ReviewScore'
 import Comments from './container/Comment'
 import Plane from './container/2DGraph'
 import AddCafe from './container/AddCafe'
+import CreatePlane from './container/CreatePlane'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/search/cafe/:id/review" element={<ReviewScore/>} />
 					<Route path="/search/cafe/:id/comments" element={<Comments/>} />
 					<Route path="/search/cafe/:id/plane" element={<Plane/>} />
+					<Route path="/search/cafe/:id/plane/create" element={<CreatePlane/>} />
 				</Routes>
         	</Router>
 		</>

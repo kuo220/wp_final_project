@@ -60,7 +60,7 @@ function Comments(){
                 <Container maxWidth="lg">
                     <Typography variant="h5">
                         Average Star: 3.33
-                        <Rating name="read-only" value={3.33} precision={0.01} readOnly sx={{padding:1}}/>
+                        <Rating name="read-only" value={3.33} precision={0.1} readOnly sx={{padding:1}}/>
                     </Typography>
                 </Container>
                 <Container maxWidth="lg">
