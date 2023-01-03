@@ -20,7 +20,7 @@ const mainFeaturedPost = {
 
 function Plane(){
     const { id } = useParams()
-    const name = 'cafe name'
+    const name = 'café name'
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
