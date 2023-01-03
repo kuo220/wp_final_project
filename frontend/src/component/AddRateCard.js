@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Rate from '../picture/rate.png'
+import { useNavigate } from 'react-router-dom';
 
 const Styles = {
     display: 'flex',
@@ -15,27 +16,32 @@ const Styles = {
     height: '8vh',
 };
 
-function RateCard() {
+function AddRateCard() {
+    const navigate = useNavigate();
 
-  return (
-    <Grid item xs={12} md={6}>
-		<CardActionArea component="a">
-		<Card sx={{ display: 'flex', height: '15vh'}}>
-			<CardContent sx={{ flex: 1 }}>
-			<div style = { {height: '2vh'} }/>
-            <div style = {Styles}><Button variant="contained" size='large'>Rate it too !</Button></div>
-			</CardContent>
-			<CardMedia
-                component="img"
-                sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                image={Rate}
-                alt = 'Image Text'
-			/>
-		</Card>
-        </CardActionArea>
-    </Grid>
-  );
+    return (
+        <Grid item xs={12} md={6}>
+            <CardActionArea component="a">
+            <Card sx={{ display: 'flex', height: '15vh'}}>
+                <CardContent sx={{ flex: 1 }}>
+                <div style = { {height: '2vh'} }/>
+                <div style = {Styles}>
+                    <Button variant="contained" size='large' onClick = {() => navigate('/search/cafe/:id/review/addrate') }>
+                        Rate it too !
+                    </Button>
+                </div>
+                </CardContent>
+                <CardMedia
+                    component="img"
+                    sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
+                    image={Rate}
+                    alt = 'Image Text'
+                />
+            </Card>
+            </CardActionArea>
+        </Grid>
+    );
 }
 
 
-export default RateCard;
+export default AddRateCard;

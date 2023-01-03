@@ -68,7 +68,7 @@ const TFscores = [
     
 ];
 
-function ReviewScore(){
+function AddRate(){
     const { id } = useParams()
     const name = 'cafe name'
     const averageScore = 1.2
@@ -82,7 +82,6 @@ function ReviewScore(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    <div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>
                     {scores.map((card) => (
                         <>
                             <RateCard title={card.title} score = {card.score}/>
@@ -106,4 +105,4 @@ function ReviewScore(){
     )
 }
 
-export default ReviewScore
+export default AddRate
