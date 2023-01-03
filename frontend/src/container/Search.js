@@ -108,7 +108,7 @@ function Search() {
 					</Toolbar>
 			</AppBar>
 			<main>
-			{/* Hero unit */}
+
 			<Box
 			sx={{
 				bgcolor: 'background.paper',
@@ -116,7 +116,7 @@ function Search() {
 				pb: 6,
 			}}
 			>
-				<Container maxWidth="sm">
+			<Container maxWidth="sm">
 
 				{/* <SearchBox
 					size="large"
