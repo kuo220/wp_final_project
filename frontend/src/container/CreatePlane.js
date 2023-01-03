@@ -8,10 +8,12 @@ import Coffee_table from '../picture/coffee_table.jpg';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useEffect, useRef, useState } from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 const theme = createTheme();
 
@@ -23,6 +25,9 @@ const mainFeaturedPost = {
     imageText: 'main image description',
     linkText: "test linktext"
 };
+
+const cards = [['Floor','White'], ['Seat','Red'], ['Socket','Green'], ['Toilet','Blue'], ['Not Available(wall, counter......)','Black'],];
+const cardcolor = ['#F0F0F0','#FF5151','#79FF79','#66B3FF','#7B7B7B']
 
 function Plane(){
     const { id } = useParams();
@@ -51,15 +56,32 @@ function Plane(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    Please try to draw according to the orientation of other maps!<br/>
-                    Please select the item you want to draw:<br/>
-                    <ButtonGroup variant="outlined" aria-label="outlined primary button group">
-                        <Button onClick={(e)=>{setColor(['#F0F0F0',cnt]);}}>Floor</Button>
-                        <Button onClick={(e)=>{setColor(['#FF5151',cnt]);}}>Seat</Button>
-                        <Button onClick={(e)=>{setColor(['#79FF79',cnt]);}}>Socket</Button>
-                        <Button onClick={(e)=>{setColor(['#66B3FF',cnt]);}}>Toilet</Button>
-                        <Button onClick={(e)=>{setColor(['#7B7B7B',cnt]);}}>Not Available(wall, counter......)</Button>
-                    </ButtonGroup>
+                    <br/>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        Please try to draw according to the orientation of other maps!<br/>
+                        Please select the things (color) you want to draw:<br/>
+                    </Typography>
+
+                    <Container sx={{ py: 8 }} maxWidth="md">
+                        <Grid container spacing={1}>
+                        {cards.map((i,index) => (
+                            <Grid item key={i} xs={2} sm={2} md={index === 4 ? 4 : 2} onClick={(e)=>{setColor([cardcolor[index],cnt]);}}>
+                                <Card
+                                sx={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: cardcolor[index] }}
+                                >
+                                    <CardContent sx={{ flexGrow: 1 }}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {i[1]}
+                                        </Typography>
+                                        <Typography >
+                                            {i[0]}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                        </Grid>
+                    </Container>
                     <br/>
                     <br/>
                     <Grid container spacing={0} sx={{ width: `${containerWidth/3*2}px` , height:`${containerWidth/3*2}px` }}>
@@ -101,9 +123,14 @@ function Plane(){
         </>
     )
 }
-//<Button variant="outlined">Create your own </Button>
 export default Plane
-
+/*                    <ButtonGroup variant="outlined" aria-label="outlined primary button group">
+                        <Button onClick={(e)=>{setColor(['#F0F0F0',cnt]);}}>Floor</Button>
+                        <Button onClick={(e)=>{setColor(['#FF5151',cnt]);}}>Seat</Button>
+                        <Button onClick={(e)=>{setColor(['#79FF79',cnt]);}}>Socket</Button>
+                        <Button onClick={(e)=>{setColor(['#66B3FF',cnt]);}}>Toilet</Button>
+                        <Button onClick={(e)=>{setColor(['#7B7B7B',cnt]);}}>Not Available(wall, counter......)</Button>
+                    </ButtonGroup>*/
 /*
 {j == 23 ? <br/> : <></>}
 {colors.map((color,index) => {

@@ -8,14 +8,11 @@ import Coffee_table from '../picture/coffee_table.jpg';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useEffect, useRef, useState } from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 
 const theme = createTheme();
 
