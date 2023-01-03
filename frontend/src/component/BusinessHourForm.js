@@ -1,69 +1,207 @@
 import * as React from 'react';
+import dayjs from 'dayjs';
+import {InputNumber, Space, Row} from 'antd';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 
 function BusinessHourForm() {
+	const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
+	const handleChange = (newValue) => {
+		setValue(newValue);
+	};
+
 	return (
 		<React.Fragment>
-			<Typography variant="h6" gutterBottom>
-				Business Hours
-			</Typography>
-			<Grid container spacing={3}>
-				<Grid item xs={12} md={6}>
-					<TextField
-						required
-						id="cardName"
-						label="Name on card"
-						fullWidth
-						autoComplete="cc-name"
-						variant="standard"
-					/>
+			<LocalizationProvider dateAdapter={AdapterDayjs}>
+				<Typography variant="h6" gutterBottom>
+					Business Hours
+				</Typography>
+
+				<Grid  item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Sunday
+					</Typography>
 				</Grid>
 
 				<Grid item xs={12} md={6}>
-					<TextField
-						required
-						id="cardNumber"
-						label="Card number"
-						fullWidth
-						autoComplete="cc-number"
-						variant="standard"
-					/>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Monday
+					</Typography>
 				</Grid>
 
 				<Grid item xs={12} md={6}>
-					<TextField
-						required
-						id="expDate"
-						label="Expiry date"
-						fullWidth
-						autoComplete="cc-exp"
-						variant="standard"
-					/>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Tuesday
+					</Typography>
+				</Grid>
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Wednesday
+					</Typography>
 				</Grid>
 
 				<Grid item xs={12} md={6}>
-					<TextField
-						required
-						id="cvv"
-						label="CVV"
-						helperText="Last three digits on signature strip"
-						fullWidth
-						autoComplete="cc-csc"
-						variant="standard"
-					/>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
 				</Grid>
 
-				{/* <Grid item xs={12}>
-					<FormControlLabel
-						control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-						label="Remember credit card details for next time"
-					/>
-				</Grid> */}
-			</Grid>
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Thursday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Friday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Saturday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+								to
+						<TimePicker
+							label="Time"
+							value={value}
+							onChange={handleChange}
+							renderInput={(params) => <TextField {...params} />}
+						/>
+					</Space>
+				</Grid>
+
+			</LocalizationProvider>
+			
 		</React.Fragment>
 	);
 }

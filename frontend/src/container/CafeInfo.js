@@ -13,7 +13,7 @@ import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 const mainFeaturedPost = {
     title: 'Basic Information',
     description:
-        "View the information of this cafe, or add anything you want!",
+        "View the information of this cafe, or add anything you want !",
     image: Coffee_cup_bean,
     imageText: 'main image description',
 };

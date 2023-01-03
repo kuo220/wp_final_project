@@ -15,12 +15,18 @@ const TFStyles = {
     left: '0.3vw',
 };
 
-function RateTFCard({ title, TF }) {
+const EditStyles = {
+    position: 'relative',
+    left: '40vw',
+    top: '-6vh'
+};
+
+function AddTFRateCard({ title, TF }) {
 
   return (
     <Grid item xs={12} md={6}>
         <CardActionArea component="a">
-            <Card sx={{ display: 'flex', height: '15vh', backgroundColor: '#F9F0E1'}}>
+            <Card sx={{ display: 'flex', height: '15vh', backgroundColor: '#F4F3F1'}}>
             <CardContent sx={{ flex: 1 }}>
                 <Typography component="h2" variant="h5">
                 {title}
@@ -43,6 +49,9 @@ function RateTFCard({ title, TF }) {
                         /> 
                     }
                 </div>
+                <div style = {EditStyles}>
+                    <Button size='large'>Edit</Button>
+                </div>
             </CardContent>
             <CardMedia
                 component="img"
@@ -57,4 +66,4 @@ function RateTFCard({ title, TF }) {
 }
 
 
-export default RateTFCard;
+export default AddTFRateCard;

@@ -15,13 +15,13 @@ function RateCard({ title, score }) {
   return (
     <Grid item xs={12} md={6}>
 		<CardActionArea component="a">
-		<Card sx={{ display: 'flex', height: '15vh'}}>
+		<Card sx={{ display: 'flex', height: '15vh', backgroundColor: '#E7F4F3'}}>
 			<CardContent sx={{ flex: 1 }}>
 			<Typography component="h2" variant="h5">
 				{title}
 			</Typography>
 			<div style = { {height: '2vh'} }/>
-			<Rating name="half-rating-read" defaultValue={score} precision={0.25} readOnly size = "large"/>
+			<Rating name="read-only" defaultValue={score} precision={0.1} readOnly size = "large"/>
 			</CardContent>
 			<CardMedia
 			component="img"
