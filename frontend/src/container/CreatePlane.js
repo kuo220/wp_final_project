@@ -30,12 +30,12 @@ function Plane(){
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
-        for(let i = 0;i < colors[j].length;i++)colors[j][i] = '#000000';
+        for(let i = 0;i < colors[j].length;i++)colors[j][i] = '#7B7B7B';
     }
 
     let cnt = 1;
     const [maingraph, setMaingraph] = useState(colors);
-    const [color, setColor] = useState(['#000000',0]);
+    const [color, setColor] = useState(['#7B7B7B',0]);
     const containerRef = useRef(null);
     const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
     const navigate = useNavigate();
@@ -55,10 +55,10 @@ function Plane(){
                     Please select the item you want to draw:<br/>
                     <ButtonGroup variant="outlined" aria-label="outlined primary button group">
                         <Button onClick={(e)=>{setColor(['#F0F0F0',cnt]);}}>Floor</Button>
-                        <Button onClick={(e)=>{setColor(['#F00000',cnt]);}}>Seat</Button>
-                        <Button onClick={(e)=>{setColor(['#00F000',cnt]);}}>Socket</Button>
-                        <Button onClick={(e)=>{setColor(['#0000F0',cnt]);}}>Toilet</Button>
-                        <Button onClick={(e)=>{setColor(['#000000',cnt]);}}>Not Available(wall, counter......)</Button>
+                        <Button onClick={(e)=>{setColor(['#FF5151',cnt]);}}>Seat</Button>
+                        <Button onClick={(e)=>{setColor(['#79FF79',cnt]);}}>Socket</Button>
+                        <Button onClick={(e)=>{setColor(['#66B3FF',cnt]);}}>Toilet</Button>
+                        <Button onClick={(e)=>{setColor(['#7B7B7B',cnt]);}}>Not Available(wall, counter......)</Button>
                     </ButtonGroup>
                     <br/>
                     <br/>

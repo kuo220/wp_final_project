@@ -11,6 +11,11 @@ import { useEffect, useRef, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 const theme = createTheme();
 
@@ -23,17 +28,21 @@ const mainFeaturedPost = {
     linkText: "test linktext"
 };
 
+const cards = [['Floor','White'], ['Seat','Red'], ['Socket','Green'], ['Toilet','Blue'], ['Not Available(wall, counter......)','Black'],];
+const cardcolor = ['#F0F0F0','#FF5151','#79FF79','#66B3FF','#7B7B7B']
+
 function Plane(){
     const { id } = useParams()
     const name = 'café name'
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
-        for(let i = 0;i < colors[j].length;i++)colors[j][i] = '#000000';
+        for(let i = 0;i < colors[j].length;i++)colors[j][i] = '#7B7B7B';
     }
-    const testgraph = [colors,/*colors,colors,colors,colors,colors,colors,colors,colors,colors,colors,*/];
+    //const testgraph = [colors,/*colors,colors,colors,colors,colors,colors,colors,colors,colors,colors,*/];
     const [maingraph, setMaingraph] = useState(colors);
-    useEffect((maingraph)=>{console.log(maingraph)},[maingraph])
+    const [tmphook,setTmphook] = useState(true);
+    useEffect((maingraph)=>{setTmphook(!tmphook)},[maingraph])
     const containerRef = useRef(null);
     const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
     const navigate = useNavigate();
@@ -48,11 +57,31 @@ function Plane(){
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
                     
+                    <Container sx={{ py: 8 }} maxWidth="md">
+                        <Grid container spacing={1}>
+                        {cards.map((i,index) => (
+                            <Grid item key={i} xs={2} sm={2} md={index === 4 ? 4 : 2}>
+                                <Card
+                                sx={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: cardcolor[index] }}
+                                >
+                                    <CardContent sx={{ flexGrow: 1 }}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {i[1]}
+                                        </Typography>
+                                        <Typography >
+                                            {i[0]}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                        </Grid>
+                    </Container>
+
                     <Grid container spacing={0} sx={{ width: `${containerWidth/3*2}px` , height:`${containerWidth/3*2}px` }}>
                         {console.log(maingraph)}
                         {
                         maingraph.map((block,i) => {
-                            //console.log(block);
                             return block.map((item,j)=>{
                                 return<Grid item key={[i, j].join('_')} xs={0.5}>
                                     <Box
@@ -81,6 +110,7 @@ function Plane(){
 }
 
 export default Plane
+//<Button variant="outlined" onClick={()=>{setTmphook(!tmphook)}}>Create your own graph</Button>
 /*
                     <Grid container spacing={1} sx={{ width: `${containerWidth}px` , height:`${containerWidth}px` }}>
                         
