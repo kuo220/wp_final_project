@@ -6,9 +6,9 @@ const Query = {
   async LogInQuery(parent, args, { UserModel }, info){
     args.account = CryptoJS.AES.decrypt(args.account,secretKey).toString(CryptoJS.enc.Utf8);
     args.password = CryptoJS.AES.decrypt(args.password,secretKey).toString(CryptoJS.enc.Utf8);
-    console.log("LogInQuery",args)
+    //console.log("LogInQuery",args)
     let user = await UserModel.findOne({ account:args.account });
-    console.log("finish findone",user)
+    //console.log("finish findone",user)
     if(user){
       if(user.password === args.password)return user;
       else return { name:"wrong password", account: "wrong password", password: "wrong password",id:"wrong password" };
