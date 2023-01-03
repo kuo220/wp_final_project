@@ -53,12 +53,12 @@ function Search() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<AppBar position="relative">
-			<Toolbar style={{backgroundColor:"#8A5A00"}}>
-				<LocalCafeIcon sx={{ mr: 2 }} />
-				<Typography variant="h6" color="inherit" noWrap>
-					Café Finder
-				</Typography>
-				</Toolbar>
+				<Toolbar style={{backgroundColor:"#8A5A00", height:'15vh'}}>
+					<LocalCafeIcon sx={{ mr: 2 }} />
+					<Typography variant="h6" color="inherit" noWrap>
+						Café Finder
+					</Typography>
+					</Toolbar>
 			</AppBar>
 			<main>
 			{/* Hero unit */}
@@ -82,7 +82,7 @@ function Search() {
 						navigate('/addcafe')
 					}}
 				>
-					<PlusOutlined/>
+					Add Café<PlusOutlined/>
 				</AddButton>
 
 				<LogoutButton type='default'

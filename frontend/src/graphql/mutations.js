@@ -100,6 +100,7 @@ mutation CreateRate(
     }
 }
 `;
+
 export const CREATE_TF_RATE_MUTATION = gql`
 mutation CreateTFRate(
     $name: String!,

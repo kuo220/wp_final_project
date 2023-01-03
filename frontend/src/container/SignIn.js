@@ -133,10 +133,7 @@ export default function SignIn() {
                     type="password"
                     onSubmit = {navigateToSearch}
                 />
-                <FormControlLabel
-                    control = {<Checkbox value="remember" color="primary" />}
-                    label = "Remember me"
-                />
+                
                 <Button
                     fullWidth
                     variant = "contained"
