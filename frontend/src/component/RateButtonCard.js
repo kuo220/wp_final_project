@@ -18,7 +18,7 @@ const Styles = {
 
 function RateButtonCard() {
     const navigate = useNavigate();
-    const { id } = useParams()
+    const { id, name, userid } = useParams()
 
     return (
         <Grid item xs={12} md={6}>
@@ -27,7 +27,7 @@ function RateButtonCard() {
                 <CardContent sx={{ flex: 1 }}>
                 <div style = { {height: '2vh'} }/>
                 <div style = {Styles}>
-                    <Button variant="contained" size='large' onClick = {() => navigate(`/search/cafe/${id}/review/addrate`) }>
+                    <Button variant="contained" size='large' onClick = {() => navigate(`/search/${name}/${userid}/cafe/${id}/review/addrate`) }>
                         Rate it too !
                     </Button>
                 </div>
