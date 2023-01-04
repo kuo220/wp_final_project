@@ -7,7 +7,7 @@ type Query {
 type Mutation {
   createUser(name:String! ,account: String!, password: String!): User!
   createRestaurant(name:String!,information:[InputInformation]!): Restaurant!
-  createComment(name: String!, userid: ID!, restaurantid:ID!, body: String!, star: Int!, time: String!): Comment!
+  createComment(name: String!, userid: ID!, restaurantid:ID!, body: String!, star: Int!, time: String!): [Comment]!
   createRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!, star: Int!): Sprate!
   createTFRate(name: String!, userid: ID!, restaurantid:ID!, ratewhat: String!,TF: Boolean!): SpTFrate!
   createGraph(name: String!, userid: ID!, restaurantid:ID!, graph: [[Int!]]): [[Int]]

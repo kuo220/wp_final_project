@@ -10,8 +10,8 @@ const theme = createTheme();
 
 function NavBar({cafename, name, id, userid}){
     const {user, setUser, restaurant, setRestaurant} = useHooks();
-    console.log(user)
-    console.log(id)
+    //console.log(user)
+    //console.log(id)
 
 
     const sections = [
@@ -26,7 +26,7 @@ function NavBar({cafename, name, id, userid}){
         <ThemeProvider theme={theme}>
             <CssBaseline />
                 <Container maxWidth="lg">
-                    <Header title={cafename} sections={sections}></Header>
+                    <Header title={cafename} sections={sections} name={name} userid={userid}></Header>
                 </Container>
         </ThemeProvider>
     )
