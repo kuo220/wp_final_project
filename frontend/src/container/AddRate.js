@@ -11,10 +11,11 @@ import AddTFRateCard from '../component/AddTFRateCard';
 import AddRateHeader from '../component/AddRateHeader';
 import AddNewRateButtonCard from '../component/AddNewRateButtonCard'
 import AddNewTFRateButtonCard from '../component/AddNewTFRateButtonCard'
-import { useEffect, useState } from 'react';
-import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
+import { useEffect , useState} from 'react';
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-import { Button } from '@mui/material';
+import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const finishStyles = {
     position: 'relative',
@@ -73,8 +74,13 @@ const TFscores = [
 
 function AddRate(){
     const { id, name, userid } = useParams();
+    const cafename = 'cafe name'
+    const [cafeName, setCafeName] = useState('cafe name');
+    const averageScore = 1.2 //!need to change
     const [rates, setRates] = useState([]);
     const [TFrates, setTFRates] = useState([]);
+    //console.log(rates)
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -86,10 +92,17 @@ function AddRate(){
         },
     }); 
 
+    const handleonClick = () => {
+        navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/review');
+    }
+
     useEffect((RestaurantLoading)=>{
         if(getRestaurantData?.GetRestaurantById !== undefined){
             setRates(getRestaurantData?.GetRestaurantById?.sprate);
             setTFRates(getRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+            //console.log(getRestaurantData?.GetRestaurantById?.sprate)
+            //console.log(getRestaurantData?.GetRestaurantById?.spTFrate)
         }
     },[getRestaurantLoading])
 
@@ -99,37 +112,28 @@ function AddRate(){
                 <CssBaseline />
                 <Container maxWidth="lg" style = {{backgroundColor: '#FCF3E3'}}>
                     <AddRateHeader/>
+                    { <main>
+                        <MainFeaturedPost post={mainFeaturedPost} />
+                    </main> }
                     <div style={{height: '10vh'}}/>
-                    {scores.map((card) => ( //! comment
-                        <>
-                            <AddRateCard title={card.title}/>
-                            <div style={{height: '3vh'}}/>
-                        </>
-                    ))}
-                    {/* {rates.map((card) => ( 
+                    {rates.map((card) => (
                         <>
                             <AddRateCard title={card.name}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))} */}
-                    <AddNewRateButtonCard/>
+                    ))}
+                    <AddNewRateButtonCard setRates={setRates} rates={rates}/>
                     <div style={{height: '15vh'}}/>
-                    {TFscores.map((card) => ( //! comment
+                    {TFrates.map((card) => (
                         <>
-                            <AddTFRateCard title = {card.title} TF = {card.score}/>
+                            <AddTFRateCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length} TFrates={TFrates} setTFRates={setTFRates}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
-                    {/* {TFrates.map((card) => ( 
-                        <>
-                            <AddTFRateCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length}/>
-                            <div style={{height: '3vh'}}/>
-                        </>
-                    ))}  */}
-                    <AddNewTFRateButtonCard/>
+                    <AddNewTFRateButtonCard TFrates={TFrates} setTFRates={setTFRates}/>
                     <div style={{height: '10vh'}}/>
                     <div style={finishStyles}>
-                        <Button size='large' variant='contained'>Finish</Button>
+                        <Button size='large' variant='contained' onClick={handleonClick}>Finish</Button>
                     </div>
                     <div style={{height: '5vh'}}/>
                 </Container>
@@ -140,3 +144,16 @@ function AddRate(){
 }
 
 export default AddRate
+
+/*(
+                        <>
+                            <AddTFRateCard title = {card.name} Tnum = {card.Tnum} Fnum = {card.Fnum}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    )*/
+/*(
+                        <>
+                            <AddRateCard title={card.name}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    )*/

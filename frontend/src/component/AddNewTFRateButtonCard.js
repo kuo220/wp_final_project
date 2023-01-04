@@ -33,7 +33,7 @@ const TFStyles = {
     top: '50%'
 };
 
-function TFRateButtonCard() {
+function TFRateButtonCard({setTFRates, TFrates}) {
     const navigate = useNavigate();
     const { id } = useParams()
     const [open, setOpen] = useState(false);
@@ -65,15 +65,18 @@ function TFRateButtonCard() {
     }
 
     const handleAdd = () => {
-        if(Truechecked === true && Falsechecked === true){
-            setAlertOpen(true);
+        for(let i=0;i<TFrates.length;i++){
+            //console.log(TFrates[i].name)
+            if(TFrates[i].name == title){
+                displayMessage('error', 'already exist')  
+                return
+            }
         }
-        else if(Truechecked === false && Falsechecked === false){
-            setAlertOpen(true);
-        }
-        else if(title === '') setAlertOpen(true);
+        if(title === '') setAlertOpen(true);
         else{
             setOpen(false);
+            //console.log(TFrates)
+            setTFRates([...TFrates, {name:title, Tnum:0, Fnum:0}])
             displayMessage('success', 'added successfully')  
         }   
     }
@@ -106,29 +109,7 @@ function TFRateButtonCard() {
                                 onChange = {(e) => setTitle(e.target.value)}
                             />
                             <div style={{height: '2vh'}}/>                       
-                            <div style = {TFStyles}>
-                                <FormControlLabel
-                                    label = 'True'
-                                    control={
-                                        <Checkbox
-                                            checked={Truechecked}
-                                            onChange={ () => {setTrueChecked(!Truechecked)}}
-                                            inputProps={{ 'aria-label': 'controlled' }}
-                                        />
-                                    } 
-                                />
-                                <div style = {{width: '3vw'}}/>
-                                <FormControlLabel
-                                    label = 'False'
-                                    control={
-                                        <Checkbox
-                                            checked={Falsechecked}
-                                            onChange={ () => {setFalseChecked(!Falsechecked)}}
-                                            inputProps={{ 'aria-label': 'controlled' }}
-                                        />
-                                    } 
-                                />
-                            </div>
+                            
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
@@ -166,3 +147,26 @@ function TFRateButtonCard() {
 
 
 export default TFRateButtonCard;
+/*<div style = {TFStyles}>
+                                <FormControlLabel
+                                    label = 'True'
+                                    control={
+                                        <Checkbox
+                                            checked={Truechecked}
+                                            onChange={ () => {setTrueChecked(!Truechecked)}}
+                                            inputProps={{ 'aria-label': 'controlled' }}
+                                        />
+                                    } 
+                                />
+                                <div style = {{width: '3vw'}}/>
+                                <FormControlLabel
+                                    label = 'False'
+                                    control={
+                                        <Checkbox
+                                            checked={Falsechecked}
+                                            onChange={ () => {setFalseChecked(!Falsechecked)}}
+                                            inputProps={{ 'aria-label': 'controlled' }}
+                                        />
+                                    } 
+                                />
+                            </div>*/

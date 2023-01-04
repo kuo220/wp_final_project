@@ -31,7 +31,7 @@ const mainFeaturedPost = {
     imageText: 'main image description',
 };
 
-const scores = [
+/*const scores = [
     {
         title: 'name',
         score: 4.7
@@ -69,7 +69,7 @@ const TFscores = [
       score: "T"
     },
     
-];
+];*/
 
 function ReviewScore(){
     const { id, name, userid } = useParams();
@@ -83,6 +83,34 @@ function ReviewScore(){
             id: id
         },
     }); 
+
+    const [
+		lazygetRestaurant,
+		{ data: lazygetRestaurantData, error: lazyerror, loading: lazygetRestaurantLoading},
+	] = useLazyQuery(GET_RESTAURANT_BY_ID_QUERY);
+
+    useEffect(()=>{
+        lazygetRestaurant({
+            variables: {id:id},
+        })
+    },[])
+
+    useEffect((lazygetRestaurantLoading)=>{
+        if(lazygetRestaurantData?.GetRestaurantById !== undefined){
+            console.log(lazygetRestaurantData?.GetRestaurantById?.spTFrate)
+            setRates(lazygetRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(lazygetRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(lazygetRestaurantData?.GetRestaurantById?.name);
+        }
+    },[lazygetRestaurantLoading,lazygetRestaurantData])
+
+    useEffect((RestaurantLoading)=>{
+        if(getRestaurantData?.GetRestaurantById !== undefined){
+            setRates(getRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(getRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+        }
+    },[getRestaurantLoading])
 
     useEffect((RestaurantLoading)=>{
         if(getRestaurantData?.GetRestaurantById !== undefined){

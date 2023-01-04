@@ -25,7 +25,7 @@ const Styles = {
     height: '8vh',
 };
 
-function RateButtonCard() {
+function RateButtonCard({rates, setRates}) {
     const navigate = useNavigate();
     const { id } = useParams()
     const [open, setOpen] = useState(false);
@@ -55,11 +55,17 @@ function RateButtonCard() {
     }
 
     const handleAdd = () => {
-        if(rate === null) setAlertOpen(true);
-        else if(title === '') setAlertOpen(true);
+        for(let i=0;i<rates.length;i++){
+            if(rates[i].name == title){
+                displayMessage('error', 'already exist')  
+                return
+            }
+        }
+        if(title === '') setAlertOpen(true);
         else{
             setOpen(false);
             displayMessage('success', 'added successfully')  
+            setRates([...rates, {name:title, body:0}])
         }   
     }
 
@@ -91,11 +97,7 @@ function RateButtonCard() {
                                 onChange = {(e) => setTitle(e.target.value)}
                             />
                             <div style={{height: '2vh'}}/>
-                            <Rating
-                                name = "simple-controlled"
-                                value = {rate}
-                                onChange = {(e) => { setRate(e.target.value) }}
-                            />
+                            
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
@@ -133,3 +135,9 @@ function RateButtonCard() {
 
 
 export default RateButtonCard;
+
+/*<Rating
+                                name = "simple-controlled"
+                                value = {rate}
+                                onChange = {(e) => { setRate(e.target.value) }}
+                            />*/

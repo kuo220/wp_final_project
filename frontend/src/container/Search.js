@@ -26,51 +26,7 @@ import {SEARCH_RESTAURANT_BY_NAME_QUERY, GET_RESTAURANT_BY_ID_QUERY} from '../gr
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 // import {ScrollView, ImageBackground } from 'react-native-web';
 import { useParams } from 'react-router-dom'
-
-// const SearchBox = styled(Input)`
-// 	position : absolute;
-// 	display : flex;
-// 	width : 52%;
-// 	height : 8%;
-// 	top : 25%;
-// 	left : 22%;
-// 	right : 25%;
-// `
-
-
-const SearchBox = {
-	position : 'absolute',
-	width : '52%',
-	height : '8%',
-	top : '25%',
-	left : '22%',
-	right : '25%',
-}
-
-const SearchButton = {
-	position : 'absolute',
-	backgroundColor : '#DB8F00',
-	color : 'white',
-	height : '8%',
-	top : '25%',
-	right : '21.3%',
-
-}
-
-const AddButton = {
-	position : 'absolute',
-    top : '5%',
-    right : '15%',
-	backgroundColor:'#DB8F00'
-}
-
-const LogoutButton = {
-	position : 'absolute',
-	top : '5%',
-	right : '5%',
-	backgroundColor:'#DB8F00',
-}
-
+import { useWindowSize } from 'react-use';
 
 
 
@@ -84,6 +40,28 @@ function Search() {
 	const [searchValue, setSearchValue] = React.useState('');
 	const [restaurantlist, setRestaurantlist] = React.useState([]);
 	const {user, setUser, restaurant, setRestaurant} = useHooks();
+	const { width, height } = useWindowSize();
+	// console.log(width,height)
+
+	const AddButton = {
+		position : 'absolute',
+		width : `${width / 165}%`,
+		height : `${height / 120}%`,
+		fontSize : `${ 1.9 * height / width }rem`,
+		top : '5%',
+		right : '15%',
+		backgroundColor:'#DB8F00'
+	}
+	
+	const LogoutButton = {
+		position : 'absolute',
+		width : `${width / 165}%`,
+		height : `${height / 120}%`,
+		fontSize : `${ 1.9 * height / width }rem`,
+		top : '5%',
+		right : '5%',
+		backgroundColor:'#DB8F00',
+	}
 
 	//const [createuser] = useMutation(CREATE_USER_MUTATION);
 	const [
@@ -135,6 +113,15 @@ function Search() {
 
 
 	return (
+		// <Box
+		// sx={{
+			// bgcolor: 'background.paper',
+		// 	bgcolor: 'gray',
+		// 	pt: width,
+		// 	pb: height,
+		// }}
+		
+		// >
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			
@@ -152,13 +139,15 @@ function Search() {
 			
 			<main>
 			<Box
-			sx={{
-				bgcolor: 'background.paper',
-				pt: 8,
-				pb: 6,
-			}}
+				sx={{
+					// bgcolor: 'background.paper',
+					// bgcolor: 'gray',
+					pt: 8,
+					pb: 6,
+				}}
+				// style={{backgroundColor:'gray'}}
 			>
-			{/* <Container maxWidth="sm"> */}
+			<Container maxWidth="sm">
 
 				<SearchInput
 					// style={SearchBox}
@@ -182,19 +171,19 @@ function Search() {
 					Log Out
 				</Button>
 
-				
-
 				<Stack
 					sx={{ pt: 4 }}
 					direction="row"
 					spacing={2}
 					justifyContent="center"
+					// style={{backgroundColor:'gray'}}
 				>
-
 				</Stack>
-			{/* </Container> */}
+
+			</Container>
 			</Box>
-			{/* <Container sx={{ py: 8 }} maxWidth="md"> */}
+
+			<Container sx={{ py: 8 }} maxWidth="md">
 			{/* End hero unit */}
 				<Grid container spacing={4}>
 				{restaurantlist.map((rest) => (
@@ -228,9 +217,12 @@ function Search() {
 				</Grid>
 				))}
 				</Grid>
-			{/* </Container> */}
+			</Container>
+			{/* </Box> */}
 			</main>
+			
 		</ThemeProvider>
+		// </Box>
 	);
 }
 

@@ -8,11 +8,36 @@ import CardMedia from '@mui/material/CardMedia';
 import Rating from '@mui/material/Rating';
 import Star from '../picture/star2.jpg'
 import { useEffect, useState } from 'react';
+import {CREATE_RATE_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { useParams } from 'react-router-dom'
 
 
 function RateCard({ title }) {
-
+    const {name, userid, id } = useParams()
     const [rate, setRate] = useState(null);
+    const [createrate] = useMutation(CREATE_RATE_MUTATION);
+
+    useEffect(()=>{
+        if(rate > 0){
+            /*console.log({
+                name:name,
+                userid:userid,
+                restaurantid:id,
+                ratewhat: title,
+                star: Number(rate),
+            })*/
+            createrate({
+                variables:{
+                    name:name,
+                    userid:userid,
+                    restaurantid:id,
+                    ratewhat: title,
+                    star: Number(rate),
+                }
+            })
+        }
+    },[rate])
 
     return (
         <Grid item xs={12} md={6}>
@@ -26,7 +51,7 @@ function RateCard({ title }) {
                 <Rating
                     name = "simple-controlled"
                     value = {rate}
-                    onChange = {(e) => { setRate(e.target.value) }}
+                    onChange = {(e) => { setRate(e.target.value);}}
                 />
                 </CardContent>
                 <CardMedia

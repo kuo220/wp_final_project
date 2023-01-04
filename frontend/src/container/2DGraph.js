@@ -24,7 +24,7 @@ const mainFeaturedPost = {
         "Want to know the distribution of the cafe? scroll down !",
     image: Coffee_table,
     imageText: 'main image description',
-    linkText: "test linktext"
+    //linkText: "test linktext"
 };
 
 const cards = [['Floor','White'], ['Seat','Red'], ['Socket','Green'], ['Toilet','Blue'], ['Not Available(wall, counter......)','Black'],];
@@ -32,7 +32,7 @@ const cardcolor = ['#F0F0F0','#FF5151','#79FF79','#66B3FF','#7B7B7B']
 
 function Plane(){
     const { id, name, userid } = useParams();
-    const cafename = 'cafe name'
+    const [cafename, setCafeName] = useState('cafe name');
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
@@ -54,9 +54,11 @@ function Plane(){
         //console.log(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
         if(fetchRestaurantData?.GetRestaurantById !== undefined){
             //console.log(fetchRestaurantData?.GetRestaurantById?.graph)
+            setCafeName(fetchRestaurantData?.GetRestaurantById?.name);
             if(fetchRestaurantData?.GetRestaurantById?.graph?.length > 0){
                 //console.log('//')
                 setMaingraph(fetchRestaurantData?.GetRestaurantById?.graph[Math.floor(Math.random() * fetchRestaurantData?.GetRestaurantById?.graph.length)])
+                setCafeName(fetchRestaurantData?.GetRestaurantById?.name);
             }
             setTmphook(!tmphook);
         }

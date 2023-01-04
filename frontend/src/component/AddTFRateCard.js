@@ -19,6 +19,9 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { message } from "antd";
 import { useState, useEffect } from 'react';
+import {CREATE_TF_RATE_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { useParams } from 'react-router-dom'
 
 const TFStyles = {
     position: 'relative',
@@ -67,7 +70,7 @@ const EditStyles = {
     top: '20%'
 };
 
-function AddTFRateCard({ title, TF, Tnum, Fnum }) {
+function AddTFRateCard({ title, Tnum, Fnum, TFrates, setTFRates }) {
 
     if(Tnum === undefined) Tnum = 0;
     if(Fnum === undefined) Fnum = 0;
@@ -76,6 +79,8 @@ function AddTFRateCard({ title, TF, Tnum, Fnum }) {
     const [Truechecked, setTrueChecked] = useState(false);
     const [Falsechecked, setFalseChecked] = useState(false);
     const [alertOpen, setAlertOpen] = useState(false);
+    const {name, userid, id } = useParams()
+    const [createTFrate] = useMutation(CREATE_TF_RATE_MUTATION);
 
     const displayMessage = (status, msg) => {
         const content = {
@@ -99,6 +104,7 @@ function AddTFRateCard({ title, TF, Tnum, Fnum }) {
     }
 
     const handleAdd = () => {
+
         if(Truechecked === true && Falsechecked === true){
             setAlertOpen(true);
         }
@@ -108,6 +114,26 @@ function AddTFRateCard({ title, TF, Tnum, Fnum }) {
         else{
             setOpen(false);
             displayMessage('success', 'added successfully')  
+            createTFrate({
+                variables:{
+                    name:name,
+                    userid:userid,
+                    restaurantid:id,
+                    ratewhat: title,
+                    TF: Truechecked,
+                }
+            })
+            /*let tmp = TFrates
+            for(let i=0;i<tmp.length;i++){
+                if(tmp[i].name == title && Truechecked){
+                    tmp[i].Tnum.push({name, userid})
+                }
+                else if(tmp[i].name == title && !Truechecked){
+                    console.log(tmp[i])
+                    tmp[i].Fnum.push({name, userid})
+                }
+            }
+            setTFRates(tmp)*/
         }   
     }
 
