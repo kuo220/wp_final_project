@@ -41,7 +41,7 @@ function Search() {
 	const [restaurantlist, setRestaurantlist] = React.useState([]);
 	const {user, setUser, restaurant, setRestaurant} = useHooks();
 	const { width, height } = useWindowSize();
-	console.log(width,height)
+	// console.log(width,height)
 
 	const AddButton = {
 		position : 'absolute',

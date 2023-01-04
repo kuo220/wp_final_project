@@ -53,12 +53,13 @@ function FeaturedPost(props) {
     return (
             <Grid item xs={12} md={6}>
             <CardActionArea component="a" href="#">
-                <Card sx={{ display: 'flex', height: '20vh' }}>
+                <Card sx={{ display: 'flex', height: '18vh' }}>
                 <CardContent sx={{ flex: 1 }}>
                     <Typography component="h2" variant="h5">
                     {props.title}
                     </Typography>
-                    <Typography variant="subtitle1" paragraph>
+                    <div style={{height: '2vh'}}/>
+                    <Typography variant="h6" paragraph>
                     {props.description}
                     </Typography>
                     {/* <Button onClick = {handleClickOpen}>
