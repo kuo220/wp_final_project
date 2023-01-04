@@ -131,11 +131,9 @@ function AddRate(){
                         </>
                     ))}
                     <AddNewTFRateButtonCard TFrates={TFrates} setTFRates={setTFRates}/>
-                    <br/>
-                    <Button variant="contained" onClick={handleonClick}>finish rating!</Button>
                     <div style={{height: '10vh'}}/>
                     <div style={finishStyles}>
-                        <Button size='large' variant='contained'>Finish</Button>
+                        <Button size='large' variant='contained' onClick={handleonClick}>Finish</Button>
                     </div>
                     <div style={{height: '5vh'}}/>
                 </Container>
