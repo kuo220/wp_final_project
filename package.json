@@ -16,7 +16,6 @@
     "react-fontawesome": "^1.7.1",
     "react-gsap": "^3.2.1",
     "react-icons": "^4.7.1",
-    "react-native-web": "^0.18.10",
     "react-scrollmagic": "^2.3.0",
     "styled-components": "^5.3.6"
   }
