@@ -49,13 +49,13 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	const [businessHour, setBusinessHour] = useState([{'name' : 'Monday_Open', 'body' : ''}, {'name' : 'Monday_Close', 'body' : ''},
-													  {'name' : 'Tuesday_Open', 'body' : ''}, {'name' : 'Tuesday_Close', 'body' : ''},
-													  {'name' : 'Wednesday_Open', 'body' : ''}, {'name' : 'Wednesday_Close', 'body' : ''},
-													  {'name' : 'Thursday_Open', 'body' : ''}, {'name' : 'Thursday_Close', 'body' : ''},
-													  {'name' : 'Friday_Open', 'body' : ''}, {'name' : 'Friday_Close', 'body' : ''},
-													  {'name' : 'Saturday_Open', 'body' : ''}, {'name' : 'Saturday_Open', 'body' : ''},
-													  {'name' : 'Sunday_Open', 'body' : ''}, {'name' : 'Sunday_Close', 'body' : ''}])
+	const [businessHour, setBusinessHour] = useState([{'name' : 'Monday_Open', 'body' : '07:30'}, {'name' : 'Monday_Close', 'body' : '07:30'},
+													  {'name' : 'Tuesday_Open', 'body' : '07:30'}, {'name' : 'Tuesday_Close', 'body' : '07:30'},
+													  {'name' : 'Wednesday_Open', 'body' : '07:30'}, {'name' : 'Wednesday_Close', 'body' : '07:30'},
+													  {'name' : 'Thursday_Open', 'body' : '07:30'}, {'name' : 'Thursday_Close', 'body' : '07:30'},
+													  {'name' : 'Friday_Open', 'body' : '07:30'}, {'name' : 'Friday_Close', 'body' : '07:30'},
+													  {'name' : 'Saturday_Open', 'body' : '07:30'}, {'name' : 'Saturday_Open', 'body' : '07:30'},
+													  {'name' : 'Sunday_Open', 'body' : '07:30'}, {'name' : 'Sunday_Close', 'body' : '07:30'}])
 
 	const [createrestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
 
@@ -79,11 +79,13 @@ function AddCafe() {
 	}
 
 	const handleonClick = () => {
-		//console.log({name:cafeName, information:[{'Phone Number':phoneNum, City, District, Address, ...businessHour}]})
-		//businessHour.forEach((i)=>{console.log(i)})
-		/*createrestaurant({
-			variables: {name:cafeName, information:[]}
-		})*/
+		//console.log([{'name':'Phone Number','body':phoneNum}, {'name':'City','body':city}, {'name':'District','body':district}, {'name':'Address','body':address}, ...businessHour])
+		createrestaurant({
+			variables: {
+				name: cafeName,
+				information: [{'name':'Phone Number','body':phoneNum}, {'name':'City','body':city}, {'name':'District','body':district}, {'name':'Address','body':address}, ...businessHour],
+			}
+		})
 	}
 
 	return (

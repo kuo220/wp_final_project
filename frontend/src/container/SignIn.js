@@ -45,7 +45,7 @@ export default function SignIn() {
         else message.success(content)
     }
 
-    useEffect((CheckLoginLoading)=>{console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
+    useEffect((CheckLoginLoading)=>{//console.log(CheckLoginLoading,CheckLoginData,CheckLoginError);
         if(CheckLoginData?.LogInQuery.id==="not found")displayMessage('error', 'account not found');
         if(CheckLoginData?.LogInQuery.id==="wrong password")displayMessage('error', 'wrong password');
         else if(CheckLoginData !== undefined && CheckLoginData?.LogInQuery.id!=="not found"){
