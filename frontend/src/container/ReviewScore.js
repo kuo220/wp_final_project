@@ -74,7 +74,7 @@ const TFscores = [
 function ReviewScore(){
     const { id, name, userid } = useParams();
     const [cafeName, setCafeName] = useState('cafe name');
-    const averageScore = 1.2 //!need to change
+    //const averageScore = 1.2
     const [rates, setRates] = useState([]);
     const [TFrates, setTFRates] = useState([]);
 
@@ -129,26 +129,14 @@ function ReviewScore(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    {/*<div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>*/}
-                    {/*scores.map((card) => ( //! comment
-                        <>
-                            <RateCard title={card.title} score = {card.score}/>
-                            <div style={{height: '3vh'}}/>
-                        </>
-    ))*/}
-                    { rates.map((card) => ( 
+                    {/* <div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div> */}
+                    {rates.map((card) => ( 
                         <>
                             <RateCard title={card.name} score = {card.average_star}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))} 
+                    ))}
                     <div style={{height: '15vh'}}/>
-                    {/*TFscores.map((card) => ( //! comment
-                        <>
-                            <RateTFCard title = {card.title} TF = {card.score}/>
-                            <div style={{height: '3vh'}}/>
-                        </>
-                    ))*/}
                     {TFrates.map((card) => ( 
                         <>
                             <RateTFCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length}/>

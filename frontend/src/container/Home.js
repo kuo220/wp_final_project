@@ -2,6 +2,7 @@ import { Typography } from 'antd';
 import Titlebar from './Titlebar';
 import styled from 'styled-components';
 import CssBaseline from '@mui/material/CssBaseline';
+import home from '../picture/home.jpg'
 
 const HomeBackground = styled.div`
 	width : 100vw;
@@ -11,14 +12,10 @@ const HomeBackground = styled.div`
 
 function Home() {
 	return(
+        
         <HomeBackground>
             <CssBaseline/>
-            <Titlebar/>
-            <Typography.Title
-                italic
-            >
-                Café Finder
-            </Typography.Title>
+            <img src={home} style={{width:'100%', height:'100%'}}/>
         </HomeBackground>
     )
 }

@@ -70,12 +70,9 @@ function CafeInfo() {
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
                     <Grid container spacing={4}>
-                        {featuredPosts.map((post) => ( //! comment
-                            <InfoCard name = {post.Name} information = {post.information} />
-                        ))}
-                        {/* {informations.map((info) => ( 
+                        {informations.map((info) => ( 
                             <InfoCard name = {info.name} information = {info.body} />
-                        ))} */} 
+                        ))} 
                         {/* <AddCard/> */}
                     </Grid>
                 </main>

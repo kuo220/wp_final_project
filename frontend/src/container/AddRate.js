@@ -17,11 +17,9 @@ import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-const ScoreStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '40vh',
+const finishStyles = {
+    position: 'relative',
+    left: '90%'
 };
 
 const theme = createTheme();
@@ -136,6 +134,10 @@ function AddRate(){
                     <br/>
                     <Button variant="contained" onClick={handleonClick}>finish rating!</Button>
                     <div style={{height: '10vh'}}/>
+                    <div style={finishStyles}>
+                        <Button size='large' variant='contained'>Finish</Button>
+                    </div>
+                    <div style={{height: '5vh'}}/>
                 </Container>
             </ThemeProvider>
             
