@@ -170,7 +170,7 @@ function Search() {
 
 				<Button variant="contained" size='large'
 					style={AddButton}
-					onClick={() => {navigate('/addcafe')}}
+					onClick={() => {navigate('/addcafe/'+name+'/'+userid)}}
 				>
 							Add Café
 				</Button>
