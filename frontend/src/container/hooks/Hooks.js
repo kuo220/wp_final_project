@@ -11,9 +11,12 @@ const HookContext = createContext({
 	setRestaurant: ()=>{},
 });
 
+
+
 const HookProvider = (props) => {
-	const [user, setUser] = useState({});
-	const [restaurant, setRestaurant] = useState({}); 
+	const [user, setUser] = useState();
+	const [restaurant, setRestaurant] = useState(); 
+	useEffect((restaurant)=>{console.log(restaurant)},[restaurant])
 
 
   	return (

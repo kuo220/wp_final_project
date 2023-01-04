@@ -115,15 +115,15 @@ function Search() {
 	React.useEffect((SearchRestaurantLoading)=>{
 		//console.log(SearchRestaurantLoading,SearchRestaurantData,SearchRestaurantError);
         if(SearchRestaurantData !== undefined){
-			console.log(SearchRestaurantData.SearchRestaurantByName)
+			//console.log(SearchRestaurantData.SearchRestaurantByName)
 			setRestaurantlist(SearchRestaurantData.SearchRestaurantByName)
 		}
     },[SearchRestaurantLoading])
 
 	React.useEffect((GetRestaurantLoading)=>{
-		console.log(GetRestaurantLoading,GetRestaurantData,GetRestaurantError);
-        if(GetRestaurantData !== undefined){
-			//console.log(GetRestaurantData.GetRestaurantById)
+		//console.log(GetRestaurantLoading,GetRestaurantData,GetRestaurantError);
+        if(GetRestaurantData !== undefined && GetRestaurantData.GetRestaurantById !== undefined){
+			console.log(GetRestaurantData.GetRestaurantById)
 			setRestaurant(GetRestaurantData.GetRestaurantById)
 			navigate('/search/cafe/' + GetRestaurantData.GetRestaurantById.id)
 		}
