@@ -9,13 +9,13 @@ import Link from '@mui/material/Link';
 import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
-  const { sections, title } = props;
+  const { sections, title ,name, userid} = props;
   const navigate = useNavigate();
 
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small" onClick={ () => navigate('/search') }>Back to Search</Button>
+        <Button size="small" onClick={ () => navigate('/search/'+name+'/'+userid) }>Back to Search</Button>
         <Typography
           component="h2"
           variant="h5"

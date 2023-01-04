@@ -51,7 +51,7 @@ mutation CreateRestaurant($name: String!, $information: [InputInformation]!){
 }
 `;
 export const CREATE_COMMENT_MUTATION = gql`
-mutation CreateComment(
+mutation createComment(
     $name: String!,
     $userid: ID!,
     $restaurantid: ID!,
@@ -133,7 +133,7 @@ mutation CreateGraph(
     $name: String!,
     $userid: ID!,
     $restaurantid: ID!,
-    $graph: [[Int!]]
+    $graph: [[String!]]
 ){
     createGraph(
         name: $name,
