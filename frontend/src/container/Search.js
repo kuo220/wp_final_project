@@ -158,7 +158,7 @@ function Search() {
 				pb: 6,
 			}}
 			>
-			<Container maxWidth="sm">
+			{/* <Container maxWidth="sm"> */}
 
 				<SearchInput
 					// style={SearchBox}
@@ -192,9 +192,9 @@ function Search() {
 				>
 
 				</Stack>
-			</Container>
+			{/* </Container> */}
 			</Box>
-			<Container sx={{ py: 8 }} maxWidth="md">
+			{/* <Container sx={{ py: 8 }} maxWidth="md"> */}
 			{/* End hero unit */}
 				<Grid container spacing={4}>
 				{restaurantlist.map((rest) => (
@@ -228,9 +228,8 @@ function Search() {
 				</Grid>
 				))}
 				</Grid>
-			</Container>
+			{/* </Container> */}
 			</main>
-			
 		</ThemeProvider>
 	);
 }
