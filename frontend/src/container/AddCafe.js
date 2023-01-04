@@ -46,7 +46,7 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	const [businessHour, setBusinessHour] = useState([{}]);
+	const [businessHour, setBusinessHour] = useState({'Sunday open time' : '', 'Sunday close time' : '', 'Monday open time' : '', 'Monday close time' : '', 'Tuesday open time' : '', 'Tuesday close time' : '', 'Wednesday open time' : '', 'Wednesday close time' : '', 'Thursday open time' : '', 'Thursday close time' : '', 'Friday open time' : '', 'Friday close time' : '', 'Saturday open time' : '', 'Saturday close time' : ''});
 
 
 	const handleNext = () => {
