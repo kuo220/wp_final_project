@@ -19,22 +19,11 @@ import { useParams } from 'react-router-dom';
 import {CREATE_RESTAURANT_MUTATION} from '../graphql/index';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 import { VariablesAreInputTypesRule } from 'graphql';
-
+import { message } from "antd";
 
 const steps = ['Basic Info', 'Business hours'];
 
 
-
-// function getStepContent(step) {
-// 	switch (step) {
-// 		case 0:
-// 			return <AddCafeForm/>;
-// 		case 1:
-// 			return <BusinessHourForm />;
-// 		default:
-// 			throw new Error('Unknown step');
-// 	}
-// }
 
 const theme = createTheme();
 
@@ -54,13 +43,28 @@ function AddCafe() {
 													  {'name' : 'Wednesday_Open', 'body' : '07:30'}, {'name' : 'Wednesday_Close', 'body' : '07:30'},
 													  {'name' : 'Thursday_Open', 'body' : '07:30'}, {'name' : 'Thursday_Close', 'body' : '07:30'},
 													  {'name' : 'Friday_Open', 'body' : '07:30'}, {'name' : 'Friday_Close', 'body' : '07:30'},
-													  {'name' : 'Saturday_Open', 'body' : '07:30'}, {'name' : 'Saturday_Open', 'body' : '07:30'},
+													  {'name' : 'Saturday_Open', 'body' : '07:30'}, {'name' : 'Saturday_Close', 'body' : '07:30'},
 													  {'name' : 'Sunday_Open', 'body' : '07:30'}, {'name' : 'Sunday_Close', 'body' : '07:30'}])
 
 	const [createrestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
 
+	const displayMessage = (status, msg) => {
+        const content = {
+            content: msg,
+            duration: 1.5,
+        };
+        if(status === 'error') message.error(content);
+        else message.success(content)
+    }
+
 	const handleNext = () => {
-		setActiveStep(activeStep + 1);
+		if(cafeName !== '' && phoneNum !== '' && city !== '' && district !== '' && address !== ''){
+			setActiveStep(activeStep + 1);
+		}
+		else{
+			displayMessage('error', 'Please fill out the blank');
+		}
+		
 	};
 
 	const handleBack = () => {
@@ -104,7 +108,13 @@ function AddCafe() {
 					<Typography variant="h6" color="inherit" noWrap>
 						Add New Café
 					</Typography>
+					<Button style={{position : 'absolute', right:'5%'}}
+						onClick={() => {navigate(`/search/${name}/${userid}`)}}
+					> 
+						Back To Search
+					</Button>
 				</Toolbar>
+				
 			</AppBar>
 			<Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
 				<Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
