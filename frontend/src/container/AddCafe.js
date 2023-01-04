@@ -15,6 +15,7 @@ import AddCafeForm from '../component/AddCafeForm';
 import BusinessHourForm from '../component/BusinessHourForm';
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
+import { useParams } from 'react-router-dom'
 
 
 const steps = ['Basic Info', 'Business hours'];
@@ -37,6 +38,7 @@ const theme = createTheme();
 function AddCafe() {
 	const navigate = useNavigate();
 	const [activeStep, setActiveStep] = React.useState(0);
+	const { id, name, userid } = useParams();
 
 	// Information of new Café
 	const [cafeName, setCafeName] = useState('');
@@ -44,7 +46,7 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	let [businessHour, setBusinessHour] = useState([{}]);
+	const [businessHour, setBusinessHour] = useState([{}]);
 
 
 	const handleNext = () => {
@@ -106,7 +108,7 @@ function AddCafe() {
 						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 								<Button
 									variant="contained"
-									onClick={() => {navigate('/search')}}
+									onClick={() => {navigate('/search/'+name+'/'+'userid')}}
 									sx={{ mt: 3, ml: 1 }}
 								>
 									Complete

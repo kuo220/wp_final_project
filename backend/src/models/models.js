@@ -89,7 +89,7 @@ const RestaurantSchema = new Schema({
       person_id: {type: mongoose.Types.ObjectId, ref: 'User',required:[true, 'person_id field is required.']},
     }]
   }],
-  graph: { type: [[[Number]]]}
+  graph: { type: [[[String]]]}
 })
 const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);
 

@@ -90,11 +90,12 @@ const Mutation = {
   },
   async createGraph(parent, args, { UserModel, RestaurantModel }, info){
     //need to input valid id, or an error will appear.
+    //console.log("//")
     let restaurant = await RestaurantModel.findOne({_id:args.restaurantid}).exec()
-    console.log(args.graph)
+    //console.log(args.graph)
     restaurant.graph.push(args.graph)
     restaurant.save();
-    console.log(restaurant.graph)
+    //console.log(restaurant.graph)
     return args.graph;
   }
 

@@ -22,7 +22,8 @@ function AddCafeForm(props) {
                     label="Café Name"
                     fullWidth
                     variant="standard"
-                    onChange={(e) => {props.setCafeName(() => {props.cafeName = e.target.value})}}
+                    value={props.cafeName}
+                    onChange={(e) => {props.setCafeName(e.target.value)}}
                 />
             </Grid>
 
@@ -34,7 +35,8 @@ function AddCafeForm(props) {
                     label="Phone Number"
                     fullWidth
                     variant="standard"
-                    onChange={(e) => {props.setPhoneNum(() => {props.phoneNum = e.target.value})}}
+                    value={props.phoneNum}
+                    onChange={(e) => {props.setPhoneNum(e.target.value)}}
                 />
             </Grid>
 
@@ -46,7 +48,8 @@ function AddCafeForm(props) {
                     label="City"
                     fullWidth
                     variant="standard"
-                    onChange={(e) => {props.setCity(() => {props.city = e.target.value})}}
+                    value={props.city}
+                    onChange={(e) => {props.setCity(e.target.value)}}
                 />
             </Grid>
 
@@ -57,7 +60,8 @@ function AddCafeForm(props) {
                     label="District"
                     fullWidth
                     variant="standard"
-                    onChange={(e) => {props.setDistrict(() => {props.district = e.target.value})}}
+                    value={props.district}
+                    onChange={(e) => {props.setDistrict(e.target.value)}}
                 />
             </Grid>
 
@@ -69,7 +73,8 @@ function AddCafeForm(props) {
                     label="Address"
                     fullWidth
                     variant="standard"
-                    onChange={(e) => {props.setAddress(() => {props.address = e.target.value})}}
+                    value={props.address}
+                    onChange={(e) => {props.setAddress(e.target.value)}}
                 />
             </Grid>
         </Grid>

@@ -35,8 +35,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Sunday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -47,8 +49,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Sunday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -71,8 +75,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Monday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -83,8 +89,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Monday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -106,8 +114,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Tuesday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -118,8 +128,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Tuesday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -142,8 +154,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Wednesday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -154,8 +168,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Wednesday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -178,8 +194,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Thursday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -190,8 +208,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Thursday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -214,8 +234,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Friday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -226,8 +248,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Friday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -250,8 +274,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let openTime = {}
+								let tmp = props.businessHour
 								openTime['Saturday open time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+								tmp.push(openTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
@@ -262,8 +288,10 @@ function BusinessHourForm(props) {
 							onChange={(e) => {
 								handleChange(e.target.value)
 								let closeTime = {}
+								let tmp = props.businessHour
 								closeTime['Saturday close time'] = e.target.value
-								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+								tmp.push(closeTime)
+								props.setBusinessHour(tmp)
 							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
