@@ -19,16 +19,18 @@ import {useState} from 'react';
 
 const steps = ['Basic Info', 'Business hours'];
 
-function getStepContent(step) {
-	switch (step) {
-		case 0:
-			return <AddCafeForm />;
-		case 1:
-			return <BusinessHourForm />;
-		default:
-			throw new Error('Unknown step');
-	}
-}
+
+
+// function getStepContent(step) {
+// 	switch (step) {
+// 		case 0:
+// 			return <AddCafeForm/>;
+// 		case 1:
+// 			return <BusinessHourForm />;
+// 		default:
+// 			throw new Error('Unknown step');
+// 	}
+// }
 
 const theme = createTheme();
 
@@ -42,7 +44,7 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	const [businessHour, setBusinessHour] = useState([[]]);
+	let [businessHour, setBusinessHour] = useState([{}]);
 
 
 	const handleNext = () => {
@@ -52,6 +54,17 @@ function AddCafe() {
 	const handleBack = () => {
 		setActiveStep(activeStep - 1);
 	};
+
+	const getStepContent = (step) => {
+		switch (step) {
+			case 0:
+				return <AddCafeForm cafeName={cafeName} setCafeName={setCafeName} phoneNum={phoneNum} setPhoneNum={setPhoneNum} city={city} setCity={setCity} district={district} setDistrict={setDistrict} address={address} setAddress={setAddress}/>;
+			case 1:
+				return <BusinessHourForm businessHour={businessHour} setBusinessHour={setBusinessHour}/>;
+			default:
+				throw new Error('Unknown step');
+		}
+	}
 
 	return (
 		<ThemeProvider theme={theme}>

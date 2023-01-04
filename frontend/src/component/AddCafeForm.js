@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {useState} from 'react';
 
-function AddCafeForm() {
+function AddCafeForm(props) {
 
   return (
     <React.Fragment>
@@ -22,6 +22,7 @@ function AddCafeForm() {
                     label="Café Name"
                     fullWidth
                     variant="standard"
+                    onChange={(e) => {props.setCafeName(() => {props.cafeName = e.target.value})}}
                 />
             </Grid>
 
@@ -33,6 +34,7 @@ function AddCafeForm() {
                     label="Phone Number"
                     fullWidth
                     variant="standard"
+                    onChange={(e) => {props.setPhoneNum(() => {props.phoneNum = e.target.value})}}
                 />
             </Grid>
 
@@ -44,6 +46,7 @@ function AddCafeForm() {
                     label="City"
                     fullWidth
                     variant="standard"
+                    onChange={(e) => {props.setCity(() => {props.city = e.target.value})}}
                 />
             </Grid>
 
@@ -54,6 +57,7 @@ function AddCafeForm() {
                     label="District"
                     fullWidth
                     variant="standard"
+                    onChange={(e) => {props.setDistrict(() => {props.district = e.target.value})}}
                 />
             </Grid>
 
@@ -65,33 +69,9 @@ function AddCafeForm() {
                     label="Address"
                     fullWidth
                     variant="standard"
+                    onChange={(e) => {props.setAddress(() => {props.address = e.target.value})}}
                 />
             </Grid>
-        
-            {/* <Grid item xs={12} sm={6}>
-                <TextField
-                    required
-                    id="zip"
-                    name="zip"
-                    label="Zip / Postal code"
-                    fullWidth
-                    autoComplete="shipping postal-code"
-                    variant="standard"
-                />
-            </Grid> */}
-
-            {/* <Grid item xs={12} sm={6}>
-                <TextField
-                    required
-                    id="country"
-                    name="country"
-                    label="Country"
-                    fullWidth
-                    autoComplete="shipping country"
-                    variant="standard"
-                />
-
-            </Grid> */}
         </Grid>
     </React.Fragment>
   );
