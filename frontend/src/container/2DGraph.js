@@ -53,8 +53,11 @@ function Plane(){
     useEffect((fetchRestaurantLoading)=>{//console.log(fetchRestaurantLoading,fetchRestaurantData,fetchRestaurantError);
         //console.log(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
         if(fetchRestaurantData?.GetRestaurantById !== undefined){
-            console.log(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
-            if(fetchRestaurantData?.GetRestaurantById?.graph !== [])setMaingraph(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
+            //console.log(fetchRestaurantData?.GetRestaurantById?.graph)
+            if(fetchRestaurantData?.GetRestaurantById?.graph?.length > 0){
+                //console.log('//')
+                setMaingraph(fetchRestaurantData?.GetRestaurantById?.graph[Math.floor(Math.random() * fetchRestaurantData?.GetRestaurantById?.graph.length)])
+            }
             setTmphook(!tmphook);
         }
     },[fetchRestaurantLoading])
@@ -93,7 +96,7 @@ function Plane(){
                     <Grid container spacing={0} sx={{ width: `${containerWidth/3*2}px` , height:`${containerWidth/3*2}px` }}>
                         {/*console.log(maingraph)*/}
                         {
-                        maingraph.map((block,i) => {
+                        maingraph?.map((block,i) => {
                             return block.map((item,j)=>{
                                 return<Grid item key={[i, j].join('_')} xs={0.5}>
                                     <Box
@@ -106,7 +109,12 @@ function Plane(){
                         )}
                     </Grid>
                     <br></br>
-                    <Button variant="outlined" onClick={()=>{navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/plane/create');}}>Create your own graph</Button>
+                    <Button variant="outlined" style={{ margin: '2px' }} onClick={()=>{
+                        if(fetchRestaurantData?.GetRestaurantById?.graph?.length > 0){
+                            setMaingraph(fetchRestaurantData?.GetRestaurantById?.graph[Math.floor(Math.random() * fetchRestaurantData?.GetRestaurantById?.graph.length)])
+                        }
+                    }} >Want to see another graph?</Button>
+                    <Button variant="outlined" style={{ margin: '2px' }} onClick={()=>{navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/plane/create');}}>Create your own graph</Button>
 
                     <br></br>
                     <br></br>

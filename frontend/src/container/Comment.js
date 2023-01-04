@@ -135,9 +135,7 @@ function Comments(){
                         )
                     })
                 }
-                <Container maxWidth="lg">
-                    <Comment_component name="testname" body="The coffee is fine with a relatively low price. However, the service is awful." star="3" time="testtime"/>
-                </Container>
+
             </ThemeProvider>
             
         </>
@@ -147,6 +145,9 @@ function Comments(){
 export default Comments
 
 /*
+                <Container maxWidth="lg">
+                    <Comment_component name="testname" body="The coffee is fine with a relatively low price. However, the service is awful." star="3" time="testtime"/>
+                </Container>*//*
                 <Col xs="6">
                     <Form>
                         <FormGroup row>

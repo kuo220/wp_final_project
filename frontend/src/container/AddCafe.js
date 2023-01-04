@@ -15,7 +15,10 @@ import AddCafeForm from '../component/AddCafeForm';
 import BusinessHourForm from '../component/BusinessHourForm';
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import {CREATE_RESTAURANT_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { VariablesAreInputTypesRule } from 'graphql';
 
 
 const steps = ['Basic Info', 'Business hours'];
@@ -46,8 +49,9 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	const [businessHour, setBusinessHour] = useState({'Sunday open time' : '', 'Sunday close time' : '', 'Monday open time' : '', 'Monday close time' : '', 'Tuesday open time' : '', 'Tuesday close time' : '', 'Wednesday open time' : '', 'Wednesday close time' : '', 'Thursday open time' : '', 'Thursday close time' : '', 'Friday open time' : '', 'Friday close time' : '', 'Saturday open time' : '', 'Saturday close time' : ''});
+	const [businessHour, setBusinessHour] = useState({'Sunday open time' : '12:00', 'Sunday close time' : '12:00', 'Monday open time' : '12:00', 'Monday close time' : '12:00', 'Tuesday open time' : '12:00', 'Tuesday close time' : '12:00', 'Wednesday open time' : '12:00', 'Wednesday close time' : '12:00', 'Thursday open time' : '12:00', 'Thursday close time' : '12:00', 'Friday open time' : '12:00', 'Friday close time' : '12:00', 'Saturday open time' : '12:00', 'Saturday close time' : '12:00'});
 
+	const [createrestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
@@ -66,6 +70,14 @@ function AddCafe() {
 			default:
 				throw new Error('Unknown step');
 		}
+	}
+
+	const handleonClick = () => {
+		//console.log({name:cafeName, information:[{'Phone Number':phoneNum, City, District, Address, ...businessHour}]})
+		//businessHour.forEach((i)=>{console.log(i)})
+		/*createrestaurant({
+			variables: {name:cafeName, information:[]}
+		})*/
 	}
 
 	return (
@@ -108,7 +120,7 @@ function AddCafe() {
 						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 								<Button
 									variant="contained"
-									onClick={() => {navigate('/search/'+name+'/'+'userid')}}
+									onClick={() => {handleonClick();navigate('/search/'+name+'/'+userid);}}
 									sx={{ mt: 3, ml: 1 }}
 								>
 									Complete
