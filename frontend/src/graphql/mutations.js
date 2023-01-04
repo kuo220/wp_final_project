@@ -133,7 +133,7 @@ mutation CreateGraph(
     $name: String!,
     $userid: ID!,
     $restaurantid: ID!,
-    $graph: [[Int!]]
+    $graph: [[String!]]
 ){
     createGraph(
         name: $name,

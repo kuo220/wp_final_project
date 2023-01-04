@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
+import {GET_RESTAURANT_BY_ID_QUERY, CREATE_COMMENT_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
 
@@ -43,6 +45,19 @@ function Plane(){
     const containerRef = useRef(null);
     const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
     const navigate = useNavigate();
+
+    const { data: fetchRestaurantData, error: fetchRestaurantError, loading: fetchRestaurantLoading} = useQuery(GET_RESTAURANT_BY_ID_QUERY, {
+        variables: {id: id}
+    });
+
+    useEffect((fetchRestaurantLoading)=>{//console.log(fetchRestaurantLoading,fetchRestaurantData,fetchRestaurantError);
+        //console.log(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
+        if(fetchRestaurantData?.GetRestaurantById !== undefined){
+            console.log(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
+            if(fetchRestaurantData?.GetRestaurantById?.graph !== [])setMaingraph(fetchRestaurantData?.GetRestaurantById?.graph.at(-1))
+            setTmphook(!tmphook);
+        }
+    },[fetchRestaurantLoading])
 
     return(
         <>
@@ -76,7 +91,7 @@ function Plane(){
                     </Container>
 
                     <Grid container spacing={0} sx={{ width: `${containerWidth/3*2}px` , height:`${containerWidth/3*2}px` }}>
-                        {console.log(maingraph)}
+                        {/*console.log(maingraph)*/}
                         {
                         maingraph.map((block,i) => {
                             return block.map((item,j)=>{

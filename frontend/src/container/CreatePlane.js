@@ -14,6 +14,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
+import {CREATE_GRAPH_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
 
@@ -45,7 +47,15 @@ function Plane(){
     const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
     const navigate = useNavigate();
 
-    useEffect((maingraph)=>{console.log('maingraph',maingraph)},[maingraph])
+    const [createGraph, createGraphData] = useMutation(CREATE_GRAPH_MUTATION);
+
+    const handleonClick = () => {
+        //console.log({name:name, userid:userid, restaurantid:id, graph:maingraph})
+        createGraph({
+            variables: {name:name, userid:userid, restaurantid:id, graph:maingraph}
+        })
+        navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/plane');
+    }
 
     return(
         <>
@@ -110,7 +120,7 @@ function Plane(){
                         })}
                     </Grid>
                     <br></br>
-                    <Button variant="outlined" onClick={()=>{navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/plane');}}>Finish drawing the map!</Button>
+                    <Button variant="outlined" onClick={handleonClick}>Finish drawing the map!</Button>
                     <br></br>
                     <br></br>
                     <br></br>
