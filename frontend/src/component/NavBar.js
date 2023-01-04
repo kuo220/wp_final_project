@@ -11,7 +11,7 @@ const theme = createTheme();
 function NavBar({name, id}){
     const {user, setUser, restaurant, setRestaurant} = useHooks();
     console.log(user)
-    console.log(id)
+    console.log(restaurant)
 
 
     const sections = [

@@ -53,7 +53,7 @@ function FeaturedPost(props) {
     return (
             <Grid item xs={12} md={6}>
             <CardActionArea component="a" href="#">
-                <Card sx={{ display: 'flex' }}>
+                <Card sx={{ display: 'flex', height: '20vh' }}>
                 <CardContent sx={{ flex: 1 }}>
                     <Typography component="h2" variant="h5">
                     {props.title}
@@ -68,7 +68,7 @@ function FeaturedPost(props) {
                         <DialogTitle>Add new information</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                Fill out the title and information you want to add.
+                                Fill out the new information of this title.
                             </DialogContentText>
                             <TextField
                                 autoFocus

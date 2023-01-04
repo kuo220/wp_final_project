@@ -9,6 +9,9 @@ import NavBar from '../component/NavBar';
 import InfoCard from '../component/InfoCard'
 import AddCard from '../component/AddInfoCard';
 import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
+import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
+import { useEffect } from 'react';
 
 const mainFeaturedPost = {
     title: 'Basic Information',
@@ -42,6 +45,18 @@ const theme = createTheme();
 function CafeInfo() {
     const { id } = useParams();
     const name = 'cafe name'
+
+
+    const { data: getData, loading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
+        variables: {
+            id: id
+        },
+    }); 
+
+    useEffect( () => {
+        //const informations = getData.GetRestaurantById.information;
+    }, [])
+
 
     return (
         <ThemeProvider theme={theme}>
