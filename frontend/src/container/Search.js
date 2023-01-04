@@ -151,7 +151,6 @@ function Search() {
 
 			
 			<main>
-
 			<Box
 			sx={{
 				bgcolor: 'background.paper',

@@ -46,7 +46,13 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	const [businessHour, setBusinessHour] = useState({'Sunday open time' : '', 'Sunday close time' : '', 'Monday open time' : '', 'Monday close time' : '', 'Tuesday open time' : '', 'Tuesday close time' : '', 'Wednesday open time' : '', 'Wednesday close time' : '', 'Thursday open time' : '', 'Thursday close time' : '', 'Friday open time' : '', 'Friday close time' : '', 'Saturday open time' : '', 'Saturday close time' : ''});
+	const [businessHour, setBusinessHour] = useState([{'name' : 'Monday_Open', 'body' : ''}, {'name' : 'Monday_Close', 'body' : ''},
+													  {'name' : 'Tuesday_Open', 'body' : ''}, {'name' : 'Tuesday_Close', 'body' : ''},
+													  {'name' : 'Wednesday_Open', 'body' : ''}, {'name' : 'Wednesday_Close', 'body' : ''},
+													  {'name' : 'Thursday_Open', 'body' : ''}, {'name' : 'Thursday_Close', 'body' : ''},
+													  {'name' : 'Friday_Open', 'body' : ''}, {'name' : 'Friday_Close', 'body' : ''},
+													  {'name' : 'Saturday_Open', 'body' : ''}, {'name' : 'Saturday_Open', 'body' : ''},
+													  {'name' : 'Sunday_Open', 'body' : ''}, {'name' : 'Sunday_Close', 'body' : ''}])
 
 
 	const handleNext = () => {

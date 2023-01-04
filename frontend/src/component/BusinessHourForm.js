@@ -24,110 +24,52 @@ function BusinessHourForm(props) {
 
 				<Grid  item xs={12} md={6}>
 					<Typography variant="h5" gutterBottom>
-						Sunday
-					</Typography>
-				</Grid>
-
-				<Grid item xs={12} md={6}>
-					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Sunday open time'] = time
-									props.setBusinessHour(tmp)
-								}
-							}}
-							renderInput={(params) => <TextField {...params} />}
-						/>
-								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Sunday close time'] = time
-									props.setBusinessHour(tmp)
-								}
-							}}
-							renderInput={(params) => <TextField {...params} />}
-						/>
-					</Space>
-				</Grid>
-
-				<div style={{height:'3vh'}}></div>
-
-				<Grid item xs={12} md={6}>
-					<Typography variant="h5" gutterBottom>
 						Monday
 					</Typography>
 				</Grid>
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Monday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[0]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Monday close time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[1]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
@@ -139,50 +81,49 @@ function BusinessHourForm(props) {
 						Tuesday
 					</Typography>
 				</Grid>
+
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Tuesday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[2]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Tuesday close time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[3]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
@@ -194,51 +135,48 @@ function BusinessHourForm(props) {
 						Wednesday
 					</Typography>
 				</Grid>
-
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Wednesday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[4]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Wednesday close time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[5]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
@@ -253,48 +191,46 @@ function BusinessHourForm(props) {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Thursday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[6]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Thursday close time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[7]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
@@ -309,48 +245,46 @@ function BusinessHourForm(props) {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Friday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[8]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Friday close time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[9]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
@@ -365,49 +299,100 @@ function BusinessHourForm(props) {
 
 				<Grid item xs={12} md={6}>
 					<Space size="middle">
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Open Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Saturday open time'] = time
-									props.setBusinessHour(tmp)
-								}
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[10]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 								to
-						<TimePicker
-							ampmInClock
-							views={['hours', 'minutes']}
-							inputFormat="hh:mm"
-							mask="__:__"
-							label="Close Time"
-							value={value}
-							
-							onChange={(e) => {
-								// handleChange(e)
-								if(e !== null){
-									let hour = (e._d).getHours()
-									let minute = (e._d).getMinutes()
-									let time = hour.toString() + ' : ' + minute.toString()
-									let tmp = props.businessHour
-									tmp['Saturday close time'] = time
-									props.setBusinessHour(tmp)
-									console.log(props.businessHour)
-								}
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
 							}}
-							renderInput={(params) => <TextField {...params} />}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[11]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
+						/>
+					</Space>
+				</Grid>
+
+				<div style={{height:'3vh'}}></div>
+
+				<Grid item xs={12} md={6}>
+					<Typography variant="h5" gutterBottom>
+						Sunday
+					</Typography>
+				</Grid>
+
+				<Grid item xs={12} md={6}>
+					<Space size="middle">
+						<TextField
+							id="time"
+							label="Open TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
+							}}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[12]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
+						/>
+								to
+						<TextField
+							id="time"
+							label="Close TIme"
+							type="time"
+							defaultValue="07:30"
+							InputLabelProps={{
+							shrink: true,
+							}}
+							
+							inputProps={{
+							step: 300, // 5 min
+							}}
+							sx={{ width: 230 }}
+							onChange={(e) => {
+								let tmp = props.businessHour;
+								tmp[13]['body'] = e.target.value;
+								props.setBusinessHour(tmp)
+								console.log(props.businessHour)
+							}}
 						/>
 					</Space>
 				</Grid>
