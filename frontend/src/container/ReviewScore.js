@@ -87,7 +87,11 @@ function ReviewScore(){
     const [
 		lazygetRestaurant,
 		{ data: lazygetRestaurantData, error: lazyerror, loading: lazygetRestaurantLoading},
-	] = useLazyQuery(GET_RESTAURANT_BY_ID_QUERY);
+	] = useLazyQuery(GET_RESTAURANT_BY_ID_QUERY,{
+        onCompleted:()=>{
+            //console.log('/');
+        }
+    });
 
     useEffect(()=>{
         lazygetRestaurant({
