@@ -29,52 +29,6 @@ import { useParams } from 'react-router-dom'
 import { useWindowSize } from 'react-use';
 
 
-// const SearchBox = styled(Input)`
-// 	position : absolute;
-// 	display : flex;
-// 	width : 52%;
-// 	height : 8%;
-// 	top : 25%;
-// 	left : 22%;
-// 	right : 25%;
-// `
-
-
-const SearchBox = {
-	position : 'absolute',
-	width : '52%',
-	height : '8%',
-	top : '25%',
-	left : '22%',
-	right : '25%',
-}
-
-const SearchButton = {
-	position : 'absolute',
-	backgroundColor : '#DB8F00',
-	color : 'white',
-	height : '8%',
-	top : '25%',
-	right : '21.3%',
-
-}
-
-const AddButton = {
-	position : 'absolute',
-    top : '5%',
-    right : '15%',
-	backgroundColor:'#DB8F00'
-}
-
-const LogoutButton = {
-	position : 'absolute',
-	top : '5%',
-	right : '5%',
-	backgroundColor:'#DB8F00',
-}
-
-
-
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -87,7 +41,27 @@ function Search() {
 	const [restaurantlist, setRestaurantlist] = React.useState([]);
 	const {user, setUser, restaurant, setRestaurant} = useHooks();
 	const { width, height } = useWindowSize();
-	// console.log(width,height)
+	console.log(width,height)
+
+	const AddButton = {
+		position : 'absolute',
+		width : `${width / 165}%`,
+		height : `${height / 120}%`,
+		fontSize : `${ 1.9 * height / width }rem`,
+		top : '5%',
+		right : '15%',
+		backgroundColor:'#DB8F00'
+	}
+	
+	const LogoutButton = {
+		position : 'absolute',
+		width : `${width / 165}%`,
+		height : `${height / 120}%`,
+		fontSize : `${ 1.9 * height / width }rem`,
+		top : '5%',
+		right : '5%',
+		backgroundColor:'#DB8F00',
+	}
 
 	//const [createuser] = useMutation(CREATE_USER_MUTATION);
 	const [
