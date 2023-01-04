@@ -8,17 +8,17 @@ import { useEffect, useState } from 'react';
 
 const theme = createTheme();
 
-function NavBar({name, id}){
+function NavBar({cafename, name, id, userid}){
     const {user, setUser, restaurant, setRestaurant} = useHooks();
     console.log(user)
     console.log(id)
 
 
     const sections = [
-        { title: 'About', url: `/search/cafe/${id}` },
-        { title: 'Review', url: `/search/cafe/${id}/review` },
-        { title: 'Comments', url: `/search/cafe/${id}/comments` },
-        { title: 'Plane Figure', url: `/search/cafe/${id}/plane` },
+        { title: 'About', url: `/search/${name}/${userid}/cafe/${id}` },
+        { title: 'Review', url: `/search/${name}/${userid}/cafe/${id}/review` },
+        { title: 'Comments', url: `/search/${name}/${userid}/cafe/${id}/comments` },
+        { title: 'Plane Figure', url: `/search/${name}/${userid}/cafe/${id}/plane` },
         
     ];
 
@@ -26,7 +26,7 @@ function NavBar({name, id}){
         <ThemeProvider theme={theme}>
             <CssBaseline />
                 <Container maxWidth="lg">
-                    <Header title={name} sections={sections}></Header>
+                    <Header title={cafename} sections={sections}></Header>
                 </Container>
         </ThemeProvider>
     )

@@ -51,7 +51,7 @@ export default function SignIn() {
         else if(CheckLoginData !== undefined && CheckLoginData?.LogInQuery.id!=="not found"){
             displayMessage('success', 'Signed in successfully')
             setUser(CheckLoginData?.LogInQuery)
-            navigate('/search');
+            navigate('/search/' + CheckLoginData?.LogInQuery?.name + '/' + CheckLoginData?.LogInQuery?.id);
         }
         
     },[CheckLoginLoading])
