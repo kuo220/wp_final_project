@@ -11,8 +11,8 @@ const theme = createTheme();
 function NavBar({cafename, name, id, userid}){
     const {user, setUser, restaurant, setRestaurant} = useHooks();
 
-    console.log(user)
-    console.log(restaurant)
+    //console.log(user)
+    //console.log(restaurant)
 
     const sections = [
         { title: 'About', url: `/search/${name}/${userid}/cafe/${id}` },

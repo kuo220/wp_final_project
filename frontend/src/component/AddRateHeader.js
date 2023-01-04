@@ -8,12 +8,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function AddRateHeader() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, name, userid } = useParams();
 
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small" onClick={ () => navigate(`/search/cafe/${id}/review`) }>Back to review</Button>
+        <Button size="small" onClick={ () => navigate(`/search/${name}/${userid}/cafe/${id}/review`) }>Back to review</Button>
         <Typography
           component="h2"
           variant="h5"

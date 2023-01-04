@@ -15,7 +15,10 @@ import AddCafeForm from '../component/AddCafeForm';
 import BusinessHourForm from '../component/BusinessHourForm';
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import {CREATE_RESTAURANT_MUTATION} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { VariablesAreInputTypesRule } from 'graphql';
 
 
 const steps = ['Basic Info', 'Business hours'];
@@ -54,6 +57,7 @@ function AddCafe() {
 													  {'name' : 'Saturday_Open', 'body' : ''}, {'name' : 'Saturday_Open', 'body' : ''},
 													  {'name' : 'Sunday_Open', 'body' : ''}, {'name' : 'Sunday_Close', 'body' : ''}])
 
+	const [createrestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
@@ -72,6 +76,14 @@ function AddCafe() {
 			default:
 				throw new Error('Unknown step');
 		}
+	}
+
+	const handleonClick = () => {
+		//console.log({name:cafeName, information:[{'Phone Number':phoneNum, City, District, Address, ...businessHour}]})
+		//businessHour.forEach((i)=>{console.log(i)})
+		/*createrestaurant({
+			variables: {name:cafeName, information:[]}
+		})*/
 	}
 
 	return (
@@ -114,7 +126,7 @@ function AddCafe() {
 						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 								<Button
 									variant="contained"
-									onClick={() => {navigate('/search/'+name+'/'+'userid')}}
+									onClick={() => {handleonClick();navigate('/search/'+name+'/'+userid);}}
 									sx={{ mt: 3, ml: 1 }}
 								>
 									Complete
