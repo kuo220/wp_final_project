@@ -31,7 +31,7 @@ const mainFeaturedPost = {
     imageText: 'main image description',
 };
 
-const scores = [
+/*const scores = [
     {
         title: 'name',
         score: 4.7
@@ -69,7 +69,7 @@ const TFscores = [
       score: "T"
     },
     
-];
+];*/
 
 function ReviewScore(){
     const { id, name, userid } = useParams();
@@ -83,6 +83,34 @@ function ReviewScore(){
             id: id
         },
     }); 
+
+    const [
+		lazygetRestaurant,
+		{ data: lazygetRestaurantData, error: lazyerror, loading: lazygetRestaurantLoading},
+	] = useLazyQuery(GET_RESTAURANT_BY_ID_QUERY);
+
+    useEffect(()=>{
+        lazygetRestaurant({
+            variables: {id:id},
+        })
+    },[])
+
+    useEffect((lazygetRestaurantLoading)=>{
+        if(lazygetRestaurantData?.GetRestaurantById !== undefined){
+            console.log(lazygetRestaurantData?.GetRestaurantById?.spTFrate)
+            setRates(lazygetRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(lazygetRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(lazygetRestaurantData?.GetRestaurantById?.name);
+        }
+    },[lazygetRestaurantLoading,lazygetRestaurantData])
+
+    useEffect((RestaurantLoading)=>{
+        if(getRestaurantData?.GetRestaurantById !== undefined){
+            setRates(getRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(getRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+        }
+    },[getRestaurantLoading])
 
     useEffect((RestaurantLoading)=>{
         if(getRestaurantData?.GetRestaurantById !== undefined){
@@ -101,32 +129,32 @@ function ReviewScore(){
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
-                    <div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>
-                    {scores.map((card) => ( //! comment
+                    {/*<div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>*/}
+                    {/*scores.map((card) => ( //! comment
                         <>
                             <RateCard title={card.title} score = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))}
-                    {/* {rates.map((card) => ( 
+    ))*/}
+                    { rates.map((card) => ( 
                         <>
                             <RateCard title={card.name} score = {card.average_star}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))} */}
+                    ))} 
                     <div style={{height: '15vh'}}/>
-                    {TFscores.map((card) => ( //! comment
+                    {/*TFscores.map((card) => ( //! comment
                         <>
                             <RateTFCard title = {card.title} TF = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))}
-                    {/* {TFrates.map((card) => ( 
+                    ))*/}
+                    {TFrates.map((card) => ( 
                         <>
                             <RateTFCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length}/>
                             <div style={{height: '3vh'}}/>
                         </>
-                    ))} */} 
+                    ))} 
                     <div style={{height: '10vh'}}/>
                     <RateButtonCard/>
                     <div style={{height: '10vh'}}/>

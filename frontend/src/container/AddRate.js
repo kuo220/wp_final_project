@@ -11,7 +11,11 @@ import AddTFRateCard from '../component/AddTFRateCard';
 import AddRateHeader from '../component/AddRateHeader';
 import AddNewRateButtonCard from '../component/AddNewRateButtonCard'
 import AddNewTFRateButtonCard from '../component/AddNewTFRateButtonCard'
-import { useEffect } from 'react';
+import { useEffect , useState} from 'react';
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
+import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ScoreStyles = {
     display: 'flex',
@@ -73,10 +77,36 @@ const TFscores = [
 function AddRate(){
     const { id, name, userid } = useParams();
     const cafename = 'cafe name'
+    const [cafeName, setCafeName] = useState('cafe name');
+    const averageScore = 1.2 //!need to change
+    const [rates, setRates] = useState([]);
+    const [TFrates, setTFRates] = useState([]);
+    //console.log(rates)
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    const { data: getRestaurantData, loading: getRestaurantLoading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
+        variables: {
+            id: id
+        },
+    }); 
+
+    const handleonClick = () => {
+        navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/review');
+    }
+
+    useEffect((RestaurantLoading)=>{
+        if(getRestaurantData?.GetRestaurantById !== undefined){
+            setRates(getRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(getRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+            //console.log(getRestaurantData?.GetRestaurantById?.sprate)
+            //console.log(getRestaurantData?.GetRestaurantById?.spTFrate)
+        }
+    },[getRestaurantLoading])
 
     return(
         <>
@@ -84,25 +114,27 @@ function AddRate(){
                 <CssBaseline />
                 <Container maxWidth="lg" style = {{backgroundColor: '#FCF3E3'}}>
                     <AddRateHeader/>
-                    {/* <main>
+                    { <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
-                    </main> */}
+                    </main> }
                     <div style={{height: '10vh'}}/>
-                    {scores.map((card) => (
+                    {rates.map((card) => (
                         <>
-                            <AddRateCard title={card.title}/>
+                            <AddRateCard title={card.name}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
-                    <AddNewRateButtonCard/>
+                    <AddNewRateButtonCard setRates={setRates} rates={rates}/>
                     <div style={{height: '15vh'}}/>
-                    {TFscores.map((card) => (
+                    {TFrates.map((card) => (
                         <>
-                            <AddTFRateCard title = {card.title} TF = {card.score}/>
+                            <AddTFRateCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length} TFrates={TFrates} setTFRates={setTFRates}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
-                    <AddNewTFRateButtonCard/>
+                    <AddNewTFRateButtonCard TFrates={TFrates} setTFRates={setTFRates}/>
+                    <br/>
+                    <Button variant="contained" onClick={handleonClick}>finish rating!</Button>
                     <div style={{height: '10vh'}}/>
                 </Container>
             </ThemeProvider>
@@ -112,3 +144,16 @@ function AddRate(){
 }
 
 export default AddRate
+
+/*(
+                        <>
+                            <AddTFRateCard title = {card.name} Tnum = {card.Tnum} Fnum = {card.Fnum}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    )*/
+/*(
+                        <>
+                            <AddRateCard title={card.name}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    )*/

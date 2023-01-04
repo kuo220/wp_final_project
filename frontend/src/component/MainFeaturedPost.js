@@ -50,7 +50,7 @@ function MainFeaturedPost(props) {
               {post.description}
             </Typography>
             <Link variant="subtitle1" href="#">
-              {post.linkText}
+              {/*post.linkText*/}
             </Link>
           </Box>
         </Grid>

@@ -28,7 +28,7 @@ const mainFeaturedPost = {
 
 function Comments(){
     const { id, name, userid } = useParams()
-    const cafename = 'cafe name'
+    const [cafename, setCafeName] = useState('cafe name');
     const [rate, setRate] = useState(0);
     const [text, setText] = useState('');
     const [comment, setComment] = useState([]);
@@ -61,6 +61,7 @@ function Comments(){
     },[createCommentData])
 
     useEffect((RestaurantLoading)=>{//console.log(fetchRestaurantLoading,fetchRestaurantData?.GetRestaurantById,fetchRestaurantError);
+        setCafeName(fetchRestaurantData?.GetRestaurantById?.name);
         if(fetchRestaurantData?.GetRestaurantById !== undefined){
             //console.log(fetchRestaurantData?.GetRestaurantById?.comments)
             setComment(fetchRestaurantData?.GetRestaurantById?.comments)

@@ -33,7 +33,7 @@ const cardcolor = ['#F0F0F0','#FF5151','#79FF79','#66B3FF','#7B7B7B']
 
 function Plane(){
     const { id, name, userid } = useParams();
-    const cafename = 'cafe name'
+    const [cafename, setCafeName] = useState('cafe name');
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
