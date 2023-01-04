@@ -73,7 +73,7 @@ const TFscores = [
 
 function ReviewScore(){
     const { id, name, userid } = useParams();
-    const [cafeName, setCafeName] = useState('cafe name');
+    const [cafeName, setCafeName] = useState('');
     //const averageScore = 1.2
     const [rates, setRates] = useState([]);
     const [TFrates, setTFRates] = useState([]);

@@ -10,8 +10,9 @@ import InfoCard from '../component/InfoCard'
 import AddCard from '../component/AddInfoCard';
 import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
-import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useEffect, useState } from 'react';
+import InfoDayCard from '../component/InfoDayCard';
 
 const mainFeaturedPost = {
     title: 'Basic Information',
@@ -44,7 +45,7 @@ const theme = createTheme();
 
 function CafeInfo() {
     const { id, name, userid } = useParams();
-    const [cafeName, setCafeName] = useState('cafe name');
+    const [cafeName, setCafeName] = useState('');
     const [informations, setInformations] = useState([]);
 
 
@@ -70,11 +71,31 @@ function CafeInfo() {
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
                     <Grid container spacing={4}>
-                        {informations.map((info) => ( 
+                        {informations.slice(0, 4).map((info) => ( 
                             <InfoCard name = {info.name} information = {info.body} />
                         ))} 
-                        {/* <AddCard/> */}
                     </Grid>
+                    <div style={{height: '10vh'}}/>
+                    
+                    <InfoDayCard name = 'Monday' start = {informations[4].body} end = {informations[5].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Tuesday' start = {informations[6].body} end = {informations[7].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Wednesday' start = {informations[8].body} end = {informations[9].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Thursday' start = {informations[10].body} end = {informations[11].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Friday' start = {informations[12].body} end = {informations[13].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Saturday' start = {informations[14].body} end = {informations[15].body}/>
+                    <div style={{height: '5vh'}}/>
+
+                    <InfoDayCard name = 'Sunday' start = {informations[16].body} end = {informations[17].body}/>
                 </main>
                 <div style={{height: '10vh'}}/>
             </Container>
