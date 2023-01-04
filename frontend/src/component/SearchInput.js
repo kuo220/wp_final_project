@@ -16,7 +16,8 @@ const SearchBox = {
 	right : '25%',
 }
 
-export default function CustomizedInputBase() {
+export default function CustomizedInputBase(props) {
+    //console.log(props)
     return (
         <Paper
             component="form"
@@ -30,8 +31,10 @@ export default function CustomizedInputBase() {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search for Café"
                     inputProps={{ 'aria-label': 'Search for Café' }}
+                    value = {props.value}
+                    onChange = {props.onChange}
                     />
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={props.onClick}>
                     <SearchIcon />
                 </IconButton>
                 {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> */}

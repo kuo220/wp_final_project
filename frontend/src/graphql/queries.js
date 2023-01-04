@@ -51,6 +51,14 @@ query SearchRestaurantByName($name: String!){
     }
 }
 `;
+export const SEARCH_RESTAURANT_BY_NAME_QUERY_SHORT = gql`
+query SearchRestaurantByName($name: String!){
+    SearchRestaurantByName(name: $name){
+        id
+        name
+    }
+}
+`;
 export const GET_RESTAURANT_BY_ID_QUERY = gql`
 query GetRestaurantById($id: ID!){
     GetRestaurantById(id: $id){

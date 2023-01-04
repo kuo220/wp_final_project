@@ -19,12 +19,13 @@ import { message } from "antd";
 import {LOG_IN_QUERY} from '../graphql/index';
 import * as CryptoJS from 'crypto-js';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import {useHooks} from './hooks/Hooks'
 
 const theme = createTheme();
 const secretKey = "IHVYRTyknIBUYTNTCYVUBJnnJhgfjnBHRYTusc";
 
 export default function SignIn() {
-
+    const {user, setUser} = useHooks();
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
     const bodyRef = useRef(null);
@@ -49,6 +50,7 @@ export default function SignIn() {
         if(CheckLoginData?.LogInQuery.id==="wrong password")displayMessage('error', 'wrong password');
         else if(CheckLoginData !== undefined && CheckLoginData?.LogInQuery.id!=="not found"){
             displayMessage('success', 'Signed in successfully')
+            setUser(CheckLoginData?.LogInQuery)
             navigate('/search');
         }
         

@@ -21,7 +21,9 @@ import TextField, { TextFieldProps } from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import SearchInput from '../component/SearchInput';
-
+import {useHooks} from './hooks/Hooks'
+import {SEARCH_RESTAURANT_BY_NAME_QUERY, GET_RESTAURANT_BY_ID_QUERY} from '../graphql/index';
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 // const SearchBox = styled(Input)`
 // 	position : absolute;
@@ -95,6 +97,57 @@ const theme = createTheme();
 
 function Search() {
 	const navigate = useNavigate();
+	const [searchValue, setSearchValue] = React.useState('');
+	const [restaurantlist, setRestaurantlist] = React.useState([]);
+	const {user, setUser, restaurant, setRestaurant} = useHooks();
+
+	//const [createuser] = useMutation(CREATE_USER_MUTATION);
+	const [
+		SearchRestaurant,
+		{ data: SearchRestaurantData, error: SearchRestaurantError, loading: SearchRestaurantLoading},
+	] = useLazyQuery(SEARCH_RESTAURANT_BY_NAME_QUERY);
+
+	const [
+		GetRestaurant,
+		{ data: GetRestaurantData, error: GetRestaurantError, loading: GetRestaurantLoading},
+	] = useLazyQuery(GET_RESTAURANT_BY_ID_QUERY);
+
+	React.useEffect((SearchRestaurantLoading)=>{
+		//console.log(SearchRestaurantLoading,SearchRestaurantData,SearchRestaurantError);
+        if(SearchRestaurantData !== undefined){
+			console.log(SearchRestaurantData.SearchRestaurantByName)
+			setRestaurantlist(SearchRestaurantData.SearchRestaurantByName)
+		}
+    },[SearchRestaurantLoading])
+
+	React.useEffect((GetRestaurantLoading)=>{
+		console.log(GetRestaurantLoading,GetRestaurantData,GetRestaurantError);
+        if(GetRestaurantData !== undefined){
+			//console.log(GetRestaurantData.GetRestaurantById)
+			setRestaurant(GetRestaurantData.GetRestaurantById)
+			navigate('/search/cafe/' + GetRestaurantData.GetRestaurantById.id)
+		}
+    },[GetRestaurantLoading])
+
+	const handleChange = (event) => {
+		setSearchValue(event.target.value);
+	};
+
+	const handleonClick = () => {
+		SearchRestaurant({
+			variables:{
+				name: searchValue
+			},
+		})
+	}
+
+	const handleCardonClick = (id) => {
+		GetRestaurant({
+			variables:{
+				id: id
+			},
+		})
+	}
 
 
 	return (
@@ -132,6 +185,9 @@ function Search() {
 
 				<SearchInput
 					style={SearchBox}
+					value={searchValue}
+					onChange={handleChange}
+					onClick={handleonClick}
 				/>
 
 
@@ -169,8 +225,8 @@ function Search() {
 			<Container sx={{ py: 8 }} maxWidth="md">
 			{/* End hero unit */}
 				<Grid container spacing={4}>
-				{cards.map((card) => (
-					<Grid item key={card} xs={12} sm={6} md={4}>
+				{restaurantlist.map((rest) => (
+					<Grid item key={rest.id} xs={12} sm={6} md={4} onClick={()=>{handleCardonClick(rest.id)}}>
 					<Card
 					sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
 					>
@@ -185,7 +241,7 @@ function Search() {
 						/>
 						<CardContent sx={{ flexGrow: 1 }}>
 							<Typography gutterBottom variant="h5" component="h2">
-								Heading
+								{rest.name}
 							</Typography>
 							<Typography>
 								This is a media card. You can use this section to describe the
