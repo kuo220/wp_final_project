@@ -20,6 +20,7 @@ import Container from '@mui/material/Container';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import SearchInput from '../component/SearchInput';
 
 
 // const SearchBox = styled(Input)`
@@ -65,7 +66,7 @@ const SearchButton = {
 	position : 'absolute',
 	backgroundColor : '#DB8F00',
 	color : 'white',
-	height : '7.7%',
+	height : '8%',
 	top : '25%',
 	right : '21.3%',
 
@@ -124,16 +125,21 @@ function Search() {
 					prefix={<ShopOutlined />}
 				/> */}
 
-				<CssTextField  id="custom-css-outlined-input"
+				{/* <CssTextField  id="custom-css-outlined-input"
 					placeholder='Search for café'
+					style={SearchBox}
+				/> */}
+
+				<SearchInput
 					style={SearchBox}
 				/>
 
-				<Button variant='contained' size ='large'
+
+				{/* <Button variant='contained' size ='large'
 					style={SearchButton}
 				>
 					<SearchIcon/>
-				</Button>
+				</Button> */}
 
 				<Button variant="contained" size='large'
 					style={AddButton}
