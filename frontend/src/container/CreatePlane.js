@@ -110,7 +110,7 @@ function Plane(){
                         })}
                     </Grid>
                     <br></br>
-                    <Button variant="outlined" onClick={()=>{navigate('/search/cafe/:id/plane');}}>Finish drawing the map!</Button>
+                    <Button variant="outlined" onClick={()=>{navigate('/search/cafe/'+id+'/plane');}}>Finish drawing the map!</Button>
                     <br></br>
                     <br></br>
                     <br></br>

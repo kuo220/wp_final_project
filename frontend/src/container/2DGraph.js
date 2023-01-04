@@ -91,7 +91,7 @@ function Plane(){
                         )}
                     </Grid>
                     <br></br>
-                    <Button variant="outlined" onClick={()=>{navigate('/search/cafe/:id/plane/create');}}>Create your own graph</Button>
+                    <Button variant="outlined" onClick={()=>{navigate('/search/cafe/'+id+'/plane/create');}}>Create your own graph</Button>
 
                     <br></br>
                     <br></br>
