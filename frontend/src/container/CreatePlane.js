@@ -30,8 +30,8 @@ const cards = [['Floor','White'], ['Seat','Red'], ['Socket','Green'], ['Toilet',
 const cardcolor = ['#F0F0F0','#FF5151','#79FF79','#66B3FF','#7B7B7B']
 
 function Plane(){
-    const { id } = useParams();
-    const name = 'cafe name'
+    const { id, name, userid } = useParams();
+    const cafename = 'cafe name'
     const colors = new Array(24);
     for (let j = 0; j < colors.length; j++) {
         colors[j] = new Array(24);
@@ -52,7 +52,7 @@ function Plane(){
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Container maxWidth="lg" ref={containerRef}>
-                    <NavBar id = {id} name = {name}></NavBar>
+                    <NavBar id = {id} cafename = {cafename} name={name} userid={userid}></NavBar>
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
@@ -110,7 +110,7 @@ function Plane(){
                         })}
                     </Grid>
                     <br></br>
-                    <Button variant="outlined" onClick={()=>{navigate('/search/cafe/'+id+'/plane');}}>Finish drawing the map!</Button>
+                    <Button variant="outlined" onClick={()=>{navigate('/search/'+name+'/'+userid+'/cafe/'+id+'/plane');}}>Finish drawing the map!</Button>
                     <br></br>
                     <br></br>
                     <br></br>

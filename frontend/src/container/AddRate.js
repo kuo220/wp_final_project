@@ -71,8 +71,8 @@ const TFscores = [
 ];
 
 function AddRate(){
-    const { id } = useParams()
-    const name = 'cafe name'
+    const { id, name, userid } = useParams();
+    const cafename = 'cafe name'
 
     useEffect(() => {
         window.scrollTo(0, 0)

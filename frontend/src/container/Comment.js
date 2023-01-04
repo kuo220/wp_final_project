@@ -24,8 +24,8 @@ const mainFeaturedPost = {
 };
 
 function Comments(){
-    const { id } = useParams()
-    const name = 'cafe name'
+    const { id, name, userid } = useParams()
+    const cafename = 'cafe name'
     const [rate, setRate] = useState(null);
     const [text, setText] = useState('');
 
@@ -34,7 +34,7 @@ function Comments(){
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Container maxWidth="lg">
-                    <NavBar id = {id} name = {name}></NavBar>
+                    <NavBar id = {id} cafename = {cafename} name={name} userid={userid}></NavBar>
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>

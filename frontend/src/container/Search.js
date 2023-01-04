@@ -24,6 +24,7 @@ import SearchInput from '../component/SearchInput';
 import {useHooks} from './hooks/Hooks'
 import {SEARCH_RESTAURANT_BY_NAME_QUERY, GET_RESTAURANT_BY_ID_QUERY} from '../graphql/index';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { useParams } from 'react-router-dom'
 
 // const SearchBox = styled(Input)`
 // 	position : absolute;
@@ -97,6 +98,7 @@ const theme = createTheme();
 
 function Search() {
 	const navigate = useNavigate();
+	const {name, userid } = useParams()
 	const [searchValue, setSearchValue] = React.useState('');
 	const [restaurantlist, setRestaurantlist] = React.useState([]);
 	const {user, setUser, restaurant, setRestaurant} = useHooks();
@@ -125,7 +127,7 @@ function Search() {
         if(GetRestaurantData !== undefined && GetRestaurantData.GetRestaurantById !== undefined){
 			console.log(GetRestaurantData.GetRestaurantById)
 			setRestaurant(GetRestaurantData.GetRestaurantById)
-			navigate('/search/cafe/' + GetRestaurantData.GetRestaurantById.id)
+			navigate('/search/'+name+'/'+userid+'/cafe/' + GetRestaurantData.GetRestaurantById.id)
 		}
     },[GetRestaurantLoading])
 
