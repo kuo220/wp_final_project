@@ -21,15 +21,15 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home/>}/>
 					<Route path="/login" element={<SignIn/>} />
-					<Route path="/search" element={<Search/>} />
+					<Route path="/search/:name/:userid" element={<Search/>} />
 					<Route path="/addcafe" element={<AddCafe/>}/>
 					<Route path="/register" element={<Register/>} />
-					<Route path="/search/cafe/:id" element={<CafeInfo/>} />
-					<Route path="/search/cafe/:id/review" element={<ReviewScore/>} />
-					<Route path="/search/cafe/:id/review/addrate" element={<AddRate/>} />
-					<Route path="/search/cafe/:id/comments" element={<Comments/>} />
-					<Route path="/search/cafe/:id/plane" element={<Plane/>} />
-					<Route path="/search/cafe/:id/plane/create" element={<CreatePlane/>} />
+					<Route path="/search/:name/:userid/cafe/:id" element={<CafeInfo/>} />
+					<Route path="/search/:name/:userid/cafe/:id/review" element={<ReviewScore/>} />
+					<Route path="/search/:name/:userid/cafe/:id/review/addrate" element={<AddRate/>} />
+					<Route path="/search/:name/:userid/cafe/:id/comments" element={<Comments/>} />
+					<Route path="/search/:name/:userid/cafe/:id/plane" element={<Plane/>} />
+					<Route path="/search/:name/:userid/cafe/:id/plane/create" element={<CreatePlane/>} />
 				</Routes>
         	</Router>
 		</>

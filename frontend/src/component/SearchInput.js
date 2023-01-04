@@ -9,10 +9,10 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 
 const SearchBox = {
 	position : 'absolute',
-	width : '52%',
+	width : '60%',
 	height : '8%',
 	top : '25%',
-	left : '23.5%',
+	left : '21%',
 	right : '25%',
 }
 

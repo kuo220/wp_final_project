@@ -24,6 +24,8 @@ import SearchInput from '../component/SearchInput';
 import {useHooks} from './hooks/Hooks'
 import {SEARCH_RESTAURANT_BY_NAME_QUERY, GET_RESTAURANT_BY_ID_QUERY} from '../graphql/index';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import {ScrollView, ImageBackground } from 'react-native-web';
+import { useParams } from 'react-router-dom'
 
 // const SearchBox = styled(Input)`
 // 	position : absolute;
@@ -35,25 +37,6 @@ import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 // 	right : 25%;
 // `
 
-const CssTextField = styled(TextField)({
-	'& label.Mui-focused': {
-		color: '#DB8F00',
-	},
-	'& .MuiInput-underline:after': {
-		borderBottomColor: '#DB8F00',
-	},
-	'& .MuiOutlinedInput-root': {
-		'& fieldset': {
-			borderColor: '#FFCF78',
-		},
-		'&:hover fieldset': {
-			borderColor: '#DB8F00',
-		},
-		'&.Mui-focused fieldset': {
-			borderColor: '#DB8F00',
-		},
-	},
-});
 
 const SearchBox = {
 	position : 'absolute',
@@ -97,6 +80,7 @@ const theme = createTheme();
 
 function Search() {
 	const navigate = useNavigate();
+	const {name, userid } = useParams()
 	const [searchValue, setSearchValue] = React.useState('');
 	const [restaurantlist, setRestaurantlist] = React.useState([]);
 	const {user, setUser, restaurant, setRestaurant} = useHooks();
@@ -125,7 +109,7 @@ function Search() {
         if(GetRestaurantData !== undefined && GetRestaurantData.GetRestaurantById !== undefined){
 			console.log(GetRestaurantData.GetRestaurantById)
 			setRestaurant(GetRestaurantData.GetRestaurantById)
-			navigate('/search/cafe/' + GetRestaurantData.GetRestaurantById.id)
+			navigate('/search/'+name+'/'+userid+'/cafe/' + GetRestaurantData.GetRestaurantById.id)
 		}
     },[GetRestaurantLoading])
 
@@ -153,14 +137,19 @@ function Search() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
+			
 			<AppBar position="relative">
 				<Toolbar style={{backgroundColor:"#FFBD45", height:'15vh'}}>
 					<LocalCafeIcon sx={{ mr: 2 }} />
 					<Typography variant="h4" color="inherit" noWrap>
 						Café Finder
 					</Typography>
-					</Toolbar>
+
+					
+				</Toolbar>
 			</AppBar>
+
+			
 			<main>
 
 			<Box
@@ -172,36 +161,18 @@ function Search() {
 			>
 			<Container maxWidth="sm">
 
-				{/* <SearchBox
-					size="large"
-					placeholder="Search for café"
-					prefix={<ShopOutlined />}
-				/> */}
-
-				{/* <CssTextField  id="custom-css-outlined-input"
-					placeholder='Search for café'
-					style={SearchBox}
-				/> */}
-
 				<SearchInput
-					style={SearchBox}
+					// style={SearchBox}
 					value={searchValue}
 					onChange={handleChange}
 					onClick={handleonClick}
 				/>
 
-
-				{/* <Button variant='contained' size ='large'
-					style={SearchButton}
-				>
-					<SearchIcon/>
-				</Button> */}
-
 				<Button variant="contained" size='large'
 					style={AddButton}
 					onClick={() => {navigate('/addcafe')}}
 				>
-					Add Café
+							Add Café
 				</Button>
 				
 				
@@ -212,6 +183,8 @@ function Search() {
 					Log Out
 				</Button>
 
+				
+
 				<Stack
 					sx={{ pt: 4 }}
 					direction="row"
@@ -220,7 +193,7 @@ function Search() {
 				>
 
 				</Stack>
-				</Container>
+			</Container>
 			</Box>
 			<Container sx={{ py: 8 }} maxWidth="md">
 			{/* End hero unit */}
@@ -258,6 +231,7 @@ function Search() {
 				</Grid>
 			</Container>
 			</main>
+			
 		</ThemeProvider>
 	);
 }

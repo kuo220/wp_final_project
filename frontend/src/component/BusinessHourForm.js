@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-function BusinessHourForm() {
+function BusinessHourForm(props) {
 	const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
 	const handleChange = (newValue) => {
 		setValue(newValue);
@@ -32,14 +32,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Sunday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Sunday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -58,14 +68,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Monday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Monday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -83,14 +103,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Tuesday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Tuesday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -109,14 +139,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Wednesday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Wednesday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -135,14 +175,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Thursday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Thursday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -161,14 +211,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Friday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Friday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>
@@ -187,14 +247,24 @@ function BusinessHourForm() {
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let openTime = {}
+								openTime['Saturday open time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(openTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 								to
 						<TimePicker
 							label="Time"
 							value={value}
-							onChange={handleChange}
+							onChange={(e) => {
+								handleChange(e.target.value)
+								let closeTime = {}
+								closeTime['Saturday close time'] = e.target.value
+								props.setBusinessHour(() => {props.businessHour.push(closeTime)})
+							}}
 							renderInput={(params) => <TextField {...params} />}
 						/>
 					</Space>

@@ -26,18 +26,19 @@ const Mutation = {
   },
   async createComment(parent, args, { UserModel, RestaurantModel }, info){
     //need to input valid id, or an error will appear.
+    console.log('//')
     let restaurant = await RestaurantModel.findOne({_id:args.restaurantid}).exec()
     for(let i=0;i<restaurant.comments.length;i++){
       if(restaurant.comments[i].person_id == args.userid){
         restaurant.comments[i] = {name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time}
         restaurant.save();
-        return {name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time}
+        return restaurant.comments//{name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time}
       }
     }
 
     restaurant.comments.push({name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time})
     restaurant.save();
-    return {name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time}
+    return [{name: args.name, person_id:args.userid, body:args.body, star:args.star, time:args.time}]
   },
   async createRate(parent, args, { UserModel, RestaurantModel }, info){
     //need to input valid id, or an error will appear.

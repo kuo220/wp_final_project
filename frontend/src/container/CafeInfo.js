@@ -43,8 +43,8 @@ const featuredPosts = [
 const theme = createTheme();
 
 function CafeInfo() {
-    const { id } = useParams();
-    const name = 'cafe name'
+    const { id, name, userid } = useParams();
+    const cafename = 'cafe name'
 
 
     const { data: getData, loading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
@@ -62,7 +62,7 @@ function CafeInfo() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth="lg">
-                <NavBar id = {id} name = {name}></NavBar>
+                <NavBar id = {id} cafename = {cafename} name={name} userid={userid}></NavBar>
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
                     <Grid container spacing={4}>
