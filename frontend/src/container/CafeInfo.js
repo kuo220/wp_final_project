@@ -11,7 +11,7 @@ import AddCard from '../component/AddInfoCard';
 import Coffee_cup_bean from '../picture/coffee_cup_bean.jpg'
 import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const mainFeaturedPost = {
     title: 'Basic Information',
@@ -44,32 +44,39 @@ const theme = createTheme();
 
 function CafeInfo() {
     const { id, name, userid } = useParams();
-    const cafename = 'cafe name'
+    const [cafeName, setCafeName] = useState('cafe name');
+    const [informations, setInformations] = useState([]);
 
 
-    const { data: getData, loading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
+    const { data: getRestaurantData, loading: getRestaurantLoading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
         variables: {
             id: id
         },
     }); 
 
-    useEffect( () => {
-        //const informations = getData.GetRestaurantById.information;
-    }, [])
+    useEffect((RestaurantLoading)=>{
+        if(getRestaurantData?.GetRestaurantById !== undefined){
+            setInformations(getRestaurantData?.GetRestaurantById?.information)
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+        }
+    },[getRestaurantLoading])
 
 
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth="lg">
-                <NavBar id = {id} cafename = {cafename} name={name} userid={userid}></NavBar>
+                <NavBar id = {id} cafename = {cafeName} name={name} userid={userid}></NavBar>
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
                     <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
+                        {featuredPosts.map((post) => ( //! comment
                             <InfoCard name = {post.Name} information = {post.information} />
                         ))}
-                        <AddCard/>
+                        {/* {informations.map((info) => ( 
+                            <InfoCard name = {info.name} information = {info.body} />
+                        ))} */} 
+                        {/* <AddCard/> */}
                     </Grid>
                 </main>
                 <div style={{height: '10vh'}}/>

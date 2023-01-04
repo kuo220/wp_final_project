@@ -61,9 +61,9 @@ function FeaturedPost(props) {
                     <Typography variant="subtitle1" paragraph>
                     {props.description}
                     </Typography>
-                    <Button onClick = {handleClickOpen}>
+                    {/* <Button onClick = {handleClickOpen}>
                         Edit
-                    </Button>
+                    </Button> */}
                     <Dialog open={open} onClose={handleClose}>
                         <DialogTitle>Add new information</DialogTitle>
                         <DialogContent>

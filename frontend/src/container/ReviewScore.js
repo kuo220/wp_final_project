@@ -10,6 +10,9 @@ import Coffee_cup from '../picture/coffee_cup.jpg'
 import RateCard from '../component/RateCard'
 import RateTFCard from '../component/RateTFCard';
 import RateButtonCard from '../component/RateButtonCard'
+import { GET_RESTAURANT_BY_ID_QUERY } from '../graphql/index';
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
+import { useEffect, useState } from 'react';
 
 const ScoreStyles = {
     display: 'flex',
@@ -70,32 +73,60 @@ const TFscores = [
 
 function ReviewScore(){
     const { id, name, userid } = useParams();
-    const cafename = 'cafe name'
-    const averageScore = 1.2
+    const [cafeName, setCafeName] = useState('cafe name');
+    const averageScore = 1.2 //!need to change
+    const [rates, setRates] = useState([]);
+    const [TFrates, setTFRates] = useState([]);
+
+    const { data: getRestaurantData, loading: getRestaurantLoading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
+        variables: {
+            id: id
+        },
+    }); 
+
+    useEffect((RestaurantLoading)=>{
+        if(getRestaurantData?.GetRestaurantById !== undefined){
+            setRates(getRestaurantData?.GetRestaurantById?.sprate);
+            setTFRates(getRestaurantData?.GetRestaurantById?.spTFrate);
+            setCafeName(getRestaurantData?.GetRestaurantById?.name);
+        }
+    },[getRestaurantLoading])
 
     return(
         <>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Container maxWidth="lg">
-                <NavBar id = {id} cafename = {cafename} name={name} userid={userid}></NavBar>
+                <NavBar id = {id} cafename = {cafeName} name={name} userid={userid}></NavBar>
                     <main>
                         <MainFeaturedPost post={mainFeaturedPost} />
                     </main>
                     <div style = {ScoreStyles}><ScoreIndicator value={averageScore} maxValue = {5}></ScoreIndicator></div>
-                    {scores.map((card) => (
+                    {scores.map((card) => ( //! comment
                         <>
                             <RateCard title={card.title} score = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
+                    {/* {rates.map((card) => ( 
+                        <>
+                            <RateCard title={card.name} score = {card.average_star}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    ))} */}
                     <div style={{height: '15vh'}}/>
-                    {TFscores.map((card) => (
+                    {TFscores.map((card) => ( //! comment
                         <>
                             <RateTFCard title = {card.title} TF = {card.score}/>
                             <div style={{height: '3vh'}}/>
                         </>
                     ))}
+                    {/* {TFrates.map((card) => ( 
+                        <>
+                            <RateTFCard title = {card.name} Tnum = {card.Tnum.length} Fnum = {card.Fnum.length}/>
+                            <div style={{height: '3vh'}}/>
+                        </>
+                    ))} */} 
                     <div style={{height: '10vh'}}/>
                     <RateButtonCard/>
                     <div style={{height: '10vh'}}/>
