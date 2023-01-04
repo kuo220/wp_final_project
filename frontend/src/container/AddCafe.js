@@ -44,7 +44,7 @@ function AddCafe() {
 	const [city, setCity] = useState('');
 	const [district, setDistrict] = useState('');
 	const [address, setAddress] = useState('');
-	let [businessHour, setBusinessHour] = useState([{}]);
+	const [businessHour, setBusinessHour] = useState([{}]);
 
 
 	const handleNext = () => {

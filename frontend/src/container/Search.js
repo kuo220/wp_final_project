@@ -24,7 +24,7 @@ import SearchInput from '../component/SearchInput';
 import {useHooks} from './hooks/Hooks'
 import {SEARCH_RESTAURANT_BY_NAME_QUERY, GET_RESTAURANT_BY_ID_QUERY} from '../graphql/index';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
-import {ScrollView, ImageBackground } from 'react-native-web';
+// import {ScrollView, ImageBackground } from 'react-native-web';
 import { useParams } from 'react-router-dom'
 
 // const SearchBox = styled(Input)`
