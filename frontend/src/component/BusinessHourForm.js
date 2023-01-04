@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-function BusinessHourForm() {
+function BusinessHourForm(props) {
 	const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
 	const handleChange = (newValue) => {
 		setValue(newValue);
