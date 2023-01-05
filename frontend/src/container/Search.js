@@ -27,6 +27,7 @@ import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 // import {ScrollView, ImageBackground } from 'react-native-web';
 import { useParams } from 'react-router-dom'
 import { useWindowSize } from 'react-use';
+import searchCafe from '../picture/searchCafe.jpg'
 
 
 
@@ -197,7 +198,7 @@ function Search() {
 							// 16:9
 							pt: '56.25%',
 							}}
-							image="https://source.unsplash.com/random"
+							image={searchCafe}
 							alt="random"
 						/>
 						<CardContent sx={{ flexGrow: 1 }}>
@@ -210,8 +211,8 @@ function Search() {
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<Button size="small">View</Button>
-							<Button size="small">Edit</Button>
+							{/* <Button size="small">View</Button> */}
+							{/* <Button size="small">Edit</Button> */}
 						</CardActions>
 					</Card>
 				</Grid>
@@ -227,3 +228,4 @@ function Search() {
 }
 
 export default Search;
+

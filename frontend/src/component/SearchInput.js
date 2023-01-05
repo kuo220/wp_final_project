@@ -12,7 +12,7 @@ const SearchBox = {
 	width : '60%',
 	height : '8%',
 	top : '25%',
-	left : '21%',
+	left : '20%',
 	right : '25%',
 }
 
