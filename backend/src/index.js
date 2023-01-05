@@ -4,16 +4,16 @@ import { useServer } from 'graphql-ws/lib/use/ws'
 import { WebSocketServer } from 'ws'
 import * as fs from 'fs'
 import * as CryptoJS from 'crypto-js';
-
 import mongo from './mongo';
 import {UserModel, RestaurantModel} from './models/models';
-
+import cors from "cors";
+import express from "express";
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 import Subscription from './resolvers/Subscription';
 import User from './resolvers/User';
 import Restaurant from './resolvers/Restaurant';
-
+import path from "path";
 /*const password = 123456;
 const secretKey = "mySecretKey";
 const encrypt = CryptoJS.AES.encrypt(password.toString(),secretKey);
@@ -22,6 +22,8 @@ const decrypt = CryptoJS.AES.decrypt(encrypt,secretKey);
 console.log(decrypt.toString(CryptoJS.enc.Utf8));*/
 
 mongo.connect();
+
+
 
 const pubsub = createPubSub();
 
@@ -43,13 +45,33 @@ const yoga = createYoga({
     RestaurantModel,
     pubsub,
   },
-  //  graphqlEndpoint: '/',   // uncomment this to send the app to: 4000/
+  /*graphqlEndpoint: process.env.NODE_ENV === "production"
+  ? "/api"
+  : "/graphql",   // uncomment this to send the app to: 4000/
   graphiql: {
     subscriptionsProtocol: 'WS',
-  },
+  },*/
 });
 
-const server = createServer(yoga)
+
+
+
+
+const port = process.env.PORT || 4000;
+
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "../frontend", "build")));
+app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+});
+
+app.use('/graphql', yoga);
+const server = createServer(app);
 
 const wsServer = new WebSocketServer({
   server: server,
@@ -89,7 +111,27 @@ useServer(
   wsServer,
 )
 
-const port = process.env.PORT || 4000;
+
+
+
+
+
+
 server.listen({port}, () => {
   console.log(`The server is up on port ${port}!`);
 });
+
+/* 
+import { WebSocketServer } from 'ws'
+const server = createServer(yoga)
+
+const wsServer = new WebSocketServer({
+  server: server,
+  path: yoga.graphqlEndpoint,
+})
+const app = express();
+if(process.env.NODE_DEV == "development")app.use(cors());
+
+const port = process.env.PORT || 4000;
+app.use('/api',wsServer)
+*/
