@@ -45,9 +45,9 @@ function Search() {
 
 	const AddButton = {
 		position : 'absolute',
-		width : `${width / 165}%`,
-		height : `${height / 120}%`,
-		fontSize : `${ 1.9 * height / width }rem`,
+		// width : `${width / 165}%`,
+		// height : `${height / 120}%`,
+		// fontSize : `${ 1.9 * height / width }rem`,
 		top : '5%',
 		right : '15%',
 		backgroundColor:'#DB8F00'
@@ -55,9 +55,9 @@ function Search() {
 	
 	const LogoutButton = {
 		position : 'absolute',
-		width : `${width / 165}%`,
-		height : `${height / 120}%`,
-		fontSize : `${ 1.9 * height / width }rem`,
+		// width : `${width / 165}%`,
+		// height : `${height / 120}%`,
+		// fontSize : `${ 1.9 * height / width }rem`,
 		top : '5%',
 		right : '5%',
 		backgroundColor:'#DB8F00',
