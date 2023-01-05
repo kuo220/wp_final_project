@@ -6,7 +6,8 @@ import * as fs from 'fs'
 import * as CryptoJS from 'crypto-js';
 import mongo from './mongo';
 import {UserModel, RestaurantModel} from './models/models';
-
+//import cors from "cors";
+//import express from "express";
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 import Subscription from './resolvers/Subscription';
@@ -21,6 +22,10 @@ const decrypt = CryptoJS.AES.decrypt(encrypt,secretKey);
 console.log(decrypt.toString(CryptoJS.enc.Utf8));*/
 
 mongo.connect();
+
+/*const app = express();
+app.use(cors());
+app.use(express.json());*/
 
 const pubsub = createPubSub();
 
@@ -42,12 +47,12 @@ const yoga = createYoga({
     RestaurantModel,
     pubsub,
   },
-  graphqlEndpoint: process.env.NODE_ENV === "production"
+  /*graphqlEndpoint: process.env.NODE_ENV === "production"
   ? "/api"
   : "/graphql",   // uncomment this to send the app to: 4000/
   graphiql: {
     subscriptionsProtocol: 'WS',
-  },
+  },*/
 });
 
 const server = createServer(yoga)
