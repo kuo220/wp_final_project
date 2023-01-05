@@ -48,7 +48,7 @@ function CafeInfo() {
     const [cafeName, setCafeName] = useState('');
     const [informations, setInformations] = useState([]);
 
-
+    console.log('/')
     const { data: getRestaurantData, loading: getRestaurantLoading, error } = useQuery( GET_RESTAURANT_BY_ID_QUERY, {
         variables: {
             id: id
@@ -56,6 +56,7 @@ function CafeInfo() {
     }); 
 
     useEffect((RestaurantLoading)=>{
+        console.log(getRestaurantData?.GetRestaurantById?.information)
         if(getRestaurantData?.GetRestaurantById !== undefined){
             setInformations(getRestaurantData?.GetRestaurantById?.information)
             setCafeName(getRestaurantData?.GetRestaurantById?.name);
@@ -77,25 +78,25 @@ function CafeInfo() {
                     </Grid>
                     <div style={{height: '10vh'}}/>
                     
-                    <InfoDayCard name = 'Monday' start = {informations[4].body} end = {informations[5].body}/>
+                    <InfoDayCard name = 'Monday' start = {informations[4]?.body} end = {informations[5]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Tuesday' start = {informations[6].body} end = {informations[7].body}/>
+                    <InfoDayCard name = 'Tuesday' start = {informations[6]?.body} end = {informations[7]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Wednesday' start = {informations[8].body} end = {informations[9].body}/>
+                    <InfoDayCard name = 'Wednesday' start = {informations[8]?.body} end = {informations[9]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Thursday' start = {informations[10].body} end = {informations[11].body}/>
+                    <InfoDayCard name = 'Thursday' start = {informations[10]?.body} end = {informations[11]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Friday' start = {informations[12].body} end = {informations[13].body}/>
+                    <InfoDayCard name = 'Friday' start = {informations[12]?.body} end = {informations[13]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Saturday' start = {informations[14].body} end = {informations[15].body}/>
+                    <InfoDayCard name = 'Saturday' start = {informations[14]?.body} end = {informations[15]?.body}/>
                     <div style={{height: '5vh'}}/>
 
-                    <InfoDayCard name = 'Sunday' start = {informations[16].body} end = {informations[17].body}/>
+                    <InfoDayCard name = 'Sunday' start = {informations[16]?.body} end = {informations[17]?.body}/>
                 </main>
                 <div style={{height: '10vh'}}/>
             </Container>
