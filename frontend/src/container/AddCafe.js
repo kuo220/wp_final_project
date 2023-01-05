@@ -85,7 +85,6 @@ function AddCafe() {
 	}
 
 	const handleonClick = () => {
-		//console.log([{'name':'Phone Number','body':phoneNum}, {'name':'City','body':city}, {'name':'District','body':district}, {'name':'Address','body':address}, ...businessHour])
 		createrestaurant({
 			variables: {
 				name: cafeName,
@@ -140,7 +139,7 @@ function AddCafe() {
 						<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 								<Button
 									variant="contained"
-									onClick={() => {handleonClick();navigate('/search/'+name+'/'+userid);}}
+									onClick={() => {handleonClick(); navigate('/search/'+name+'/'+userid);}}
 									sx={{ mt: 3, ml: 1 }}
 								>
 									Complete

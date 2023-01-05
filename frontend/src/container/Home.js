@@ -1,5 +1,4 @@
 import { Typography } from 'antd';
-import Titlebar from './Titlebar';
 import styled from 'styled-components';
 import CssBaseline from '@mui/material/CssBaseline';
 import home2 from '../picture/home2.jpg'
@@ -12,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const HomeBackground = styled.div`
 	width : 100vw;
 	height : 100vh;
-	background-color : #F5DEB3;
+	// background-color : #F5DEB3;
 `
 
 function Home() {
@@ -25,7 +24,7 @@ function Home() {
         top : '5%',
         right : '5%',
         backgroundColor : 'gray',
-        
+
     }
 
     const SignUpButton = {
@@ -49,6 +48,7 @@ function Home() {
             > Log In </Button>
 
             <img src={home2} style={{width:'100%', height:'100%'}}>
+            
                 
             </img>
 

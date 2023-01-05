@@ -24,10 +24,10 @@ function RateCard({ title, score }) {
 			<Rating name="read-only" defaultValue={score} precision={0.1} readOnly size = "large"/>
 			</CardContent>
 			<CardMedia
-			component="img"
-			sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-			image={Star}
-			alt = 'Image Text'
+				component="img"
+				sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
+				image={Star}
+				alt = 'Image Text'
 			/>
 		</Card>
         </CardActionArea>
