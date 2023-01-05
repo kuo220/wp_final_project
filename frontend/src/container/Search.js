@@ -28,7 +28,7 @@ import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 import { useParams } from 'react-router-dom'
 import { useWindowSize } from 'react-use';
 import searchCafe from '../picture/searchCafe.jpg'
-
+import Rating from '@mui/material/Rating';
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -187,8 +187,13 @@ function Search() {
 			<Container sx={{ py: 8 }} maxWidth="md">
 			{/* End hero unit */}
 				<Grid container spacing={4}>
-				{restaurantlist.map((rest) => (
-					<Grid item key={rest.id} xs={12} sm={6} md={4} onClick={()=>{handleCardonClick(rest.id)}}>
+				{restaurantlist.map((rest) => {
+					let tmp = 0.0;
+					for(let i=0;i<rest.comments.length;i++)tmp += rest.comments[i].star
+					tmp /= rest.comments.length
+					tmp = tmp.toFixed(2);
+					if(tmp == NaN)tmp = 0
+					return<Grid item key={rest.id} xs={12} sm={6} md={4} onClick={()=>{handleCardonClick(rest.id)}}>
 					<Card
 					sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
 					>
@@ -205,10 +210,8 @@ function Search() {
 							<Typography gutterBottom variant="h5" component="h2">
 								{rest.name}
 							</Typography>
-							<Typography>
-								This is a media card. You can use this section to describe the
-								content.
-							</Typography>
+
+							<Rating name="read-only" value={tmp} precision={0.1} readOnly sx={{padding:1}}/>
 						</CardContent>
 						<CardActions>
 							{/* <Button size="small">View</Button> */}
@@ -216,7 +219,7 @@ function Search() {
 						</CardActions>
 					</Card>
 				</Grid>
-				))}
+				})}
 				</Grid>
 			</Container>
 			{/* </Box> */}
