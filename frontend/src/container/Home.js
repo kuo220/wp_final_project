@@ -1,5 +1,4 @@
 import { Typography } from 'antd';
-import Titlebar from './Titlebar';
 import styled from 'styled-components';
 import CssBaseline from '@mui/material/CssBaseline';
 import home2 from '../picture/home2.jpg'
@@ -25,7 +24,7 @@ function Home() {
         top : '5%',
         right : '5%',
         backgroundColor : 'gray',
-        
+
     }
 
     const SignUpButton = {

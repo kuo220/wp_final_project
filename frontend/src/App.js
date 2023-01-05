@@ -1,4 +1,3 @@
-import Login from './container/Login'
 import Home from './container/Home'
 import Register from './container/Register'
 import Search from './container/Search'
