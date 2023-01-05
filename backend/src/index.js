@@ -4,7 +4,7 @@ import { useServer } from 'graphql-ws/lib/use/ws'
 import { WebSocketServer } from 'ws'
 import * as fs from 'fs'
 import * as CryptoJS from 'crypto-js';
-
+import express from "express";
 import mongo from './mongo';
 import {UserModel, RestaurantModel} from './models/models';
 
@@ -43,7 +43,9 @@ const yoga = createYoga({
     RestaurantModel,
     pubsub,
   },
-  //  graphqlEndpoint: '/',   // uncomment this to send the app to: 4000/
+  graphqlEndpoint: process.env.NODE_ENV === "production"
+  ? "/api"
+  : "/graph",   // uncomment this to send the app to: 4000/
   graphiql: {
     subscriptionsProtocol: 'WS',
   },
@@ -93,3 +95,18 @@ const port = process.env.PORT || 4000;
 server.listen({port}, () => {
   console.log(`The server is up on port ${port}!`);
 });
+
+/* 
+import { WebSocketServer } from 'ws'
+const server = createServer(yoga)
+
+const wsServer = new WebSocketServer({
+  server: server,
+  path: yoga.graphqlEndpoint,
+})
+const app = express();
+if(process.env.NODE_DEV == "development")app.use(cors());
+
+const port = process.env.PORT || 4000;
+app.use('/api',wsServer)
+*/
