@@ -4,7 +4,6 @@ import { useServer } from 'graphql-ws/lib/use/ws'
 import { WebSocketServer } from 'ws'
 import * as fs from 'fs'
 import * as CryptoJS from 'crypto-js';
-import express from "express";
 import mongo from './mongo';
 import {UserModel, RestaurantModel} from './models/models';
 
@@ -45,7 +44,7 @@ const yoga = createYoga({
   },
   graphqlEndpoint: process.env.NODE_ENV === "production"
   ? "/api"
-  : "/graph",   // uncomment this to send the app to: 4000/
+  : "/graphql",   // uncomment this to send the app to: 4000/
   graphiql: {
     subscriptionsProtocol: 'WS',
   },
