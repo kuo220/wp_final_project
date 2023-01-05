@@ -1,9 +1,9 @@
 import {v4 as uuidv4} from 'uuid';
+import * as CryptoJS from 'crypto-js';
 
 const secretKey = "IHVYRTyknIBUYTNTCYVUBJnnJhgfjnBHRYTusc";
 const Mutation = {
   async createUser(parent, args, { UserModel }, info){
-    //const accounttaken = UserModel
     let user = await UserModel.findOne({ account:args.account });
     if(user){
       user.name = "account taken!!";

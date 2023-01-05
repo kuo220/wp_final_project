@@ -21,6 +21,7 @@ import * as CryptoJS from 'crypto-js';
 import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 
 const theme = createTheme();
+const secretKey = "IHVYRTyknIBUYTNTCYVUBJnnJhgfjnBHRYTusc";
 
 export default function SignIn() {
 
@@ -64,7 +65,7 @@ export default function SignIn() {
                 variables: {
                     name: account,
                     account: account,
-                    password: password,
+                    password: CryptoJS.AES.encrypt(password,secretKey).toString(),
                 },
             });
             displayMessage('success', 'Signed up successfully')

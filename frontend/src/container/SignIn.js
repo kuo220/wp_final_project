@@ -64,6 +64,7 @@ export default function SignIn() {
         else if(password === ''){
             displayMessage('error', 'Please enter password');
         }
+        console.log(CryptoJS.AES.encrypt(password,secretKey).toString())
         CheckLogin({
             variables: {
                 account: CryptoJS.AES.encrypt(account,secretKey).toString(),//account
