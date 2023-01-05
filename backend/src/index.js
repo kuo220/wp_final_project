@@ -57,7 +57,7 @@ const yoga = createYoga({
 
 
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4000;
 
 
 const app = express();
