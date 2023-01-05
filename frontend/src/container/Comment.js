@@ -26,6 +26,7 @@ const mainFeaturedPost = {
     imageText: 'main image description',
 };
 
+
 function Comments(){
     const { id, name, userid } = useParams()
     const [cafename, setCafeName] = useState('cafe name');
