@@ -65,12 +65,7 @@ app.use(cors());
 app.use(express.json());
 const __dirname = path.resolve();
 
-app.use(express.static(path.join(__dirname, "../frontend", "build")));
-app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
-});
 
-app.use('/graphql', yoga);
 const server = createServer(app);
 
 const wsServer = new WebSocketServer({
@@ -114,7 +109,12 @@ useServer(
 
 
 
+app.use(express.static(path.join(__dirname, "../frontend", "build")));
+app.get("/*", function (req, res) {
+    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+});
 
+app.use('/graphql', yoga);
 
 
 server.listen({port}, () => {

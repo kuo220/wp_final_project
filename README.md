@@ -19,9 +19,10 @@ https://youtu.be/hHq5gmMKiEA
 https://wpfinalproject-production-28aa.up.railway.app/
 
 ## 其他說明
-咖啡廳review與comment頁面在輸入並送出後，可能需要重新整理頁面才會刷新。<br>
+咖啡廳review頁面在輸入並送出後，可能需要重新整理頁面才會刷新。<br>
+comment和review頁面，為了避免有人刷評價，同個帳號的重複留言和評分僅會保留最後輸入的<br>
 而2D平面圖的部分，因每個人畫出的圖不同，所以按下看其他的圖，就會隨機跳出其中一位使用者畫的圖<br>
-因目前添加的咖啡廳很少，如果要搜尋可以打: 西雅圖、伯朗咖啡、starbucks、行路...等咖啡廳
+因目前添加的咖啡廳很少，如果要搜尋可以打: 西雅圖、伯朗咖啡、starbucks、行路...等咖啡廳（只要餐廳名稱有包含搜尋字串都會顯示）
 
 ## 使用與參考之框架/模組/原始碼
 Mui template
