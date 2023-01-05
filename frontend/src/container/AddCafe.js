@@ -23,7 +23,9 @@ import { message } from "antd";
 
 const steps = ['Basic Info', 'Business hours'];
 
-
+message.config({
+	top: 80,
+});
 
 const theme = createTheme();
 

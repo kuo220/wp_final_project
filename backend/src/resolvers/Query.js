@@ -4,7 +4,7 @@ import * as CryptoJS from 'crypto-js';
 const secretKey = "IHVYRTyknIBUYTNTCYVUBJnnJhgfjnBHRYTusc";
 const Query = {
   async LogInQuery(parent, args, { UserModel }, info){
-    console.log(args.password)
+    //console.log(args.password)
     args.account = CryptoJS.AES.decrypt(args.account,secretKey).toString(CryptoJS.enc.Utf8);
     args.password = CryptoJS.AES.decrypt(args.password,secretKey).toString(CryptoJS.enc.Utf8);
     let user = await UserModel.findOne({ account:args.account });
