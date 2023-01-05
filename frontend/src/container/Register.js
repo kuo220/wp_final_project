@@ -60,6 +60,12 @@ export default function SignIn() {
         else if(password !== passwordConfirm){
           displayMessage('error', 'confirm failed')
         }
+        else if(account.length < 8) {
+            displayMessage('error', "Account's length should be at least 8 characters")
+        }
+        else if(password.length < 8) {
+            displayMessage('error', "Password's length should be at least 8 characters")
+        }
         else {
             createuser({
                 variables: {
@@ -114,7 +120,7 @@ export default function SignIn() {
                     label = "Account"
                     name = "account"
                     value = {account}
-                    onChange = {(e) => setAccount(e.target.value)}
+                    onChange = {(e) => {setAccount(e.target.value)}}
                     onKeyDown = {
                         (e) => {
                             if (e.key === 'Enter') {
@@ -130,7 +136,7 @@ export default function SignIn() {
                     name = "password"
                     label = "Password"
                     value = {password}
-                    onChange = {(e) => setPassword(e.target.value)}
+                    onChange = {(e) => {setPassword(e.target.value)}}
                     ref = {bodyRef}
                     type="password"
                 />
